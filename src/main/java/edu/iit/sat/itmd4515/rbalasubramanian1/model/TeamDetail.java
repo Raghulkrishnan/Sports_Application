@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
 /**
@@ -44,6 +45,7 @@ public class TeamDetail {
     @Enumerated(EnumType.STRING)
     private Level level;
 
+    @PastOrPresent
     private LocalDateTime createdTime;
 
     public TeamDetail() {
@@ -114,12 +116,7 @@ public class TeamDetail {
     public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
     }
-
-    @Override
-    public String toString() {
-        return "TeamDetail{" + "id=" + id + ", teamName=" + teamName + ", captainName=" + captainName + ", contact=" + contact + ", level=" + level + '}';
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -143,6 +140,11 @@ public class TeamDetail {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "TeamDetail{" + "id=" + id + ", teamName=" + teamName + ", captainName=" + captainName + ", contact=" + contact + ", level=" + level + ", createdTime=" + createdTime + '}';
     }
 
 }
