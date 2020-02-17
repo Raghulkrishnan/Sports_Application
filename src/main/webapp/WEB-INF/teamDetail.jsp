@@ -19,7 +19,7 @@
             <p>One or more issues found in submission. Fix it.</p>
             <ol>
                 <c:forEach var="error" items="${requestScope.errors}" >
-                    <li>There is an issue with ${error.propertyPath}. The msg is ${error.message}</li>
+                    <li>There is an issue with ${error.propertyPath}. The message is ${error.message}</li>
                 </c:forEach>
             </ol>
          </c:if>
@@ -42,7 +42,7 @@
             
             <div>
                 <label for="date">Date: </label>
-                <input value="${requestScope.td.createdTime}" type="date" id="date" name="date"/>
+                <input value="${requestScope.createdTime}" type="date" id="date" name="date"/>
             </div> 
             <button type="submit">Save team detail</button>
         </form>

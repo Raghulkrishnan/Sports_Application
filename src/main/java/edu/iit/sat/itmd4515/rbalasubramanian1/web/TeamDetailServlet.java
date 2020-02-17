@@ -96,6 +96,9 @@ public class TeamDetailServlet extends HttpServlet {
             for(ConstraintViolation<TeamDetail> violation : violations){
                 LOG.info(violation.getPropertyPath() + " " + violation.getMessage());
             }
+            
+            request.setAttribute("createdTime", td.getCreatedTime().toLocalDate().toString());
+            
             request.setAttribute("td", td);
             request.setAttribute("errors", violations);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/teamDetail.jsp");
