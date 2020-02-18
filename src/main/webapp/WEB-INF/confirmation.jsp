@@ -6,20 +6,20 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" xml:lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Confirmation Page</title>
     </head>
     <body>
         <h1>User input has passed the validations!</h1>
-        
+        <p>Team created successfully! Team Details below: </p>
         <ul>
-            <li>${requestScope.td.teamName}</li>
-            <li>${requestScope.td.captainName}</li>
-            <li>${requestScope.td.contact}</li>
-            <li>${requestScope.td.level}</li>
-            <li>${requestScope.td.createdTime}</li>
+            <li>Team Name : ${requestScope.td.teamName}</li>
+            <li>Captain Name : ${requestScope.td.captainName}</li>
+            <li>Contact : ${requestScope.td.contact}</li>
+            <li>Level : ${requestScope.td.level}</li>
+            <li>Created Date : ${requestScope.td.createdTime}</li>
             
         </ul>
     </body>

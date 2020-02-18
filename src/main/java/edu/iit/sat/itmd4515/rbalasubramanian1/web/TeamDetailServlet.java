@@ -36,7 +36,6 @@ public class TeamDetailServlet extends HttpServlet {
     @Resource
     Validator validator;
     
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *
