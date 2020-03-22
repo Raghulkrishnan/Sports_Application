@@ -1,7 +1,7 @@
 <%-- 
     Document   : teamDetail
     Created on : Feb 17, 2020, 12:44:39 AM
-    Author     : raghu
+    Author     : raghul
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,7 +24,7 @@
             </ol>
          </c:if>
         
-        <form action="/rbalasubramanian1-fp/teamDetail" method="post">
+        <form action="/rbalasubramanian1-fp/newTeam" method="post">
             <div>
                 <label for="teamName">Team Name: </label>
                 <input value="${requestScope.td.teamName}" type="text" id="tName" name="teamName" required="required"/>

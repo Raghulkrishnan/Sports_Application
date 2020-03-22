@@ -7,7 +7,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
 /**
  *
- * @author raghu
+ * @author raghul
  */
 public enum Level {
     BEG("Beginner"),

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="itmd4515testPU" transaction-type="RESOURCE_LOCAL">
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.Team</class>
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach</class>
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner</class>
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue</class>
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.Game</class>
+    <class>edu.iit.sat.itmd4515.rbalasubramanian1.model.Stat</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/itmd4515?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="itmd4515"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="itmd4515"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
