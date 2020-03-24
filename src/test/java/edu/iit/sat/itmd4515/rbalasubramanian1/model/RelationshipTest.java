@@ -42,34 +42,24 @@ public class RelationshipTest extends AbstractTest {
         Venue v1 = new Venue(vo1);
         Game g1 = new Game(v1, LocalDate.of(2020, Month.JANUARY, 21));
         
-        VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 18));        
-        Venue v2 = new Venue(vo2);
-        Game g2 = new Game(v2, LocalDate.of(2020, Month.MARCH, 1));
-        
 //        game is the owning and the only side in the relationship - unidirectional.
 //        only game can set teams. not vice versa
         g1.getTeams().add(t1);
-        g2.getTeams().add(t2);
+        g1.getTeams().add(t2);
         
         et.begin();
         
-        em.persist(t1);
+        em.persist(t1);        
+        em.persist(t2);
         em.persist(vo1);
         em.persist(v1);
         em.persist(g1);
         
-        em.persist(t2);
-        em.persist(vo2);
-        em.persist(v2);
-        em.persist(g2);
-        
         et.commit();
         
         assertTrue(t1.getId() > 0);
-        assertTrue(g1.getId() > 0);
-        
         assertTrue(t2.getId() > 0);
-        assertTrue(g2.getId() > 0);
+        assertTrue(g1.getId() > 0);
     }
     
     @Test
