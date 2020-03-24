@@ -25,6 +25,12 @@ public class Person extends AbstractEntity {
     public Person() {
     }
 
+    public Person(String firstName, String lastName, LocalDate dateOfJoining) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfJoining = dateOfJoining;
+    }
+    
     public String getFirstName() {
         return firstName;
     }

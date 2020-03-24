@@ -26,9 +26,9 @@ import javax.validation.Validator;
 
 /**
  *
- * @author raghu
+ * @author raghul
  */
-@WebServlet(name = "TeamServlet", urlPatterns = {"/newTeam"})
+@WebServlet(name = "TeamServlet", urlPatterns = {"/team"})
 public class TeamServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(TeamServlet.class.getName());
@@ -48,7 +48,7 @@ public class TeamServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
         LOG.info("TeamDetailServlet inside doGet method");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/teamDetail.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/team.jsp");
         dispatcher.forward(request, response);
     }
 

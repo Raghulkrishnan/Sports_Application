@@ -24,7 +24,7 @@
             </ol>
          </c:if>
         
-        <form action="/rbalasubramanian1-fp/newTeam" method="post">
+        <form action="/rbalasubramanian1-fp/team" method="post">
             <div>
                 <label for="teamName">Team Name: </label>
                 <input value="${requestScope.td.teamName}" type="text" id="tName" name="teamName" required="required"/>

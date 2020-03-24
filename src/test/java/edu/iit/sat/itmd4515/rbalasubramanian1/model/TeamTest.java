@@ -23,53 +23,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author raghul
  */
-public class TeamTest {
-
-    private static EntityManagerFactory emf;
-    private EntityManager em;
-    private EntityTransaction et;
+public class TeamTest extends AbstractTest {
 
     public TeamTest() {
-    }
-
-    @BeforeAll
-    public static void doThisBeforeStartingTests() {
-        emf = Persistence.createEntityManagerFactory("itmd4515testPU");
-    }
-
-    @AfterAll
-    public static void doThisAfterAllTests() {
-        emf.close();
-    }
-
-    @BeforeEach
-    public void doThisBeforeEachTest() {
-        em = emf.createEntityManager();
-        et = em.getTransaction();
-
-        Team td = new Team("TestMav",
-                "John",
-                "3129974652",
-                Level.BEG,
-                LocalDateTime.now());
-        et.begin();
-//      actions here - like persist a new/transient entity
-        em.persist(td);
-        et.commit();
-    }
-
-    @AfterEach
-    public void doThisAfterEachTest() {
-        Team td
-                //= em.createQuery("select t from Team t where t.teamName = :teamName", Team.class)
-                = em.createNamedQuery("Team.findByTeamName", Team.class)
-                        .setParameter("teamName", "TestMav")
-                        .getSingleResult();
-
-        et.begin();
-        em.remove(td);
-        et.commit();
-        em.close();
     }
 
     // TODO add test methods here.

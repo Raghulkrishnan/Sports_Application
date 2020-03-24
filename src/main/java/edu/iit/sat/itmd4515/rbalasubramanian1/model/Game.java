@@ -5,6 +5,7 @@
  */
 package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -23,8 +24,11 @@ public class Game extends AbstractEntity {
 //  bidirectional ManyToOne/ OneToMany
     @ManyToOne
     private Venue venue;
+    
+    private LocalDate dateOfGame;
 
 //    Unidirectional ManyToMany
+//    This side is the only side of the relationship and hence the owning side too. This has the foreign key
     @ManyToMany
     @JoinTable(name = "game_played_by_teams",
             joinColumns = @JoinColumn(name = "game_id"),
@@ -34,7 +38,32 @@ public class Game extends AbstractEntity {
     public Game() {
 
     }
+    
+//    add venue helper method
+    public void addVenue(Venue v){
+        if(this.venue == null){
+            this.setVenue(v);
+        }
+        if(!v.getGames().contains(this)){
+            v.getGames().add(this);
+        }
+    }
+  
+//    remove venue helper method
+    public void removeVenue(Venue v){
+        if(this.venue != null){
+            this.setVenue(null);
+        }
+        if(v.getGames().contains(this)){
+            v.getGames().remove(this);
+        }
+    }
 
+    public Game(Venue venue, LocalDate dateOfGame) {
+        this.venue = venue;
+        this.dateOfGame = dateOfGame;
+    }
+    
     /**
      * Get the value of venue
      *
@@ -59,4 +88,12 @@ public class Game extends AbstractEntity {
         this.teams = teams;
     }
     
+    public LocalDate getDateOfGame() {
+        return dateOfGame;
+    }
+    
+    public void setDateOfGame(LocalDate dateOfGame) {
+        this.dateOfGame = dateOfGame;
+    }
+
 }

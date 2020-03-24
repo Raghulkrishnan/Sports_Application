@@ -22,14 +22,36 @@ public class Venue extends AbstractEntity {
     @OneToMany(mappedBy = "venue")
     private List<Game> games = new ArrayList<>();
     
-//  bidirectional ManyToOne/ OneToMany
     @ManyToOne
     private VenueOwner venueOwner;
 
     public Venue() {
-
+    }
+    
+//    add game helper method
+    public void addGame(Game g){
+        if(!this.games.contains(g)){
+            this.games.add(g);
+        }
+        if(g.getVenue() == null){
+            g.setVenue(this);
+        }
+    }
+  
+//    remove game helper method
+    public void removeGame(Game g){
+        if(this.games.contains(g)){
+            this.games.remove(g);
+        }
+        if(g.getVenue() != null){
+            g.setVenue(null);
+        }
     }
 
+    public Venue(VenueOwner venueOwner) {
+        this.venueOwner = venueOwner;
+    }
+    
     /**
      * Get the value of games
      *
@@ -46,6 +68,12 @@ public class Venue extends AbstractEntity {
      */
     public void setGames(List<Game> games) {
         this.games = games;
+    }
+    public VenueOwner getVenueOwner() {
+        return venueOwner;
+    }
+    public void setVenueOwner(VenueOwner venueOwner) {
+        this.venueOwner = venueOwner;
     }
 
 
