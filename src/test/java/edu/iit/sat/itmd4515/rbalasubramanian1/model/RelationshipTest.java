@@ -60,6 +60,14 @@ public class RelationshipTest extends AbstractTest {
         assertTrue(t1.getId() > 0);
         assertTrue(t2.getId() > 0);
         assertTrue(g1.getId() > 0);
+        
+//        et.begin();
+//        em.remove(g1);
+//        em.remove(v1);
+//        em.remove(vo1);
+//        em.remove(t1);
+//        em.remove(t2);
+//        et.commit();
     }
     
     @Test
@@ -92,6 +100,17 @@ public class RelationshipTest extends AbstractTest {
         
 //        assertTrue(foundGame.getId() > 0);
 //        assertTrue(foundVenue.getGames().size() == 1);
+
+//        et.begin();
+//        g1.removeVenue(v);
+//        g2.removeVenue(v);
+//        et.commit();
+
+//        et.begin();
+//        em.remove(g1);
+//        em.remove(g2);
+//        em.remove(vo);
+//        et.commit();
     }
      
      @Test
