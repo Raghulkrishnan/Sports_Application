@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Version;
 
 /**
  *
@@ -25,6 +26,9 @@ abstract class AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+    
+    @Version
+    private int version;
 
     private LocalDateTime createdTimeStamp;
     private LocalDateTime updatedTimeStamp;
@@ -89,6 +93,12 @@ abstract class AbstractEntity {
             return false;
         }
         return true;
+    }
+    public int getVersion() {
+        return version;
+    }
+    public void setVersion(int version) {
+        this.version = version;
     }
 
 }

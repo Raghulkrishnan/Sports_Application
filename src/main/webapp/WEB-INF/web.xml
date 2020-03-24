@@ -15,8 +15,8 @@
     
     <data-source>
         <name>java:app/jdbc/itmd4515DS</name>
-        <class-name>com.mysql.cj.jdbc.Driver</class-name>
-        <url>jdbc:mysql://localhost:3306/itmd4515?zeroDateTimeBehavior=CONVERT_TO_NULL</url>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://localhost:3306/itmd4515?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;useSSL=false</url>
         <user>itmd4515</user>
         <password>itmd4515</password>
     </data-source>

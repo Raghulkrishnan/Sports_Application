@@ -7,9 +7,12 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Transient;
 
 /**
  *
@@ -21,7 +24,10 @@ public class Person extends AbstractEntity {
     protected String firstName;
     protected String lastName;
     protected LocalDate dateOfJoining;
-
+    
+    @Transient
+    private int durationOfStay;
+    
     public Person() {
     }
 
@@ -29,6 +35,13 @@ public class Person extends AbstractEntity {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfJoining = dateOfJoining;
+    }
+    
+    @PostLoad
+    private void calcAge(){
+        if(this.dateOfJoining != null){
+            this.durationOfStay = Period.between(dateOfJoining, LocalDate.now()).getYears();
+        }
     }
     
     public String getFirstName() {
@@ -58,6 +71,12 @@ public class Person extends AbstractEntity {
     @Override
     public String toString() {
         return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + '}';
+    }
+    public int getDurationOfStay() {
+        return durationOfStay;
+    }
+    public void setDurationOfStay(int durationOfStay) {
+        this.durationOfStay = durationOfStay;
     }
   
 }
