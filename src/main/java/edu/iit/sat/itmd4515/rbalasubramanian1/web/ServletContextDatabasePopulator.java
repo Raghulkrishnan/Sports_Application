@@ -43,15 +43,15 @@ public class ServletContextDatabasePopulator implements ServletContextListener {
         
         try {
             LOG.info("Servlet Context Initialized");
-            Team td = new Team("Warriors",
-                    "Sid",
-                    "3127974892",
-                    Level.BEG,
-                    LocalDateTime.now());
-            
-            tx.begin();
-            em.persist(td);
-            tx.commit();
+//            Team td = new Team("Warriors",
+//                    "Sid",
+//                    "3127974892",
+//                    Level.BEG,
+//                    LocalDateTime.now());
+//            
+//            tx.begin();
+//            em.persist(td);
+//            tx.commit();
              
             ServletContextListener.super.contextInitialized(sce);
         } catch (Exception e) {

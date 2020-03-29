@@ -30,6 +30,26 @@ public class VenueOwner extends Person {
         super(firstName, lastName, dateOfJoining);
     }
 
+//    add venue helper method
+//    public void addVenue(Venue v){
+//        if(!this.venues.contains(v)){
+//            this.venues.add(v);
+//        }
+//        if(v.getVenueOwner() == null){
+//            v.setVenueOwner(this);
+//        }
+//    }
+//  
+////    remove venue helper method
+//    public void removeVenue(Venue v){
+//        if(this.venues.contains(v)){
+//            this.venues.remove(v);
+//        }
+//        if(v.getVenueOwner() != null){
+//            v.setVenueOwner(null);
+//        }
+//    }
+    
     public List<Venue> getVenues() {
         return venues;
     }

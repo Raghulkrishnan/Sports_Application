@@ -21,7 +21,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Game extends AbstractEntity {
     
-//  bidirectional ManyToOne/ OneToMany
+//  unidirectional ManyToOne/ OneToMany
     @ManyToOne
     private Venue venue;
     
@@ -44,9 +44,9 @@ public class Game extends AbstractEntity {
         if(this.venue == null){
             this.setVenue(v);
         }
-        if(!v.getGames().contains(this)){
-            v.getGames().add(this);
-        }
+//        if(!v.getGames().contains(this)){
+//            v.getGames().add(this);
+//        }
     }
   
 //    remove venue helper method
@@ -54,13 +54,26 @@ public class Game extends AbstractEntity {
         if(this.venue != null){
             this.setVenue(null);
         }
-        if(v.getGames().contains(this)){
-            v.getGames().remove(this);
-        }
+//        if(v.getGames().contains(this)){
+//            v.getGames().remove(this);
+//        }
     }
 
-    public Game(Venue venue, LocalDate dateOfGame) {
-        this.venue = venue;
+//    add team helper method
+    public void addTeam(Team t){
+        if(!this.teams.contains(t)){
+            this.teams.add(t);
+        }
+    }
+  
+//    remove team helper method
+    public void removeTeam(Team t){
+        if(this.teams.contains(t)){
+            this.teams.remove(t);
+        }
+    }
+    
+    public Game(LocalDate dateOfGame) {
         this.dateOfGame = dateOfGame;
     }
     

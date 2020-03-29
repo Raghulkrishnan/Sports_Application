@@ -39,11 +39,6 @@
                 <label for="contact">Contact Number: </label>
                 <input value="${requestScope.td.contact}" type="text" id="contactNumber" name="contact"/>
             </div> 
-            
-            <div>
-                <label for="date">Date: </label>
-                <input value="${requestScope.createdTime}" type="date" id="date" name="date"/>
-            </div> 
             <button type="submit">Save team detail</button>
         </form>
     </body>

@@ -41,8 +41,7 @@ abstract class AbstractTest {
         Team td = new Team("TestMav",
                 "John",
                 "3129974652",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
         et.begin();
 //      actions here - like persist a new/transient entity
         em.persist(td);

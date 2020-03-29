@@ -56,8 +56,7 @@ public class TeamValidationTest {
         Team goodTD = new Team("Thunders",
                 "Abi",
                 "312943752",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         Set<ConstraintViolation<Team>> constraintViolations
                 = validator.validate(goodTD);
@@ -71,8 +70,7 @@ public class TeamValidationTest {
         Team badTD = new Team("Thundersansdjfnkjdsnfiosdj fposjfisdnfnsdonfnsdlfkmkdsm",
                 "Abi",
                 "312943752",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         Set<ConstraintViolation<Team>> constraintViolations
                 = validator.validate(badTD);
@@ -90,8 +88,7 @@ public class TeamValidationTest {
         Team badTD = new Team("Thunders",
                 "",
                 "312943752",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         Set<ConstraintViolation<Team>> constraintViolations
                 = validator.validate(badTD);
@@ -109,8 +106,7 @@ public class TeamValidationTest {
         Team badTD = new Team("Thunders",
                 "Steve",
                 "",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         Set<ConstraintViolation<Team>> constraintViolations
                 = validator.validate(badTD);

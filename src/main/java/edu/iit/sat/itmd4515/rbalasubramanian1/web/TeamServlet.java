@@ -79,24 +79,14 @@ public class TeamServlet extends HttpServlet {
         String tName = request.getParameter("teamName");
         String cName = request.getParameter("captainName");
         String contact = request.getParameter("contact");
-        String createdDate = request.getParameter("date");
 
         LOG.info("Parameter caught name:" + tName);
         LOG.info("Parameter caught captain:" + cName);
         LOG.info("Parameter caught contact:" + contact);
-        LOG.info("Parameter caught date:" + createdDate);
-
-        LocalDateTime teamCreatedDate = null;
-
-        if (createdDate != null && !(createdDate.isEmpty())) {
-//            date example
-//             gets user provided date and puts current time. So not recommended
-            teamCreatedDate = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.now());
-        }
 
 //        here level is hardcoded as it will always be BEG in the beginning. It will change with respect to
 //        another table, later in the process.
-        Team td = new Team(tName, cName, contact, Level.BEG, teamCreatedDate);
+        Team td = new Team(tName, cName, contact, Level.BEG);
 
         LOG.info("Constructed instance: " + td.toString());
         try {
@@ -108,7 +98,7 @@ public class TeamServlet extends HttpServlet {
                     LOG.info(violation.getPropertyPath() + " " + violation.getMessage());
                 }
 
-                request.setAttribute("createdTime", td.getCreatedTime().toLocalDate().toString());
+//                request.setAttribute("createdTime", td.getCreatedTime().toLocalDate().toString());
 
                 request.setAttribute("td", td);
                 request.setAttribute("errors", violations);

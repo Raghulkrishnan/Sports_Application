@@ -28,8 +28,7 @@ public class TeamDemoTest {
         Team td = new Team("Mavericks", 
                 "John", 
                 "3129974866", 
-                Level.BEG, 
-                LocalDateTime.now());
+                Level.BEG);
         
         et.begin();
         

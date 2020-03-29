@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Stat extends AbstractEntity{
     
-    private String teamName;
     private int played;
     private int won;
     private int loss;
@@ -28,25 +27,33 @@ public class Stat extends AbstractEntity{
         
     }
 
-
+    public Stat(int played, int won, int loss) {
+        this.played = played;
+        this.won = won;
+        this.loss = loss;
+    }
     
-    /**
-     * Get the value of teamName
-     *
-     * @return the value of teamName
-     */
-    public String getTeamName() {
-        return teamName;
+    
+//    Add or Remove Team
+    public void addTeam(Team t){
+        if(this.team == null){
+            this.setTeam(t);
+        }
+        if(t.getStat() == null){
+            t.setStat(this);
+        }
     }
-
-    /**
-     * Set the value of teamName
-     *
-     * @param teamName new value of teamName
-     */
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+  
+    public void removeTeam(Team t){
+        if(this.team != null){
+            this.setTeam(null);
+        }
+        
+        if(t.getStat() != null){
+            t.setStat(null);
+        }
     }
+    
     public int getPlayed() {
         return played;
     }
@@ -65,16 +72,15 @@ public class Stat extends AbstractEntity{
     public void setLoss(int loss) {
         this.loss = loss;
     }
-
-    @Override
-    public String toString() {
-        return "Stat{" + "id=" + id + "teamName=" + teamName + ", played=" + played + ", won=" + won + ", loss=" + loss + '}';
-    }
     public Team getTeam() {
         return team;
     }
     public void setTeam(Team team) {
         this.team = team;
+    }
+    @Override
+    public String toString() {
+        return "Stat{" + "id=" + id + ", played=" + played + ", won=" + won + ", loss=" + loss + '}';
     }
 
 }

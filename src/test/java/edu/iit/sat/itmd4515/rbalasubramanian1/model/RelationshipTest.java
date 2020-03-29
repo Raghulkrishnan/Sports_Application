@@ -25,22 +25,29 @@ public class RelationshipTest extends AbstractTest {
     @Test
     public void manyGames_To_ManyTeams_Unidirectional_Test(){
 //        many teams
+//        List<Team> teams = new ArrayList<>();
         Team t1 = new Team("United CC",
                 "Matt",
                 "5050483422",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
         
         Team t2 = new Team("Demolishers",
                 "Henry",
                 "8948233333",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
+        
+//        teams.add(t1);
+//        teams.add(t2);
         
 //        many games
-        VenueOwner vo1 = new VenueOwner("Mani", "K", LocalDate.of(2015, Month.JANUARY, 11));        
-        Venue v1 = new Venue(vo1);
-        Game g1 = new Game(v1, LocalDate.of(2020, Month.JANUARY, 21));
+        VenueOwner vo1 = new VenueOwner("Mani", "K", LocalDate.of(2015, Month.JANUARY, 11));    
+        Venue v1 = new Venue("Super Sports Park");
+        
+        v1.addVenueOwner(vo1);
+        
+        Game g1 = new Game(LocalDate.of(2020, Month.JANUARY, 21));
+        
+        g1.addVenue(v1);
         
 //        game is the owning and the only side in the relationship - unidirectional.
 //        only game can set teams. not vice versa
@@ -71,21 +78,20 @@ public class RelationshipTest extends AbstractTest {
     }
     
     @Test
-     public void manyGames_To_OneVenue_BiDirectional_Test(){  
+     public void manyGames_To_OneVenue_UniDirectional_Test(){  
 //      one venue   
         VenueOwner vo = new VenueOwner("Raghul", "Bala", LocalDate.of(2016, Month.JANUARY, 1));
-        Venue v = new Venue(vo);
+        Venue v = new Venue("MCG");
+        
+        v.addVenueOwner(vo);
         
 //      many games  
-        Game g1 = new Game(v, LocalDate.of(2016, Month.MARCH, 2));
-        Game g2 = new Game(v, LocalDate.of(2016, Month.MARCH, 22));
+        Game g1 = new Game(LocalDate.of(2016, Month.MARCH, 2));
+        Game g2 = new Game(LocalDate.of(2016, Month.MARCH, 22));
         
-//     right setting. bidirectional relationship means setting on both sides. 
-//      only then the persistence context will be stable. So.. -->>
-//      Bi-directional Relationship!!
-        g1.addVenue(v); //        g1.setVenue(v);
+//      Unidirectional Relationship!!
+        g1.addVenue(v);
         g2.addVenue(v);
-        v.addGame(g1);  //        v.getGames().add(g1);
     
         et.begin();
         em.persist(vo);
@@ -95,8 +101,8 @@ public class RelationshipTest extends AbstractTest {
         et.commit();
         
 //        output section
-        Game foundGame = em.find(Game.class, g1.getId());
-        Venue foundVenue = em.find(Venue.class, v.getId());
+//        Game foundGame = em.find(Game.class, g1.getId());
+//        Venue foundVenue = em.find(Venue.class, v.getId());
         
 //        assertTrue(foundGame.getId() > 0);
 //        assertTrue(foundVenue.getGames().size() == 1);
@@ -121,11 +127,10 @@ public class RelationshipTest extends AbstractTest {
         Team t = new Team("Kings CC",
                 "Matt",
                 "7363336474",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
         
-        t.setCoach(c);
-        c.setTeam(t);
+//      Bidirectional Relationship. Team is the owning side.
+        t.addCoach(c);
     
         et.begin();
         em.persist(c);

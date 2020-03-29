@@ -36,8 +36,7 @@ public class TeamTest extends AbstractTest {
         Team td = new Team("Warriors",
                 "Sid",
                 "3127974892",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         et.begin();
 
@@ -65,8 +64,7 @@ public class TeamTest extends AbstractTest {
         Team td = new Team("TestMav",
                 "John",
                 "3129974652",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         assertThrows(RollbackException.class, () -> {
             et.begin();
@@ -112,8 +110,7 @@ public class TeamTest extends AbstractTest {
         Team td = new Team("TestMav1",
                 "John",
                 "3129974752",
-                Level.BEG,
-                LocalDateTime.now());
+                Level.BEG);
 
         et.begin();
         em.persist(td);

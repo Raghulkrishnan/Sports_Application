@@ -19,7 +19,6 @@
             <li>Captain Name : ${requestScope.td.captainName}</li>
             <li>Contact : ${requestScope.td.contact}</li>
             <li>Level : ${requestScope.td.level}</li>
-            <li>Created Date : ${requestScope.td.createdTime}</li>
             
         </ul>
     </body>

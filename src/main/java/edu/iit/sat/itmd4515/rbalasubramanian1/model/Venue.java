@@ -17,39 +17,41 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Venue extends AbstractEntity {
-
-//  inverse side of bidirectional ManyToOne/OneToMany
+    
+//  inverse side of unidirectional ManyToOne/OneToMany
     @OneToMany(mappedBy = "venue")
     private List<Game> games = new ArrayList<>();
     
     @ManyToOne
     private VenueOwner venueOwner;
+    
+    private String venueName;
 
     public Venue() {
     }
+
+    public Venue(String venueName) {
+        this.venueName = venueName;
+    }
     
-//    add game helper method
-    public void addGame(Game g){
-        if(!this.games.contains(g)){
-            this.games.add(g);
+//    add venue owner helper method
+    public void addVenueOwner(VenueOwner vo){
+        if(this.venueOwner == null || this.venueOwner != vo){
+            this.setVenueOwner(vo);
         }
-        if(g.getVenue() == null){
-            g.setVenue(this);
+        if(!vo.getVenues().contains(this)){
+            vo.getVenues().add(this);
         }
     }
   
-//    remove game helper method
-    public void removeGame(Game g){
-        if(this.games.contains(g)){
-            this.games.remove(g);
+//    remove venue owner helper method
+    public void removeVenueOwner(VenueOwner vo){
+        if(this.venueOwner != null){
+            this.setVenueOwner(null);
         }
-        if(g.getVenue() != null){
-            g.setVenue(null);
+        if(vo.getVenues().contains(this)){
+            vo.getVenues().remove(this);
         }
-    }
-
-    public Venue(VenueOwner venueOwner) {
-        this.venueOwner = venueOwner;
     }
     
     /**
@@ -74,6 +76,12 @@ public class Venue extends AbstractEntity {
     }
     public void setVenueOwner(VenueOwner venueOwner) {
         this.venueOwner = venueOwner;
+    }
+    public String getVenueName() {
+        return venueName;
+    }
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
     }
 
 

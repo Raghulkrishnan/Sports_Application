@@ -28,6 +28,27 @@ public class Coach extends Person {
         super(firstName, lastName, dateOfJoining);
     }
 
+//    Add or Remove Team
+//    public void addTeam(Team t) {
+//        if (this.team == null) {
+//            this.setTeam(t);
+//        }
+//        
+//        if (t.getCoach() == null) {
+//            t.setCoach(this);
+//        }
+//    }
+//
+//    public void removeTeam(Team t) {
+//        if (this.team != null) {
+//            this.setTeam(null);
+//        }
+//
+//        if (t.getCoach() != null) {
+//            t.setCoach(null);
+//        }
+//    }
+    
     public Team getTeam() {
         return team;
     }

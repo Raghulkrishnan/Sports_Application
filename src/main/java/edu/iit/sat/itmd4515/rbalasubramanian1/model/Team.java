@@ -47,9 +47,6 @@ public class Team extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Level level;
 
-    @PastOrPresent
-    private LocalDateTime createdTime;
-    
 //    Bidirectional OneToOne
     @OneToOne
     private Coach coach;
@@ -61,34 +58,49 @@ public class Team extends AbstractEntity {
     public Team() {
     }
 
-    public Team(String teamName, String captainName, String contact, Level level, LocalDateTime createdTime) {
+    public Team(String teamName, String captainName, String contact, Level level) {
         this.teamName = teamName;
         this.captainName = captainName;
         this.contact = contact;
         this.level = level;
-        this.createdTime = createdTime;
+    }
+
+//    Add or Remove Coach
+    public void addCoach(Coach c) {
+        if (this.coach == null) {
+            this.setCoach(c);
+        }
+        if (c.getTeam() == null) {
+            c.setTeam(this);
+        }
+    }
+
+    public void removeCoach(Coach c) {
+        if (this.coach != null) {
+            this.setCoach(null);
+        }
+
+        if (c.getTeam() != null) {
+            c.setTeam(null);
+        }
     }
 
     public String getTeamName() {
         return teamName;
     }
-    
+
     public String getCaptainName() {
         return captainName;
     }
-    
+
     public String getContact() {
         return contact;
     }
-    
+
     public Level getLevel() {
         return level;
     }
-    
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
-    }
-    
+
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
@@ -105,10 +117,22 @@ public class Team extends AbstractEntity {
         this.level = level;
     }
 
-    public void setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
+    public Coach getCoach() {
+        return coach;
     }
-    
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
+    }
+
+    public Stat getStat() {
+        return stat;
+    }
+
+    public void setStat(Stat stat) {
+        this.stat = stat;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -136,19 +160,7 @@ public class Team extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Team{" + "id=" + id + ", teamName=" + teamName + ", captainName=" + captainName + ", contact=" + contact + ", level=" + level + ", createdTime=" + createdTime + '}';
-    }
-    public Coach getCoach() {
-        return coach;
-    }
-    public void setCoach(Coach coach) {
-        this.coach = coach;
-    }
-    public Stat getStat() {
-        return stat;
-    }
-    public void setStat(Stat stat) {
-        this.stat = stat;
+        return "Team{" + "id=" + id + ", teamName=" + teamName + ", captainName=" + captainName + ", contact=" + contact + ", level=" + level + '}';
     }
 
 }

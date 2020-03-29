@@ -8,6 +8,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +22,7 @@ import javax.persistence.Version;
  * @author raghul
  */
 @MappedSuperclass
+@EntityListeners(AbstractEntityAuditListener.class)
 abstract class AbstractEntity {
 
     @Id
@@ -32,16 +34,6 @@ abstract class AbstractEntity {
 
     private LocalDateTime createdTimeStamp;
     private LocalDateTime updatedTimeStamp;
-
-    @PrePersist
-    private void prePersist() {
-        createdTimeStamp = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    private void preUpdate() {
-        updatedTimeStamp = LocalDateTime.now();
-    }
 
     public Long getId() {
         return id;
