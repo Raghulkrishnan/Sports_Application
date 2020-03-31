@@ -13,12 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author raghul
  */
 @Entity
+@NamedQuery(name = "Game.findAll", query = "select g from Game g")
 public class Game extends AbstractEntity {
     
 //  unidirectional ManyToOne/ OneToMany

@@ -7,6 +7,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.web;
 
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Level;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.TeamService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.time.LocalTime;
 import java.util.Set;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.RequestDispatcher;
@@ -38,14 +40,16 @@ public class TeamServlet extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(TeamServlet.class.getName());
 
-    @PersistenceContext(name = "itmd4515PU")
-    EntityManager em;
-
-    @Resource
-    UserTransaction tx;
-
+//    @PersistenceContext(name = "itmd4515PU")
+//    EntityManager em;
+//
+//    @Resource
+//    UserTransaction tx;
+//
     @Resource
     Validator validator;
+    
+    @EJB TeamService tServ;
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -107,9 +111,11 @@ public class TeamServlet extends HttpServlet {
             } else {
                 LOG.info("Passed validations!!!");
 
-                tx.begin();
-                em.persist(td);
-                tx.commit();
+//                tx.begin();
+//                em.persist(td);
+//                tx.commit();
+
+                tServ.create(td);
 
                 request.setAttribute("td", td);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/confirmation.jsp");

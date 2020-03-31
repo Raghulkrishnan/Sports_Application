@@ -6,6 +6,7 @@
 package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -13,6 +14,7 @@ import javax.persistence.OneToOne;
  * @author raghul
  */
 @Entity
+@NamedQuery(name = "Stat.findAll", query = "select s from Stat s")
 public class Stat extends AbstractEntity{
     
     private int played;

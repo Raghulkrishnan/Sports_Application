@@ -12,10 +12,13 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Stat;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.web.TeamServlet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
@@ -28,9 +31,15 @@ import javax.persistence.PersistenceContext;
 @Startup
 @Singleton
 public class StartUpDatabaseLoaderService {
-
-    @PersistenceContext(name = "itmd4515PU")
-    private EntityManager em;
+    
+    private static final Logger LOG = Logger.getLogger(StartUpDatabaseLoaderService.class.getName());
+        
+    @EJB CoachService coachServ;
+    @EJB TeamService teamServ;
+    @EJB VenueOwnerService voServ;
+    @EJB VenueService venueServ;
+    @EJB GameService gameServ;
+    @EJB StatService statServ;
     
     public StartUpDatabaseLoaderService() {
     }
@@ -44,10 +53,15 @@ public class StartUpDatabaseLoaderService {
         Coach c3 = new Coach("Will", "Smith", LocalDate.of(2015, Month.MAY, 20));
         Coach c4 = new Coach("Tim", "Bresnan", LocalDate.of(2016, Month.JANUARY, 20));
             
-        em.persist(c1);
-        em.persist(c2);
-        em.persist(c3);
-        em.persist(c4);
+        coachServ.create(c1);
+        coachServ.create(c2);
+        coachServ.create(c3);
+        coachServ.create(c4);
+        
+        LOG.info("Created coach detail 1 -->>> " + c1.toString());
+        LOG.info("Created coach detail 2 -->>> " + c2.toString());
+        LOG.info("Created coach detail 3 -->>> " + c3.toString());
+        LOG.info("Created coach detail 4 -->>> " + c4.toString());
         
 //      teams
         Team t1 = new Team("Thunders CC", "Ponting", "4574226636", Level.BEG);
@@ -61,19 +75,28 @@ public class StartUpDatabaseLoaderService {
         t3.addCoach(c3);
         t4.addCoach(c4);
         
-        em.persist(t1);
-        em.persist(t2);
-        em.persist(t3);
-        em.persist(t4);
+        teamServ.create(t1);
+        teamServ.create(t2);
+        teamServ.create(t3);
+        teamServ.create(t4);
+        
+        LOG.info("Created team detail 1 -->>> " + t1.toString());
+        LOG.info("Created team detail 2 -->>> " + t2.toString());
+        LOG.info("Created team detail 3 -->>> " + t3.toString());
+        LOG.info("Created team detail 4 -->>> " + t4.toString());
         
 //        Venue Owners
         VenueOwner vo1 = new VenueOwner("Raghul", "Krish", LocalDate.of(2016, Month.APRIL, 9));
         VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19));
         VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11));
         
-        em.persist(vo1);
-        em.persist(vo2);
-        em.persist(vo3);
+        voServ.create(vo1);
+        voServ.create(vo2);
+        voServ.create(vo3);
+        
+        LOG.info("Created venue owner detail 1 -->>> " + vo1.toString());
+        LOG.info("Created venue owner detail 2 -->>> " + vo2.toString());
+        LOG.info("Created venue owner detail 3 -->>> " + vo3.toString());
 
 //        Venues
         Venue v1 = new Venue("EDEN");
@@ -81,16 +104,20 @@ public class StartUpDatabaseLoaderService {
         Venue v3 = new Venue("Lords");
         Venue v4 = new Venue("Sports Park");
         
-//      bi directional relationship
+//      bi directional many to one relationship
         v1.addVenueOwner(vo1);
         v2.addVenueOwner(vo2);
         v3.addVenueOwner(vo3);
         v4.addVenueOwner(vo3);
         
-        em.persist(v1);
-        em.persist(v2);
-        em.persist(v3);
-        em.persist(v4);
+        venueServ.create(v1);
+        venueServ.create(v2);
+        venueServ.create(v3);
+        venueServ.create(v4);
+        
+        LOG.info("Created venue detail 1 -->>> " + v1.toString());
+        LOG.info("Created venue detail 2 -->>> " + v2.toString());
+        LOG.info("Created venue detail 3 -->>> " + v3.toString());
 
 //      Games
         Game g1 = new Game(LocalDate.of(2019,Month.MARCH, 22));
@@ -118,26 +145,34 @@ public class StartUpDatabaseLoaderService {
         g4.addTeam(t3);
         g4.addTeam(t4);
         
-        em.persist(g1);
-        em.persist(g2);
-        em.persist(g3);
-        em.persist(g4);
+        gameServ.create(g1);
+        gameServ.create(g2);
+        gameServ.create(g3);
+        gameServ.create(g4);
         
-//        Stats
-        Stat s1 = new Stat(15,10,5);
-        Stat s2 = new Stat(24,13,11);
-        Stat s3 = new Stat(12,10,2);
-        Stat s4 = new Stat(22,17,5);
+        LOG.info("Created game detail 1 -->>> " + g1.toString());
+        LOG.info("Created game detail 2 -->>> " + g2.toString());
+        LOG.info("Created game detail 3 -->>> " + g3.toString());
+        
+//        Stats Integer.valueOf(), Integer.valueOf(),Integer.valueOf()
+        Stat s1 = new Stat(Integer.valueOf(15), Integer.valueOf(10),Integer.valueOf(5));
+        Stat s2 = new Stat(Integer.valueOf(24), Integer.valueOf(13),Integer.valueOf(11));
+        Stat s3 = new Stat(Integer.valueOf(12), Integer.valueOf(10),Integer.valueOf(2));
+        Stat s4 = new Stat(Integer.valueOf(22), Integer.valueOf(17),Integer.valueOf(5));
         
         s1.addTeam(t1);
         s2.addTeam(t2);
         s3.addTeam(t3);
         s4.addTeam(t4);
         
-        em.persist(s1);
-        em.persist(s2);
-        em.persist(s3);
-        em.persist(s4);
+        statServ.create(s1);
+        statServ.create(s2);
+        statServ.create(s3);
+        statServ.create(s4);
+        
+        LOG.info("Created stat 1 -->>> " + s1.toString());
+        LOG.info("Created stat 2 -->>> " + s2.toString());
+        LOG.info("Created stat 3 -->>> " + s3.toString());
         
     }
 }

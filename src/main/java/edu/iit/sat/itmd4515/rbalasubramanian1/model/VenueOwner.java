@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
  * @author raghul
  */
 @Entity
+@NamedQuery(name = "VenueOwner.findAll", query = "select vo from VenueOwner vo")
 public class VenueOwner extends Person {
 
 //  inverse side of bidirectional ManyToOne/OneToMany
@@ -29,26 +31,6 @@ public class VenueOwner extends Person {
     public VenueOwner(String firstName, String lastName, LocalDate dateOfJoining) {
         super(firstName, lastName, dateOfJoining);
     }
-
-//    add venue helper method
-//    public void addVenue(Venue v){
-//        if(!this.venues.contains(v)){
-//            this.venues.add(v);
-//        }
-//        if(v.getVenueOwner() == null){
-//            v.setVenueOwner(this);
-//        }
-//    }
-//  
-////    remove venue helper method
-//    public void removeVenue(Venue v){
-//        if(this.venues.contains(v)){
-//            this.venues.remove(v);
-//        }
-//        if(v.getVenueOwner() != null){
-//            v.setVenueOwner(null);
-//        }
-//    }
     
     public List<Venue> getVenues() {
         return venues;

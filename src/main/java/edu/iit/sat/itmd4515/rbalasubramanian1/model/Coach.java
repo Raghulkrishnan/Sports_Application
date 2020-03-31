@@ -7,6 +7,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -14,6 +15,9 @@ import javax.persistence.OneToOne;
  * @author raghul
  */
 @Entity
+@NamedQuery(name = "Coach.findAll", query = "select c from Coach c")
+@NamedQuery(name = "Coach.findById", query = "select c from Coach c where c.id = :id")
+@NamedQuery(name = "Coach.findByLastName", query = "select c from Coach c where c.lastName = :lastName")
 public class Coach extends Person {
 
 //    Bidirectional OneToOne
@@ -27,27 +31,6 @@ public class Coach extends Person {
     public Coach(String firstName, String lastName, LocalDate dateOfJoining) {
         super(firstName, lastName, dateOfJoining);
     }
-
-//    Add or Remove Team
-//    public void addTeam(Team t) {
-//        if (this.team == null) {
-//            this.setTeam(t);
-//        }
-//        
-//        if (t.getCoach() == null) {
-//            t.setCoach(this);
-//        }
-//    }
-//
-//    public void removeTeam(Team t) {
-//        if (this.team != null) {
-//            this.setTeam(null);
-//        }
-//
-//        if (t.getCoach() != null) {
-//            t.setCoach(null);
-//        }
-//    }
     
     public Team getTeam() {
         return team;

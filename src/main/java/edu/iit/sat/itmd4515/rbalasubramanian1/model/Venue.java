@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
  * @author raghul
  */
 @Entity
+@NamedQuery(name = "Venue.findAll", query = "select v from Venue v")
 public class Venue extends AbstractEntity {
     
 //  inverse side of unidirectional ManyToOne/OneToMany
