@@ -111,4 +111,9 @@ public class Game extends AbstractEntity {
         this.dateOfGame = dateOfGame;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" + "id=" + id + ", dateOfGame=" + dateOfGame + '}';
+    }
+
 }
