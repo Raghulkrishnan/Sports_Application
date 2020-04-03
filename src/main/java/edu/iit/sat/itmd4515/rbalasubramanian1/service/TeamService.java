@@ -9,11 +9,13 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 
 /**
  *
  * @author raghul
  */
+@Named
 @Stateless
 public class TeamService extends AbstractService<Team> {
 

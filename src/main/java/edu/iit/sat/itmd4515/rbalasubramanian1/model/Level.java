@@ -10,12 +10,10 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
  * @author raghul
  */
 public enum Level {
-    BEG("Beginner"),
-    AVG("Average"),
-    ACP("Accomplished"),
-    BRL("Brilliant"),
-    FAN("Fantastic"),
-    DGD("DemiGod");
+    BEG("Beginner"), //less than 10 wins
+    INT("Intermediate"), //10 to 20 wins
+    ADV("Advance"), //20 to 40 wins
+    EXP("Expert"); //more than 40 wins
     
     private Level(String label){
         this.label = label;

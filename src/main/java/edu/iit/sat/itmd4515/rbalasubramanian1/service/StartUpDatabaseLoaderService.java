@@ -12,7 +12,6 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Stat;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
-import edu.iit.sat.itmd4515.rbalasubramanian1.web.TeamServlet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;

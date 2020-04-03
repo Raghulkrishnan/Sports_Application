@@ -32,16 +32,16 @@ import javax.validation.constraints.Size;
 @NamedQuery(name = "Team.findAll", query = "select t from Team t")
 public class Team extends AbstractEntity {
 
-    @NotBlank
-    @Size(min = 2, max = 30)
+    @NotBlank(message = "Please enter team name.")
+//    @Size(min = 2, max = 30)
     @Column(unique = true, nullable = false)
     private String teamName;
 
-    @NotBlank
+    @NotBlank(message = "Please enter captain name.")
     @Column(nullable = false)
     private String captainName;
 
-    @NotBlank
+    @NotBlank(message = "Please enter contact number.")
     @Column(unique = true, nullable = false)
     private String contact;
 

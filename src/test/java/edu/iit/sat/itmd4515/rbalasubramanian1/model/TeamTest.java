@@ -92,7 +92,7 @@ public class TeamTest extends AbstractTest {
                 .getSingleResult();
 
         et.begin();
-        td.setLevel(Level.ACP);
+        td.setLevel(Level.ADV);
         td.setCaptainName("Tim");
         et.commit();
 
