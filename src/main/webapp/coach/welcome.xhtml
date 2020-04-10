@@ -7,11 +7,21 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-       Welcome Coach!
+       Coach Section!
     </ui:define>
 
     <ui:define name="content">
-        <h1>Welcome - Team Created!</h1>
+        <h1>Coach Section!</h1>
+        
+        <ul>
+            <li>#{loginController.authenticatedUser}</li>
+            <li>#{loginController.authenticatedUserGroups}</li>
+            <li>
+                <h:form>
+                    <h:commandLink action="#{loginController.doLogout()}" value="Logout" />
+                </h:form>
+            </li>
+        </ul>
         
         <p>#{teamController.team.teamName} has been created!</p>
         

@@ -5,10 +5,13 @@
  */
 package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -27,7 +30,11 @@ public class Person extends AbstractEntity {
     
     @Transient
     private int durationOfStay;
-    
+
+    @OneToOne
+    @JoinColumn(name = "USERNAME")
+    private User user;
+
     public Person() {
     }
 
@@ -77,6 +84,12 @@ public class Person extends AbstractEntity {
     }
     public void setDurationOfStay(int durationOfStay) {
         this.durationOfStay = durationOfStay;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
   
 }

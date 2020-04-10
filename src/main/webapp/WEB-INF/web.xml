@@ -19,8 +19,58 @@
         <user>itmd4515</user>
         <password>itmd4515</password>
     </data-source>
+    
+    <security-constraint>
+        <display-name>Landing Page</display-name>
+        <web-resource-collection>
+            <web-resource-name>Landing Page</web-resource-name>
+            <description>Only authenticated users</description>
+            <url-pattern>/welcome.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN_ROLE</role-name>
+            <role-name>COACH_ROLE</role-name>
+            <role-name>OWNER_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>Admin Content</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin Content</web-resource-name>
+            <description>Content for adminsitrators only</description>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>Coach Content</display-name>
+        <web-resource-collection>
+            <web-resource-name>Coach Content</web-resource-name>
+            <description>Content for coaches only</description>
+            <url-pattern>/coach/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>COACH_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>Owner Content</display-name>
+        <web-resource-collection>
+            <web-resource-name>Owner Content</web-resource-name>
+            <description>Content for owners only</description>
+            <url-pattern>/owner/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>OWNER_ROLE</role-name>
+        </auth-constraint>
+    </security-constraint>
+
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

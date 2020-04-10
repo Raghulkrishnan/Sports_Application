@@ -17,9 +17,9 @@ import org.junit.jupiter.api.Test;
  *
  * @author raghul
  */
-public class RelationshipTest extends AbstractTest {
+public class TestRelationship extends AbstractTest {
     
-    public RelationshipTest(){
+    public TestRelationship(){
     }
     
     @Test

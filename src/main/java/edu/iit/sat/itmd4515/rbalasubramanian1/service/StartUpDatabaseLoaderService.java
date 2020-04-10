@@ -12,6 +12,8 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Stat;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.Group;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -40,17 +42,71 @@ public class StartUpDatabaseLoaderService {
     @EJB GameService gameServ;
     @EJB StatService statServ;
     
+//    security services
+    @EJB UserService userServ;
+    @EJB GroupService groupServ; 
+    
     public StartUpDatabaseLoaderService() {
     }
     
     @PostConstruct
     private void postConstruct(){
         
+//      seed sercurity domain first
+        User admin = new User("admin", "admin", true);
+        Group adminGroup = new Group("ADMIN_GROUP", "This is the group for admins");
+        admin.addGroup(adminGroup);
+
+        groupServ.create(adminGroup);
+        userServ.create(admin);
+
+        Group coachGroup = new Group("COACH_GROUP", "Group of coaches");
+        Group venueOwnerGroup = new Group("OWNER_GROUP", "Group of owners");
+        groupServ.create(coachGroup);
+        groupServ.create(venueOwnerGroup);
+        
+//      we are setting the groups. 
+//      Have set coach 1 alone as admin & coach. 
+//      Rest of the coaches belong to coach group only
+        User coach1 = new User("coach1", "coach1", true);
+        coach1.addGroup(adminGroup);
+        coach1.addGroup(coachGroup);
+        
+        User coach2 = new User("coach2", "coach2", true);
+        coach2.addGroup(coachGroup);
+        
+        User coach3 = new User("coach3", "coach3", true);
+        coach3.addGroup(coachGroup);
+        
+        User coach4 = new User("coach4", "coach4", true);
+        coach4.addGroup(coachGroup);
+        
+        User venueOwner1 = new User("owner1", "owner1", true);
+        venueOwner1.addGroup(venueOwnerGroup);
+        
+        User venueOwner2 = new User("owner2", "owner2", true);
+        venueOwner2.addGroup(venueOwnerGroup);
+        
+        User venueOwner3 = new User("owner3", "owner3", true);
+        venueOwner3.addGroup(venueOwnerGroup);
+        
+        userServ.create(coach1);
+        userServ.create(coach2);
+        userServ.create(coach3);
+        userServ.create(coach4);
+        userServ.create(venueOwner1);
+        userServ.create(venueOwner2);
+        userServ.create(venueOwner3);
+        
 //      coaches
         Coach c1 = new Coach("Ian", "Chapell", LocalDate.of(2015, Month.APRIL, 14));
+        c1.setUser(coach1);
         Coach c2 = new Coach("Tom", "Blundell", LocalDate.of(2016, Month.APRIL, 19));
+        c2.setUser(coach2);
         Coach c3 = new Coach("Will", "Smith", LocalDate.of(2015, Month.MAY, 20));
+        c3.setUser(coach3);
         Coach c4 = new Coach("Tim", "Bresnan", LocalDate.of(2016, Month.JANUARY, 20));
+        c4.setUser(coach4);
             
         coachServ.create(c1);
         coachServ.create(c2);
@@ -88,6 +144,10 @@ public class StartUpDatabaseLoaderService {
         VenueOwner vo1 = new VenueOwner("Raghul", "Krish", LocalDate.of(2016, Month.APRIL, 9));
         VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19));
         VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11));
+        
+        vo1.setUser(venueOwner1);
+        vo2.setUser(venueOwner2);
+        vo3.setUser(venueOwner3);
         
         voServ.create(vo1);
         voServ.create(vo2);

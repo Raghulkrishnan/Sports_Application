@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"/>
+        <h:outputStylesheet library="css" name="login.css" />
+        <title>Login Page</title>
+    </h:head>
+    
+    <h:body class="text-center">
+
+        <h:form class="form-signin">
+            <img class="mb-4" href="./resources/images/cricketLogo.jpg" alt="CricketLogo" width="72" height="72"/>
+            <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+
+            <h:outputLabel for="username" class="sr-only">Username / Email ID</h:outputLabel>
+            <h:inputText 
+                class="form-control" 
+                id="username" 
+                value="#{loginController.user.userName}" 
+                p:placeholder="Username / Email ID"
+                p:autofocus="autofocus" />
+            <h:message for="username" errorClass="text-danger" />
+            <h:outputLabel for="password" class="sr-only">Password</h:outputLabel>
+            <h:inputSecret 
+                id="password"
+                value="#{loginController.user.password}"
+                class="form-control"
+                p:placeholder="Password" />
+            <h:message for="password" errorClass="text-danger" />
+            <h:commandButton 
+                action="#{loginController.doLogin()}"
+                class="btn btn-lg btn-primary btn-block" 
+                value="Login" />
+        </h:form>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    </h:body>
+</html>
