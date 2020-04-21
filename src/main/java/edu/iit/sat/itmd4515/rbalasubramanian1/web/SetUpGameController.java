@@ -102,6 +102,13 @@ public class SetUpGameController {
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
+    public String addStatToTeam(Team t){
+        LOG.info("Stats of the team.." + t.toString());
+        this.setOurTeam(t);
+        return "/coach/teamStat.xhtml";
+    }
+    
+    
     public Game getGame() {
         return game;
     }

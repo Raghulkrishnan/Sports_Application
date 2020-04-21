@@ -39,6 +39,11 @@
                 <h:outputText value="#{team.createdTimeStamp}"/>
                 <f:facet name="header"><h:outputText value="Team Created On"/></f:facet>
             </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink value="View Statistics" action="#{setUpGameController.addStatToTeam(team)}" />
+                </h:form>
+            </h:column>
         </h:dataTable>
          <h1>TEAM GAMES</h1>
         <h:dataTable class="table table-hover table-striped"
