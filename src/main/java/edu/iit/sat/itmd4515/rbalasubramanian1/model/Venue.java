@@ -86,5 +86,10 @@ public class Venue extends AbstractEntity {
         this.venueName = venueName;
     }
 
+    @Override
+    public String toString() {
+        return "Venue{"+ "id=" + id +", venueName=" + venueName + '}';
+    }
+
 
 }

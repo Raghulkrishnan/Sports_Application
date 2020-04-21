@@ -48,4 +48,10 @@ public class CoachService {
         return em.createNamedQuery("Coach.findAll", Coach.class).getResultList();
     }
     
+    public Coach findByUsername(String username){
+        return em.createNamedQuery("Coach.findByUserName", Coach.class)
+                .setParameter("userName", username)
+                .getSingleResult();
+    }
+    
 }

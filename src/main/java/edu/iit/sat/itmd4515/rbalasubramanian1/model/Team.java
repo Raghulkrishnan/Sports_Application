@@ -16,6 +16,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -44,6 +46,10 @@ public class Team extends AbstractEntity {
     @NotBlank(message = "Please enter contact number.")
     @Column(unique = true, nullable = false)
     private String contact;
+    
+//  inverse side of unidirectional ManyToOne/OneToMany
+    @ManyToMany(mappedBy = "teams")
+    private List<Game> games = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     private Level level;
@@ -56,9 +62,19 @@ public class Team extends AbstractEntity {
     @OneToOne(mappedBy = "team")
     private Stat stat;
 
+    /**
+     *
+     */
     public Team() {
     }
 
+    /**
+     *
+     * @param teamName
+     * @param captainName
+     * @param contact
+     * @param level
+     */
     public Team(String teamName, String captainName, String contact, Level level) {
         this.teamName = teamName;
         this.captainName = captainName;
@@ -67,6 +83,11 @@ public class Team extends AbstractEntity {
     }
 
 //    Add or Remove Coach
+
+    /**
+     *
+     * @param c
+     */
     public void addCoach(Coach c) {
         if (this.coach == null) {
             this.setCoach(c);
@@ -76,6 +97,10 @@ public class Team extends AbstractEntity {
         }
     }
 
+    /**
+     *
+     * @param c
+     */
     public void removeCoach(Coach c) {
         if (this.coach != null) {
             this.setCoach(null);
@@ -86,54 +111,108 @@ public class Team extends AbstractEntity {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTeamName() {
         return teamName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCaptainName() {
         return captainName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContact() {
         return contact;
     }
 
+    /**
+     *
+     * @return
+     */
     public Level getLevel() {
         return level;
     }
 
+    /**
+     *
+     * @param teamName
+     */
     public void setTeamName(String teamName) {
         this.teamName = teamName;
     }
 
+    /**
+     *
+     * @param captainName
+     */
     public void setCaptainName(String captainName) {
         this.captainName = captainName;
     }
 
+    /**
+     *
+     * @param contact
+     */
     public void setContact(String contact) {
         this.contact = contact;
     }
 
+    /**
+     *
+     * @param level
+     */
     public void setLevel(Level level) {
         this.level = level;
     }
 
+    /**
+     *
+     * @return
+     */
     public Coach getCoach() {
         return coach;
     }
 
+    /**
+     * @param coach
+     */
     public void setCoach(Coach coach) {
         this.coach = coach;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stat getStat() {
         return stat;
     }
 
+    /**
+     *
+     * @param stat
+     */
     public void setStat(Stat stat) {
         this.stat = stat;
     }
 
+    public List<Game> getGames() {
+        return games;
+    }
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -7,20 +7,11 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-       Welcome Admin!
+        Hello Admin
     </ui:define>
 
     <ui:define name="content">
-        <h1>Admin Section</h1>
-        <ul>
-            <li>#{loginController.authenticatedUser}</li>
-            <li>#{loginController.authenticatedUserGroups}</li>
-            <li>
-                <h:form>
-                    <h:commandLink action="#{loginController.doLogout()}" value="Logout" />
-                </h:form>
-            </li>
-        </ul>
+        <h1>Welcome Admin!</h1>
     </ui:define>
 
 </ui:composition>

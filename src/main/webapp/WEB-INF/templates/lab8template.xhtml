@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
     <h:head>
         <!-- Required meta tags -->
         <meta charset="utf-8"/>
@@ -10,11 +11,81 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"/>
-
-        <title><ui:insert name="title">Default Title</ui:insert></title>
+        
+        <h:outputStylesheet library="css" name="jumbotron.css" />
+        
+        <title><ui:insert name="title">Login</ui:insert></title>
     </h:head>
     <h:body>
-        <ui:insert name="content">Default Body</ui:insert>
+
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="#{fn:startsWith(view.viewId, '/welcome') ? 'nav-item active' : 'nav-item' }">
+                        <h:link class="nav-link" outcome="/welcome.xhtml" value="Home" />
+                    </li>
+                    
+                    <ui:fragment rendered="#{loginController.coach}">
+                        <li class="#{fn:startsWith(view.viewId, '/coach') ? 'nav-item active' : 'nav-item' }">
+                            <h:link class="nav-link" outcome="/coach/welcome.xhtml" value="Coach" />
+                        </li>
+                    </ui:fragment>
+                    
+                    <ui:fragment rendered="#{loginController.owner}">
+                        <li class="#{fn:startsWith(view.viewId, '/owner') ? 'nav-item active' : 'nav-item' }">
+                            <h:link class="nav-link" outcome="/owner/welcome.xhtml" value="Owner" />
+                        </li>
+                     </ui:fragment>  
+                        
+                    <ui:fragment rendered="#{loginController.admin}">
+                        <li class="#{fn:startsWith(view.viewId, '/admin') ? 'nav-item active' : 'nav-item' }">
+                            <h:link class="nav-link" outcome="/admin/welcome.xhtml" value="Admin" />
+                        </li>
+                    </ui:fragment>
+                </ul>
+                <ul class="navbar-nav mr-sm-2">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <h:form>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">#{loginController.userName}</a>
+                                <h:commandLink class="dropdown-item" action="#{loginController.doLogout()}" value="Logout" />
+                            </h:form>
+                        </div>
+                    </li>
+                </ul>
+<!--                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>-->
+            </div>
+        </nav>
+
+        <main role="main">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Connect with teams and play!</h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <ui:insert name="content">Default Body</ui:insert>
+                    </div>
+                </div>
+            </div> <!-- /container -->
+        </main>
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>

@@ -43,39 +43,74 @@ public class LoginController {
 
     private User user;
 
+    /**
+     *
+     */
     public LoginController() {
     }
 
     @PostConstruct
     private void postContruct() {
         LOG.info("Inside the LoginController.postConstruct method: ");
-        user = new User();
+//        login if user is authenticated, else instantiate new user object
+        if(facesContext.getExternalContext().getRemoteUser() != null){
+            user = userServ.findByUsername(facesContext.getExternalContext().getRemoteUser());
+        }
+        else{
+            user = new User();
+        }
     }
 
     // helper methods
-    public String getAuthenticatedUser() {
-        return facesContext.getExternalContext().getRemoteUser();
+    /**
+     *Gets the username of the currently authenticated user if any.
+     * 
+     * @return
+     */
+    public String getUserName() {
+        return user.getUserName();
     }
 
-    public String getAuthenticatedUserGroups() {
-        user = userServ.findByUsername(getAuthenticatedUser());
-        LOG.info("User as group count of...: " + user.getGroups().size());
+    /**
+     *Gets the user group of the currently authenticated user if any.s
+     * 
+     * @return
+     */
+    public String getUserGroups() {
+        LOG.info("User as group count of: " + user.getGroups().size());
         return user.getGroups().toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAdmin() {
         return securityContext.isCallerInRole("ADMIN_ROLE");
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isCoach() {
         return securityContext.isCallerInRole("COACH_ROLE");
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isOwner() {
         return securityContext.isCallerInRole("OWNER_ROLE");
     }
 
-    // action method
+    // action methods
+
+    /**
+     *
+     * @return
+     */
     public String doLogin() {
         LOG.info("LoginController.doLogin for user: " + user.getUserName());
         
@@ -106,8 +141,12 @@ public class LoginController {
         return "/welcome.xhtml?faces-redirect=true";
     }
 
+    /**
+     *
+     * @return
+     */
     public String doLogout() {
-        LOG.info("LoginController.doLogout for user: " + getAuthenticatedUser());
+        LOG.info("LoginController.doLogout for user: " + getUserName());
         HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getRequest();
         
         try {
@@ -120,10 +159,18 @@ public class LoginController {
         return "/login.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }

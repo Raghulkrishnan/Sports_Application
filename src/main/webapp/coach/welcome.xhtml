@@ -7,26 +7,14 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-       Coach Section!
+       Coach
     </ui:define>
 
     <ui:define name="content">
-        <h1>Coach Section!</h1>
-        
-        <ul>
-            <li>#{loginController.authenticatedUser}</li>
-            <li>#{loginController.authenticatedUserGroups}</li>
-            <li>
-                <h:form>
-                    <h:commandLink action="#{loginController.doLogout()}" value="Logout" />
-                </h:form>
-            </li>
-        </ul>
-        
-        <p>#{teamController.team.teamName} has been created!</p>
+        <h1>TEAM INFO</h1>
         
         <h:dataTable class="table table-hover table-striped"
-            value="#{teamService.findAll()}" var="team">
+            value="#{setUpGameController.ourTeam}" var="team">
             <h:column>
                 <h:outputText value="#{team.id}"/>
                 <f:facet name="header"><h:outputText value="ID"/></f:facet>
@@ -52,6 +40,28 @@
                 <f:facet name="header"><h:outputText value="Team Created On"/></f:facet>
             </h:column>
         </h:dataTable>
+         <h1>TEAM GAMES</h1>
+        <h:dataTable class="table table-hover table-striped"
+                     value="#{setUpGameController.ourTeamGames}" var="teamGames">
+            <h:column>
+                <h:outputText value="#{teamGames.id}"/>
+                <f:facet name="header"><h:outputText value="ID"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{teamGames.dateOfGame}"/>
+                <f:facet name="header"><h:outputText value="Game Date"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{teamGames.teams[0].teamName} and #{teamGames.teams[1].teamName}"/>
+                <f:facet name="header"><h:outputText value="Between"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{teamGames.venue.venueName}"/>
+                <f:facet name="header"><h:outputText value="Venue"/></f:facet>
+            </h:column>
+        </h:dataTable>
+         
+        <h:link outcome="/coach/game.xhtml" value="Set up a game for your team!" />
         
     </ui:define>
 

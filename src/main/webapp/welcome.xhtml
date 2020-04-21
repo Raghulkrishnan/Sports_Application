@@ -11,21 +11,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h1>Landing page requires authentication, but is allowed for all roles</h1>
-        <ul>
-            <li>#{loginController.authenticatedUser}</li>
-            <li>#{loginController.authenticatedUserGroups}</li>
-        </ul>
-        <ul>
-            <li><h:link outcome="/admin/welcome.xhtml" value="Admin Section"/></li>
-            <li><h:link outcome="/coach/welcome.xhtml" value="Coach Section"/></li>
-            <li><h:link outcome="/owner/welcome.xhtml" value="Owner Section"/></li>
-            <li>
-                <h:form>
-                    <h:commandLink action="#{loginController.doLogout()}" value="Logout" />
-                </h:form>
-            </li>
-        </ul>
+        
     </ui:define>
 
 </ui:composition>

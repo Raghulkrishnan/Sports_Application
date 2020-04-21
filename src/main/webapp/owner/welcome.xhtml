@@ -7,20 +7,11 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-       Welcome Owner!
+        Welcome Owner!
     </ui:define>
 
     <ui:define name="content">
-        <h1>Owner section</h1>
-        <ul>
-            <li>#{loginController.authenticatedUser}</li>
-            <li>#{loginController.authenticatedUserGroups}</li>
-            <li>
-                <h:form>
-                    <h:commandLink action="#{loginController.doLogout()}" value="Logout" />
-                </h:form>
-            </li>
-        </ul>
+
     </ui:define>
 
 </ui:composition>

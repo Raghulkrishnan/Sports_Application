@@ -190,7 +190,7 @@ public class StartUpDatabaseLoaderService {
         g3.addVenue(v2);
         g4.addVenue(v3);
         
-//      unidirectional many to many relationship
+//      directional many to many relationship
 
         g1.addTeam(t3);
         g1.addTeam(t1);

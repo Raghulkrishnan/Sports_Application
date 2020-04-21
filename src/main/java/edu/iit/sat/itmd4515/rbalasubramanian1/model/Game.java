@@ -8,6 +8,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,6 +23,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQuery(name = "Game.findAll", query = "select g from Game g")
 public class Game extends AbstractEntity {
+
+    private static final Logger LOG = Logger.getLogger(Game.class.getName());
     
 //  unidirectional ManyToOne/ OneToMany
     @ManyToOne
@@ -29,8 +32,9 @@ public class Game extends AbstractEntity {
     
     private LocalDate dateOfGame;
 
-//    Unidirectional ManyToMany
+//    directional ManyToMany
 //    This side is the only side of the relationship and hence the owning side too. This has the foreign key
+    
     @ManyToMany
     @JoinTable(name = "game_played_by_teams",
             joinColumns = @JoinColumn(name = "game_id"),
@@ -46,9 +50,11 @@ public class Game extends AbstractEntity {
         if(this.venue == null){
             this.setVenue(v);
         }
-//        if(!v.getGames().contains(this)){
-//            v.getGames().add(this);
-//        }
+        
+//        check again
+        if(!v.getGames().contains(this)){
+            v.getGames().add(this);
+        }
     }
   
 //    remove venue helper method
@@ -56,15 +62,21 @@ public class Game extends AbstractEntity {
         if(this.venue != null){
             this.setVenue(null);
         }
-//        if(v.getGames().contains(this)){
-//            v.getGames().remove(this);
-//        }
+        
+//        check again
+        if(v.getGames().contains(this)){
+            v.getGames().remove(this);
+        }
     }
 
 //    add team helper method
     public void addTeam(Team t){
         if(!this.teams.contains(t)){
             this.teams.add(t);
+        }
+        //        check again
+        if(!t.getGames().contains(this)){
+            t.getGames().add(this);
         }
     }
   
@@ -108,12 +120,14 @@ public class Game extends AbstractEntity {
     }
     
     public void setDateOfGame(LocalDate dateOfGame) {
+        LOG.info("game is.." + this);
+        LOG.info("date is.." + dateOfGame);
         this.dateOfGame = dateOfGame;
     }
 
-    @Override
+    @Override 
     public String toString() {
-        return "Game{" + "id=" + id + ", dateOfGame=" + dateOfGame + '}';
+        return "Game{" + "id=" + id + ", venue=" + venue + ", dateOfGame=" + dateOfGame + '}';
     }
 
 }

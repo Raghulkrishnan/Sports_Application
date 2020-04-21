@@ -30,7 +30,7 @@ abstract class AbstractEntity {
     protected Long id;
     
     @Version
-    private int version;
+    private Integer version;
 
     private LocalDateTime createdTimeStamp;
     private LocalDateTime updatedTimeStamp;
@@ -86,10 +86,10 @@ abstract class AbstractEntity {
         }
         return true;
     }
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
