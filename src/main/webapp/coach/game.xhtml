@@ -28,24 +28,51 @@
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="opponent" value="Select Opponent: " />
                 <!--<h:selectManyListbox>-->
-                <h:selectManyListbox class="form-control" id="opponent" value ="#{setUpGameController.opponentTeamSelected}">
+                <h:selectOneMenu 
+                    class="form-control" 
+                    id="opponent" 
+                    converter="teamConverter"
+                    value ="#{setUpGameController.opponentTeamSelected}">
+                    <f:selectItems value="#{teamService.findAll()}"
+                                   var="teams"
+                                   itemLabel="#{teams.teamName}"
+                                   itemValue="#{teams}"/>
+                </h:selectOneMenu>    
+                <h:message for="opponent" errorClass="text-danger"/>
+                
+<!--                <h:selectManyListbox class="form-control" id="opponent" value ="#{setUpGameController.opponentTeamSelected}">
                     <f:selectItems value="#{teamService.findAll()}"
                                    var="teams"
                                    itemLabel="#{teams.teamName}"
                                    itemValue="#{teams}"/>
                 </h:selectManyListbox>                    
-                <h:message for="opponent" errorClass="text-danger"/>
+                <h:message for="opponent" errorClass="text-danger"/>-->
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="venue" value="Select Venue: " />
-                <h:selectManyListbox class="form-control" id="venue" value="#{setUpGameController.venueSelected}">
+                
+                <h:selectOneMenu 
+                    class="form-control" 
+                    id="venue" 
+                    converter="venueConverter"
+                    value ="#{setUpGameController.venueSelected}">
+                    <f:selectItems value="#{venueService.findAll()}"
+                                   var="venues"
+                                   itemLabel="#{venues.venueName}"
+                                   itemValue="#{venues}"/>
+                </h:selectOneMenu>    
+                <h:message for="venue" errorClass="text-danger"/>
+                
+                
+                
+<!--                <h:selectManyListbox class="form-control" id="venue" value="#{setUpGameController.venueSelected}">
                     <f:selectItems value="#{venueService.findAll()}"
                                    var="venues"
                                    itemLabel="#{venues.venueName}"
                                    itemValue="#{venues}"/>
                 </h:selectManyListbox>                    
-                <h:message for="venue" errorClass="text-danger"/>
+                <h:message for="venue" errorClass="text-danger"/>-->
             </h:panelGroup>
 
             <h:panelGroup layout="block" class="form-group">

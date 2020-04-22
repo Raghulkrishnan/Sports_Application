@@ -37,8 +37,8 @@ public class SetUpGameController {
     private Coach coach;
     
     private Team ourTeam;
-    private List<Team> opponentTeamSelected;
-    private List<Venue> venueSelected;
+    private Team opponentTeamSelected;
+    private Venue venueSelected;
     
     @EJB CoachService coachServ;
     @EJB GameService gameServ;
@@ -52,8 +52,8 @@ public class SetUpGameController {
     @PostConstruct
     private void postConstruct(){
         game = new Game();
-        opponentTeamSelected = new ArrayList<>();
-        venueSelected = new ArrayList<>();
+        opponentTeamSelected = new Team();
+        venueSelected = new Venue();
 //      Find the coach entity of the logged in user.
         coach = coachServ.findByUsername(loginController.getUserName());
         ourTeam = coach.getTeam();
@@ -79,17 +79,17 @@ public class SetUpGameController {
     public String saveGame(){
         LOG.info("Inside saveGame method with " + game.toString());
         LOG.info("oppo team... " + opponentTeamSelected);
-        for (Team t : opponentTeamSelected) {
-            LOG.info("opponent team is,,..." + t.toString());
+//        for (Team t : opponentTeamSelected) {
+//            LOG.info("opponent team is,,..." + t.toString());
 
-            gameServ.addTeamForGame(game, t);
-        }
+            gameServ.addTeamForGame(game, opponentTeamSelected);
+//        }
 
-        for (Venue v : venueSelected) {
-            LOG.info("venue iss..... " + v.toString());
+//        for (Venue v : venueSelected) {
+//            LOG.info("venue iss..... " + v.toString());
             
-            gameServ.addVenueForGame(game, v);
-        }
+            gameServ.addVenueForGame(game, venueSelected);
+//        }
         
         gameServ.addTeamForGame(game, ourTeam);
         
@@ -127,16 +127,16 @@ public class SetUpGameController {
     public void setOurTeam(Team ourTeam) {
         this.ourTeam = ourTeam;
     }
-    public List<Team> getOpponentTeamSelected() {
+    public Team getOpponentTeamSelected() {
         return opponentTeamSelected;
     }
-    public void setOpponentTeamSelected(List<Team> opponentTeamSelected) {
+    public void setOpponentTeamSelected(Team opponentTeamSelected) {
         this.opponentTeamSelected = opponentTeamSelected;
     }
-    public List<Venue> getVenueSelected() {
+    public Venue getVenueSelected() {
         return venueSelected;
     }
-    public void setVenueSelected(List<Venue> venueSelected) {
+    public void setVenueSelected(Venue venueSelected) {
         this.venueSelected = venueSelected;
     }
 }

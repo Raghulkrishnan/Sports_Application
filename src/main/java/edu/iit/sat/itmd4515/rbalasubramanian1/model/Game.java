@@ -40,6 +40,9 @@ public class Game extends AbstractEntity {
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name = "teams_id"))
     private List<Team> teams = new ArrayList<>();
+    
+    private Team wonBy;
+    private Team lostBy;
 
     public Game() {
 
@@ -125,9 +128,21 @@ public class Game extends AbstractEntity {
         this.dateOfGame = dateOfGame;
     }
 
+    public Team getWonBy() {
+        return wonBy;
+    }
+    public void setWonBy(Team wonBy) {
+        this.wonBy = wonBy;
+    }
+    public Team getLostBy() {
+        return lostBy;
+    }
+    public void setLostBy(Team lostBy) {
+        this.lostBy = lostBy;
+    }
+
     @Override 
     public String toString() {
         return "Game{" + "id=" + id + ", venue=" + venue + ", dateOfGame=" + dateOfGame + '}';
     }
-
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -18,11 +19,12 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name = "VenueOwner.findAll", query = "select vo from VenueOwner vo")
+@NamedQuery(name = "VenueOwner.findByUserName", query = "select vo from VenueOwner vo where vo.user.userName = :userName")
 public class VenueOwner extends Person {
 
 //  inverse side of bidirectional ManyToOne/OneToMany
-    @OneToMany(mappedBy = "venueOwner")
-    private List<Venue> venues = new ArrayList<>();
+    @OneToOne(mappedBy = "venueOwner")
+    private Venue venue;
 
     public VenueOwner() {
 
@@ -32,12 +34,12 @@ public class VenueOwner extends Person {
         super(firstName, lastName, dateOfJoining);
     }
     
-    public List<Venue> getVenues() {
-        return venues;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenues(List<Venue> venues) {
-        this.venues = venues;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     @Override

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/templates/lab8template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="id" value="#{ownerController.owner.id}"/>
+            <f:viewAction action="#{ownerController.initActivityById()}" />
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="title">
+        Edit Owner Profile #{ownerController.owner.id}
+    </ui:define>
+
+    <ui:define name="content">
+        <h1>Edit Venue - #{ownerController.owner.venue.venueName}</h1>
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="id" value="ID: #{ownerController.owner.id}" />
+                <h:inputHidden class="form-control" id="id" value="#{ownerController.owner.id}" />
+                <h:message for="id" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="version" value="Version: #{ownerController.owner.version}" />
+                <h:inputHidden class="form-control" id="version" value="#{ownerController.owner.version}" />
+                <h:message for="version" errorClass="text-danger"/>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="venueName" value="Venue Name:" />
+                <h:inputText class="form-control" id="teamName" value="#{ownerController.owner.venue.venueName}" />
+                <h:message for="venueName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="ownerFName" value="First Name:" />
+                <h:inputText class="form-control" id="ownerFName" value="#{ownerController.owner.firstName}" />
+                <h:message for="ownerFName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="ownerLName" value="Last Name:" />
+                <h:inputText class="form-control" id="ownerLName" value="#{ownerController.owner.lastName}" />
+                <h:message for="ownerLName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:commandButton value="Edit Venue" class="btn btn-primary" action="#{ownerController}"/>
+        </h:form>
+        
+    </ui:define>
+
+
+</ui:composition>

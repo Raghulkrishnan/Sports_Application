@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Venue extends AbstractEntity {
     @OneToMany(mappedBy = "venue")
     private List<Game> games = new ArrayList<>();
     
-    @ManyToOne
+    @OneToOne
     private VenueOwner venueOwner;
     
     private String venueName;
@@ -41,8 +42,8 @@ public class Venue extends AbstractEntity {
         if(this.venueOwner == null || this.venueOwner != vo){
             this.setVenueOwner(vo);
         }
-        if(!vo.getVenues().contains(this)){
-            vo.getVenues().add(this);
+        if(vo.getVenue() == null){
+            vo.setVenue(this);
         }
     }
   
@@ -51,8 +52,8 @@ public class Venue extends AbstractEntity {
         if(this.venueOwner != null){
             this.setVenueOwner(null);
         }
-        if(vo.getVenues().contains(this)){
-            vo.getVenues().remove(this);
+        if(vo.getVenue() != null){
+            vo.setVenue(null);
         }
     }
     
