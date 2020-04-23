@@ -56,8 +56,8 @@ public class OwnerGameResultController {
 
 //    action methods
     public String saveGameResult(){
-        LOG.info("save game result....." + this.game.toString());
-        return "/owner/welcome.xhtml";
+        LOG.info("!!!!!!!!save game result....." + this.game.toString());
+        return "/owner/welcome.xhtml?faces-redirect=true";
     }
     
     public String removeGame(){
