@@ -9,6 +9,7 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Game;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.GameService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueOwnerService;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class OwnerController {
     private VenueOwner owner;
     private Game game;
     
+    @EJB GameService gameServ;
     @EJB VenueOwnerService ownerServ;
     @Inject LoginController loginController;
     
@@ -43,19 +45,21 @@ public class OwnerController {
 //        first thing to do--->> find the business obj by the logged in user
         owner = ownerServ.findByUsername(loginController.getUserName());
         LOG.info("Owner Controller post construct method...." + owner.toString());
-        
     }
     
-//    public List<Game> getOurTeamGames(){
-//        List<Game> ourVenueGames= new ArrayList<>();
-//        Venue v = owner.getVenue();
-//        
-//        owner.getVenue().getGames().forEach((g) -> {
-//            ourVenueGames.add(g);
-//        });
-//        LOG.info("Games in the venue--->> " + ourVenueGames);
-//        return ourVenueGames;
-//    }
+    public List<Game> getOurVenueGames(){
+        List<Game> ourVenueGames= new ArrayList<>();
+        Venue v = owner.getVenue();
+        
+        gameServ.findAll().forEach((g) -> {
+            if(g.getVenue().equals(v)){
+                ourVenueGames.add(g);
+            }
+        });
+        
+        LOG.info("Games in the venue--->> " + ourVenueGames);
+        return ourVenueGames;
+    }
     
 //    action method
     public String selectGame(Game g){

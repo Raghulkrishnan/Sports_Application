@@ -12,11 +12,25 @@
         <cc:attribute name="game" required="true" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.Game" />
         <cc:attribute name="readonly" required="false" default="true" type="java.lang.Boolean" />
         <cc:attribute name="action" required="false" method-signature="java.lang.String action()" /> 
-        <cc:attribute name="operation" required="false" type="java.lang.String" />
+        <cc:attribute name="operation" required="true" type="java.lang.String" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
+        
+        <ui:fragment rendered="#{cc.attrs.operation.equals('create')}">
+            <h1>Add Game</h1>
+        </ui:fragment>
+        <ui:fragment rendered="#{cc.attrs.operation.equals('read')}">
+            <h1>View Game</h1>
+        </ui:fragment>
+        <ui:fragment rendered="#{cc.attrs.operation.equals('update')}">
+            <h1>Edit Game</h1>
+        </ui:fragment>
+        <ui:fragment rendered="#{cc.attrs.operation.equals('delete')}">
+            <h1>Remove Game</h1>
+        </ui:fragment>
+        
         <h:form>
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="id" value="ID: #{cc.attrs.game.id}" />
@@ -31,6 +45,39 @@
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="opponent" value="Select Opponent: " />
+                <h:selectOneMenu 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" 
+                    id="opponent" 
+                    converter="teamConverter"
+                    value ="#{setUpGameController.opponentTeamSelected}">
+                    <f:selectItems value="#{teamService.findAll()}"
+                                   var="teams"
+                                   itemLabel="#{teams.teamName}"
+                                   itemValue="#{teams}"/>
+                </h:selectOneMenu>    
+                <h:message for="opponent" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="venue" value="Select Venue: " />
+                
+                <h:selectOneMenu 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" 
+                    id="venue" 
+                    converter="venueConverter"
+                    value ="#{cc.attrs.game.venue}">
+                    <f:selectItems value="#{venueService.findAll()}"
+                                   var="venues"
+                                   itemLabel="#{venues.venueName}"
+                                   itemValue="#{venues}"/>
+                </h:selectOneMenu>    
+                <h:message for="venue" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="gameDate" value="Game Date:" />
                 <h:inputText 
                     readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
@@ -40,58 +87,6 @@
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
                 </h:inputText>
                 <h:message for="gameDate" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="team1" value="Team 1" />
-                <h:inputText 
-                    readonly="#{'true'}"
-                    class="form-control" 
-                    id="team1" 
-                    value="#{cc.attrs.game.teams[0].teamName}" />
-                <h:message for="team1" errorClass="text-danger"/>
-            </h:panelGroup>
-
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="team2" value="Team 2" />
-                <h:inputText 
-                    readonly="#{'true'}"
-                    class="form-control" 
-                    id="team2" 
-                    value="#{cc.attrs.game.teams[1].teamName}" />
-                <h:message for="team2" errorClass="text-danger"/>
-            </h:panelGroup>
-
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="wonBy" value="Won By: " />
-                <h:selectOneMenu 
-                    disabled="#{cc.attrs.readonly ? 'true' : 'false'}"
-                    class="form-control" 
-                    id="wonBy" 
-                    converter="teamConverter"
-                    value ="#{cc.attrs.game.wonBy}">
-                    <f:selectItems value="#{teamService.findAll()}"
-                                   var="teams"
-                                   itemLabel="#{teams.teamName}"
-                                   itemValue="#{teams}"/>
-                </h:selectOneMenu>                    
-                <h:message for="wonBy" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="lostBy" value="Lost By: " />
-                <h:selectOneMenu 
-                    disabled="#{cc.attrs.readonly ? 'true' : 'false'}"
-                    class="form-control" 
-                    id="lostBy" 
-                    converter="teamConverter"
-                    value ="#{cc.attrs.game.lostBy}">
-                    <f:selectItems value="#{teamService.findAll()}"
-                                   var="teams"
-                                   itemLabel="#{teams.teamName}"
-                                   itemValue="#{teams}"/>
-                </h:selectOneMenu>                   
-                <h:message for="lostBy" errorClass="text-danger"/>
             </h:panelGroup>
             
             <ui:fragment rendered="#{not cc.attrs.readonly}">

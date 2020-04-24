@@ -22,6 +22,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "Game.findAll", query = "select g from Game g")
+@NamedQuery(name = "Game.findById", query = "select g from Game g where g.id = :id")
 public class Game extends AbstractEntity {
 
     private static final Logger LOG = Logger.getLogger(Game.class.getName());
@@ -50,6 +51,8 @@ public class Game extends AbstractEntity {
     
 //    add venue helper method
     public void addVenue(Venue v){
+        LOG.info("addVenue game is.." + this);
+        LOG.info("addvenue coming is.." + v);
         if(this.venue == null){
             this.setVenue(v);
         }
@@ -74,6 +77,7 @@ public class Game extends AbstractEntity {
 
 //    add team helper method
     public void addTeam(Team t){
+        LOG.info("addTeam coming is.." + t);
         if(!this.teams.contains(t)){
             this.teams.add(t);
         }
@@ -141,8 +145,8 @@ public class Game extends AbstractEntity {
         this.lostBy = lostBy;
     }
 
-    @Override 
+    @Override
     public String toString() {
-        return "Game{" + "id=" + id + ", venue=" + venue + ", dateOfGame=" + dateOfGame + '}';
+        return "Game{" + "id=" + id + ",dateOfGame=" + dateOfGame + ", wonBy=" + wonBy + ", lostBy=" + lostBy + '}';
     }
 }

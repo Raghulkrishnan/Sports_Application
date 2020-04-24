@@ -64,6 +64,11 @@
                 <h:outputText value="#{teamGames.venue.venueName}"/>
                 <f:facet name="header"><h:outputText value="Venue"/></f:facet>
             </h:column>
+            <h:column>
+                <h:link outcome="viewGame.xhtml?id=#{teamGames.id}" value="View "/>
+                <h:link outcome="editGame.xhtml?id=#{teamGames.id}" value="Edit "/>
+                <h:link outcome="deleteGame.xhtml?id=#{teamGames.id}" value="Remove"/>
+            </h:column>
         </h:dataTable>
          
         <h:link outcome="/coach/game.xhtml" value="Set up a game for your team!" />

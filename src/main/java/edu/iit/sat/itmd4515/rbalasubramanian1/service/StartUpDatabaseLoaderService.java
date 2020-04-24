@@ -82,6 +82,7 @@ public class StartUpDatabaseLoaderService {
 
         User coach2 = new User("coach2", "coach2", true);
         coach2.addGroup(coachGroup);
+        coach2.addGroup(venueOwnerGroup);
 
         User coach3 = new User("coach3", "coach3", true);
         coach3.addGroup(coachGroup);
@@ -157,43 +158,51 @@ public class StartUpDatabaseLoaderService {
         VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19));
         VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11));
         VenueOwner vo4 = new VenueOwner("James", "P", LocalDate.of(2014, Month.MAY, 22));
+        VenueOwner vo5 = new VenueOwner("CoachSam", "S", LocalDate.of(2015, Month.MARCH, 9));
 
         vo1.setUser(venueOwner1);
         vo2.setUser(venueOwner2);
         vo3.setUser(venueOwner3);
         vo4.setUser(venueOwner4);
+        vo5.setUser(coach2); 
 
         voServ.create(vo1);
         voServ.create(vo2);
         voServ.create(vo3);
         voServ.create(vo4);
+        voServ.create(vo5);
 
         LOG.info("Created venue owner detail 1 -->>> " + vo1.toString());
         LOG.info("Created venue owner detail 2 -->>> " + vo2.toString());
         LOG.info("Created venue owner detail 3 -->>> " + vo3.toString());
         LOG.info("Created venue owner detail 4 -->>> " + vo4.toString());
+        LOG.info("Created venue owner detail 5 -->>> " + vo5.toString());
 
 //        Venues
         Venue v1 = new Venue("EDEN");
         Venue v2 = new Venue("Grand Arena");
         Venue v3 = new Venue("Lords");
         Venue v4 = new Venue("Sports Park");
+        Venue v5 = new Venue("Chepauk");
 
 //      bi directional one to one relationship
         v1.addVenueOwner(vo1);
         v2.addVenueOwner(vo2);
         v3.addVenueOwner(vo3);
         v4.addVenueOwner(vo4);
+        v5.addVenueOwner(vo5);
 
         venueServ.create(v1);
         venueServ.create(v2);
         venueServ.create(v3);
         venueServ.create(v4);
+        venueServ.create(v5);
 
         LOG.info("Created venue detail 1 -->>> " + v1.toString());
         LOG.info("Created venue detail 2 -->>> " + v2.toString());
         LOG.info("Created venue detail 3 -->>> " + v3.toString());
         LOG.info("Created venue detail 4 -->>> " + v4.toString());
+        LOG.info("Created venue detail 5 -->>> " + v5.toString());
 
 //      Games
         Game g1 = new Game(LocalDate.of(2019, Month.MARCH, 22));
@@ -206,7 +215,7 @@ public class StartUpDatabaseLoaderService {
         g1.addVenue(v4);
         g2.addVenue(v1);
         g3.addVenue(v2);
-        g4.addVenue(v3);
+        g4.addVenue(v5);
         g5.addVenue(v1);
 
 //      directional many to many relationship

@@ -60,6 +60,19 @@ public class SetUpGameController {
         LOG.info("Our team iss... " + ourTeam);
     }
     
+    public void initGameById(){
+//        List<Team> teamsInGame = new ArrayList<>();
+        
+        LOG.info("edit game..." + this.game.getId());
+        game = gameServ.find(this.game.getId());
+        
+//        game.getTeams().forEach((t) -> {
+//            teamsInGame.add(t);
+//        });
+        
+        LOG.info("edit game...after find!!!" + this.game.toString());
+    }
+    
     public List<Game> getOurTeamGames(){
         List<Game> ourTeamGames= new ArrayList<>();
         Team t = coach.getTeam();
@@ -100,6 +113,20 @@ public class SetUpGameController {
 //        coach = coachServ.findByUsername(loginController.getUserName());
 //  2 - force JSF initiate a new HTTP req/res cycle
         return "/coach/welcome.xhtml?faces-redirect=true";
+    }
+    
+    public String editGame(){
+        LOG.info("Inside editGame method with " + game.toString());
+//        need to implement edit functionality
+        gameServ.editGame(game);
+        return "/coach/welcome.xhtml";
+    }
+    
+    public String deleteGame(){
+        LOG.info("Inside deleteGame method with " + game.toString());
+//        need to implement delete functionality
+        gameServ.deleteGame(game);
+        return "/coach/welcome.xhtml";
     }
     
     public String addStatToTeam(Team t){
