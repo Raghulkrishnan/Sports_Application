@@ -91,18 +91,8 @@ public class SetUpGameController {
 //    action methods
     public String saveGame(){
         LOG.info("Inside saveGame method with " + game.toString());
-        LOG.info("oppo team... " + opponentTeamSelected);
-//        for (Team t : opponentTeamSelected) {
-//            LOG.info("opponent team is,,..." + t.toString());
-
-            gameServ.addTeamForGame(game, opponentTeamSelected);
-//        }
-
-//        for (Venue v : venueSelected) {
-//            LOG.info("venue iss..... " + v.toString());
-            
-            gameServ.addVenueForGame(game, venueSelected);
-//        }
+        gameServ.addTeamForGame(game, opponentTeamSelected);
+        gameServ.addVenueForGame(game, venueSelected);
         
         gameServ.addTeamForGame(game, ourTeam);
         
@@ -116,8 +106,9 @@ public class SetUpGameController {
     }
     
     public String editGame(){
-        LOG.info("Inside editGame method with " + game.toString());
 //        need to implement edit functionality
+        gameServ.addTeamForGame(game, ourTeam);
+        gameServ.addTeamForGame(game, opponentTeamSelected);
         gameServ.editGame(game);
         return "/coach/welcome.xhtml";
     }

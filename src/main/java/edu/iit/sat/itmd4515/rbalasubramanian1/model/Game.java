@@ -51,11 +51,11 @@ public class Game extends AbstractEntity {
     
 //    add venue helper method
     public void addVenue(Venue v){
-        LOG.info("addVenue game is.." + this);
-        LOG.info("addvenue coming is.." + v);
-        if(this.venue == null){
+//        LOG.info("addVenue game is.." + this);
+//        LOG.info("addvenue coming is.." + v);
+//        if(this.venue == null){
             this.setVenue(v);
-        }
+//        }
         
 //        check again
         if(!v.getGames().contains(this)){
@@ -77,8 +77,11 @@ public class Game extends AbstractEntity {
 
 //    add team helper method
     public void addTeam(Team t){
-        LOG.info("addTeam coming is.." + t);
-        if(!this.teams.contains(t)){
+        if(!this.teams.contains(t) && this.teams.size() < 2){
+            this.teams.add(t);
+        }
+        else{
+            this.removeGameTeams();
             this.teams.add(t);
         }
         //        check again
@@ -92,6 +95,18 @@ public class Game extends AbstractEntity {
         if(this.teams.contains(t)){
             this.teams.remove(t);
         }
+        //        check again
+        if(t.getGames().contains(this)){
+            t.getGames().remove(this);
+        }
+    }
+    
+    public void removeGameTeams(){
+        LOG.info("aaaaaaaaa----" + this.getTeams());
+        for(Team t : this.getTeams()){
+            this.teams.remove(t);
+            LOG.info("dsfisdnfiuhuwehfo----" + this.teams);
+        } 
     }
     
     public Game(LocalDate dateOfGame) {

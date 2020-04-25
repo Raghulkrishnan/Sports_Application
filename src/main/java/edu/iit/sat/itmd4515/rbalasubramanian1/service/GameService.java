@@ -81,11 +81,7 @@ public class GameService extends AbstractService<Game> {
 //        same pattern as create
 //        managed related entities being passed as a whole or with ID using get Ref
         
-        LOG.info("Game coming in is.." + g);
-        LOG.info("Game's team coming in is.." + g.getTeams());
         Venue v = em.getReference(Venue.class, g.getVenue().getId());
-        
-        LOG.info("Venue coming in is.." + v);
         
 //        the param is carrying the changed value. dont try merging it to the persistence context
 //        Get the current row, set the changed values.
@@ -96,8 +92,7 @@ public class GameService extends AbstractService<Game> {
 //             managed related entities being passed as a whole or with ID using get Ref
             t = em.getReference(Team.class, t.getId());
 //            now set the relationship
-            LOG.info("Team coming in is.." + t);
-            
+            LOG.info("new teams.." + t);
             currentRowFromDatabase.addTeam(t);
         }
 //        now we have the current row. now set the relationship
@@ -105,9 +100,13 @@ public class GameService extends AbstractService<Game> {
 //        and then set the possible changed values. in this case => date is the extra attribute
         currentRowFromDatabase.setDateOfGame(g.getDateOfGame());
         
-//        for edit
-        em.merge(currentRowFromDatabase);
         
+        LOG.info("Finally-->" +v);
+        LOG.info("Finally-->" +g);
+        LOG.info("Finally-->" +currentRowFromDatabase);
+        
+//        for edit
+        em.merge(currentRowFromDatabase);        
     }
     
     public void deleteGame(Game g){

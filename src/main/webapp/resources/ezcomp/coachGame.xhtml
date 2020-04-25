@@ -10,6 +10,7 @@
     <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="game" required="true" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.Game" />
+        <cc:attribute name="opponentTeamSelected" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.Team" />
         <cc:attribute name="readonly" required="false" default="true" type="java.lang.Boolean" />
         <cc:attribute name="action" required="false" method-signature="java.lang.String action()" /> 
         <cc:attribute name="operation" required="true" type="java.lang.String" />
@@ -51,7 +52,7 @@
                     class="form-control" 
                     id="opponent" 
                     converter="teamConverter"
-                    value ="#{setUpGameController.opponentTeamSelected}">
+                    value ="#{cc.attrs.opponentTeamSelected}">
                     <f:selectItems value="#{teamService.findAll()}"
                                    var="teams"
                                    itemLabel="#{teams.teamName}"
