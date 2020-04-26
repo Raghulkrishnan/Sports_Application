@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.annotation.ManagedProperty;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -29,6 +31,10 @@ public class OwnerGameResultController {
     private Game game;
     private List<Team> teamsInGame;
     
+    @Inject 
+    @ManagedProperty(value = "#{param.id}")
+    Long gameId;
+
     @EJB GameService gameServ;
 
     public OwnerGameResultController() {
@@ -38,7 +44,12 @@ public class OwnerGameResultController {
     @PostConstruct
     public void init(){
         LOG.info("OwnerGameResultController.. post Construct");
-        game = new Game();
+        if (gameId == null) {
+            game = new Game();
+        } else{
+          game = gameServ.find(gameId);
+        }
+//        game = new Game();
     }
     
     public void initGameById(){
