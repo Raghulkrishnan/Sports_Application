@@ -30,14 +30,26 @@ public class Venue extends AbstractEntity {
     
     private String venueName;
 
+    /**
+     *
+     */
     public Venue() {
     }
 
+    /**
+     *
+     * @param venueName
+     */
     public Venue(String venueName) {
         this.venueName = venueName;
     }
     
 //    add venue owner helper method
+
+    /**
+     *
+     * @param vo
+     */
     public void addVenueOwner(VenueOwner vo){
         if(this.venueOwner == null || this.venueOwner != vo){
             this.setVenueOwner(vo);
@@ -48,6 +60,11 @@ public class Venue extends AbstractEntity {
     }
   
 //    remove venue owner helper method
+
+    /**
+     *
+     * @param vo
+     */
     public void removeVenueOwner(VenueOwner vo){
         if(this.venueOwner != null){
             this.setVenueOwner(null);
@@ -74,15 +91,35 @@ public class Venue extends AbstractEntity {
     public void setGames(List<Game> games) {
         this.games = games;
     }
+
+    /**
+     *
+     * @return
+     */
     public VenueOwner getVenueOwner() {
         return venueOwner;
     }
+
+    /**
+     *
+     * @param venueOwner
+     */
     public void setVenueOwner(VenueOwner venueOwner) {
         this.venueOwner = venueOwner;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getVenueName() {
         return venueName;
     }
+
+    /**
+     *
+     * @param venueName
+     */
     public void setVenueName(String venueName) {
         this.venueName = venueName;
     }

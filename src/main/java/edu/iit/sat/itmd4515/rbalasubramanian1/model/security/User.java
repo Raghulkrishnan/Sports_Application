@@ -41,6 +41,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "GROUPNAME"))
     private List<Group> groups = new ArrayList<>();
 
+    /**
+     *
+     * @param g
+     */
     public void addGroup(Group g) {
         if (!this.groups.contains(g)) {
             this.groups.add(g);
@@ -50,9 +54,18 @@ public class User {
         }
     }
 
+    /**
+     *
+     */
     public User() {
     }
 
+    /**
+     *
+     * @param userName
+     * @param password
+     * @param enabled
+     */
     public User(String userName, String password, Boolean enabled) {
         this.userName = userName;
         this.password = password;
@@ -77,26 +90,50 @@ public class User {
         this.userName = userName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     *
+     * @param enabled
+     */
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Group> getGroups() {
         return groups;
     }
 
+    /**
+     *
+     * @param groups
+     */
     public void setGroups(List<Group> groups) {
         this.groups = groups;
     }

@@ -29,9 +29,17 @@ public class Group {
     @ManyToMany(mappedBy = "groups")
     private List<User> users = new ArrayList<>();
 
+    /**
+     *
+     */
     public Group() {
     }
 
+    /**
+     *
+     * @param groupName
+     * @param groupDesc
+     */
     public Group(String groupName, String groupDesc) {
         this.groupName = groupName;
         this.groupDesc = groupDesc;
@@ -55,18 +63,34 @@ public class Group {
         this.groupName = groupName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getGroupDesc() {
         return groupDesc;
     }
 
+    /**
+     *
+     * @param groupDesc
+     */
     public void setGroupDesc(String groupDesc) {
         this.groupDesc = groupDesc;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<User> getUsers() {
         return users;
     }
 
+    /**
+     *
+     * @param users
+     */
     public void setUsers(List<User> users) {
         this.users = users;
     }

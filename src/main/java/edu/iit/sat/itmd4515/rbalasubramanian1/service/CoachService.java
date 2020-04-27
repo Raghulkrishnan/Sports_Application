@@ -22,25 +22,49 @@ public class CoachService {
     @PersistenceContext(name = "itmd4515PU")
     EntityManager em;
     
+    /**
+     *
+     */
     public CoachService() {
     }
     
+    /**
+     *
+     * @param c
+     */
     public void create(Coach c){
         em.persist(c);
     }
     
+    /**
+     *
+     * @param c
+     */
     public void update(Coach c){
         em.merge(c);
     }
     
+    /**
+     *
+     * @param c
+     */
     public void remove(Coach c){
         em.remove(em.merge(c));
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Coach find(Long id){
         return em.find(Coach.class, id);
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Coach> findAll(){
 //        TypedQuery tq = em.createNamedQuery("Coach.findAll", Coach.class);
 //        return tq.getResultList();
@@ -48,6 +72,11 @@ public class CoachService {
         return em.createNamedQuery("Coach.findAll", Coach.class).getResultList();
     }
     
+    /**
+     *
+     * @param username
+     * @return
+     */
     public Coach findByUsername(String username){
         return em.createNamedQuery("Coach.findByUserName", Coach.class)
                 .setParameter("userName", username)

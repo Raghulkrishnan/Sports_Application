@@ -17,9 +17,16 @@ import javax.inject.Named;
 @ApplicationScoped
 public class AppConfig {
 
+    /**
+     *
+     */
     public AppConfig() {
     }
     
+    /**
+     *
+     * @return
+     */
     public Level[] getLevels() {
         return Level.values();
     }

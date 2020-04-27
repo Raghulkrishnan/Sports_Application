@@ -37,10 +37,17 @@ public class OwnerGameResultController {
 
     @EJB GameService gameServ;
 
+    /**
+     *
+     */
     public OwnerGameResultController() {
     }
    
 //    initialization methods below
+
+    /**
+     *
+     */
     @PostConstruct
     public void init(){
         LOG.info("OwnerGameResultController.. post Construct");
@@ -52,6 +59,9 @@ public class OwnerGameResultController {
 //        game = new Game();
     }
     
+    /**
+     *
+     */
     public void initGameById(){
         teamsInGame = new ArrayList<>();
         
@@ -66,6 +76,11 @@ public class OwnerGameResultController {
     }
 
 //    action methods
+
+    /**
+     *
+     * @return
+     */
     public String saveGameResult(){
         LOG.info("!!!!!!!!save game result....." + this.game.toString());
 //        need to implement edit game
@@ -74,6 +89,10 @@ public class OwnerGameResultController {
         return "/owner/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String removeGame(){
         LOG.info("remove this game......." + this.game.toString());
 //        need to implement delete game
@@ -83,15 +102,35 @@ public class OwnerGameResultController {
     
     
 //    accessors and mutators
+
+    /**
+     *
+     * @return
+     */
     public Game getGame() {
         return game;
     }
+
+    /**
+     *
+     * @param game
+     */
     public void setGame(Game game) {
         this.game = game;
     }
+
+    /**
+     *
+     * @return
+     */
     public List<Team> getTeamsInGame() {
         return teamsInGame;
     }
+
+    /**
+     *
+     * @param teamsInGame
+     */
     public void setTeamsInGame(List<Team> teamsInGame) {
         this.teamsInGame = teamsInGame;
     }

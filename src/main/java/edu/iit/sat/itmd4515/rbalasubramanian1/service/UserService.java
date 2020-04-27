@@ -16,15 +16,27 @@ import javax.ejb.Stateless;
 @Stateless
 public class UserService extends AbstractService<User> {
 
+    /**
+     *
+     */
     public UserService() {
         super(User.class);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<User> findAll() {
         return em.createNamedQuery("User.findAll", entityClass).getResultList();
     }
     
+    /**
+     *
+     * @param username
+     * @return
+     */
     public User findByUsername(String username) {
         return em.find(User.class, username);
     }

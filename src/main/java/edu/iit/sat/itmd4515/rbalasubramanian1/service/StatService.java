@@ -18,10 +18,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class StatService extends AbstractService<Stat> {
 
+    /**
+     *
+     */
     public StatService() {
         super(Stat.class);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Stat> findAll() {
         return em.createNamedQuery("Stat.findAll", entityClass).getResultList();

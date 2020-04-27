@@ -6,6 +6,7 @@
 package edu.iit.sat.itmd4515.rbalasubramanian1.service;
 
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -18,13 +19,19 @@ import javax.inject.Named;
 @Stateless
 public class VenueService extends AbstractService<Venue> {
 
+    /**
+     *
+     */
     public VenueService() {
         super(Venue.class);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Venue> findAll() {
         return em.createNamedQuery("Venue.findAll", entityClass).getResultList();
     }
-    
 }

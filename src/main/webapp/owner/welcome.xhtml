@@ -28,10 +28,10 @@
             </h:column>
             <h:column>
                 <h:outputText value="#{vo.venue.venueName}"/>
-                <f:facet name="header"><h:outputText value="Venue"/></f:facet>
+                <f:facet name="header"><h:outputText value="Venue Name"/></f:facet>
             </h:column>
             <h:column>
-                <h:link outcome="editVenue.xhtml?id=#{vo.venue.id}" value="Edit"/>
+                <h:link outcome="editVenue.xhtml?id=#{vo.id}" value="Edit"/>
             </h:column>
         </h:dataTable>
         

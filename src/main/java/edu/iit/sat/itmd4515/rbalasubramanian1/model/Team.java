@@ -206,9 +206,18 @@ public class Team extends AbstractEntity {
         this.stat = stat;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Game> getGames() {
         return games;
     }
+
+    /**
+     *
+     * @param games
+     */
     public void setGames(List<Game> games) {
         this.games = games;
     }

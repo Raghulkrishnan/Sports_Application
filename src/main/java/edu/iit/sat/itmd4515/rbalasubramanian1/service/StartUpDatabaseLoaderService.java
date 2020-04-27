@@ -54,6 +54,9 @@ public class StartUpDatabaseLoaderService {
     @EJB
     GroupService groupServ;
 
+    /**
+     *
+     */
     public StartUpDatabaseLoaderService() {
     }
 

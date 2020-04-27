@@ -45,7 +45,9 @@ public class SetUpGameController {
     
     @Inject LoginController loginController;
 
-
+    /**
+     *
+     */
     public SetUpGameController() {
     }
     
@@ -60,6 +62,9 @@ public class SetUpGameController {
         LOG.info("Our team iss... " + ourTeam);
     }
     
+    /**
+     *
+     */
     public void initGameById(){
 //        List<Team> teamsInGame = new ArrayList<>();
         
@@ -73,6 +78,10 @@ public class SetUpGameController {
         LOG.info("edit game...after find!!!" + this.game.toString());
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Game> getOurTeamGames(){
         List<Game> ourTeamGames= new ArrayList<>();
         Team t = coach.getTeam();
@@ -89,6 +98,11 @@ public class SetUpGameController {
     }
     
 //    action methods
+
+    /**
+     *
+     * @return
+     */
     public String saveGame(){
         LOG.info("Inside saveGame method with " + game.toString());
         gameServ.addTeamForGame(game, opponentTeamSelected);
@@ -105,6 +119,10 @@ public class SetUpGameController {
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String editGame(){
 //        need to implement edit functionality
         gameServ.addTeamForGame(game, ourTeam);
@@ -113,6 +131,10 @@ public class SetUpGameController {
         return "/coach/welcome.xhtml";
     }
     
+    /**
+     *
+     * @return
+     */
     public String deleteGame(){
         LOG.info("Inside deleteGame method with " + game.toString());
 //        need to implement delete functionality
@@ -120,40 +142,93 @@ public class SetUpGameController {
         return "/coach/welcome.xhtml";
     }
     
+    /**
+     *
+     * @param t
+     * @return
+     */
     public String addStatToTeam(Team t){
         LOG.info("Stats of the team.." + t.toString());
         this.setOurTeam(t);
         return "/coach/teamStat.xhtml";
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public Game getGame() {
         return game;
     }
+
+    /**
+     *
+     * @param game
+     */
     public void setGame(Game game) {
         this.game = game;
     }
+
+    /**
+     *
+     * @return
+     */
     public Coach getCoach() {
         return coach;
     }
+
+    /**
+     *
+     * @param coach
+     */
     public void setCoach(Coach coach) {
         this.coach = coach;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getOurTeam() {
         return ourTeam;
     }
+
+    /**
+     *
+     * @param ourTeam
+     */
     public void setOurTeam(Team ourTeam) {
         this.ourTeam = ourTeam;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getOpponentTeamSelected() {
         return opponentTeamSelected;
     }
+
+    /**
+     *
+     * @param opponentTeamSelected
+     */
     public void setOpponentTeamSelected(Team opponentTeamSelected) {
         this.opponentTeamSelected = opponentTeamSelected;
     }
+
+    /**
+     *
+     * @return
+     */
     public Venue getVenueSelected() {
         return venueSelected;
     }
+
+    /**
+     *
+     * @param venueSelected
+     */
     public void setVenueSelected(Venue venueSelected) {
         this.venueSelected = venueSelected;
     }

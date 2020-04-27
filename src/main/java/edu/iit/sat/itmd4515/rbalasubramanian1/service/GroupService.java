@@ -18,10 +18,17 @@ import javax.inject.Named;
 @Stateless
 public class GroupService extends AbstractService<Group> {
 
+    /**
+     *
+     */
     public GroupService() {
         super(Group.class);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Group> findAll() {
         return em.createNamedQuery("Group.findAll", entityClass).getResultList();

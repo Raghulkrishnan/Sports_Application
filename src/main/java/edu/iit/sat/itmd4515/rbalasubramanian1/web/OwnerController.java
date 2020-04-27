@@ -37,9 +37,15 @@ public class OwnerController {
     @EJB VenueOwnerService ownerServ;
     @Inject LoginController loginController;
     
+    /**
+     *Default Constructor
+     */
     public OwnerController() {
     }
     
+    /**
+     *post construct method to initialize 
+     */
     @PostConstruct
     public void init(){
 //        first thing to do--->> find the business obj by the logged in user
@@ -47,6 +53,10 @@ public class OwnerController {
         LOG.info("Owner Controller post construct method...." + owner.toString());
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Game> getOurVenueGames(){
         List<Game> ourVenueGames= new ArrayList<>();
         Venue v = owner.getVenue();
@@ -62,21 +72,46 @@ public class OwnerController {
     }
     
 //    action method
+
+    /**
+     *
+     * @param g
+     * @return
+     */
     public String selectGame(Game g){
         LOG.info("Owner Controller selectGame method..." + g.toString());
         this.game = g;
         return "/owner/game.xhtml";
     }
     
+    /**
+     *
+     * @return
+     */
     public VenueOwner getOwner() {
         return owner;
     }
+
+    /**
+     *
+     * @param owner
+     */
     public void setOwner(VenueOwner owner) {
         this.owner = owner;
     }
+
+    /**
+     *
+     * @return
+     */
     public Game getGame() {
         return game;
     }
+
+    /**
+     *
+     * @param game
+     */
     public void setGame(Game game) {
         this.game = game;
     }

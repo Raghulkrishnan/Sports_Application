@@ -10,9 +10,25 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.model;
  * @author raghul
  */
 public enum Level {
+
+    /**
+     *
+     */
     BEG("Beginner"), //less than 10 wins
+
+    /**
+     *
+     */
     INT("Intermediate"), //10 to 20 wins
+
+    /**
+     *
+     */
     ADV("Advance"), //20 to 40 wins
+
+    /**
+     *
+     */
     EXP("Expert"); //more than 40 wins
     
     private Level(String label){
@@ -21,6 +37,10 @@ public enum Level {
     
     private String label;
     
+    /**
+     *
+     * @return
+     */
     public String getLabel(){
         return label;
     }

@@ -45,11 +45,19 @@ public class Game extends AbstractEntity {
     private Team wonBy;
     private Team lostBy;
 
+    /**
+     *
+     */
     public Game() {
 
     }
     
 //    add venue helper method
+
+    /**
+     *
+     * @param v
+     */
     public void addVenue(Venue v){
 //        LOG.info("addVenue game is.." + this);
 //        LOG.info("addvenue coming is.." + v);
@@ -64,6 +72,11 @@ public class Game extends AbstractEntity {
     }
   
 //    remove venue helper method
+
+    /**
+     *
+     * @param v
+     */
     public void removeVenue(Venue v){
         if(this.venue != null){
             this.setVenue(null);
@@ -76,6 +89,11 @@ public class Game extends AbstractEntity {
     }
 
 //    add team helper method
+
+    /**
+     *
+     * @param t
+     */
     public void addTeam(Team t){
         if(!this.teams.contains(t) && this.teams.size() < 2){
             this.teams.add(t);
@@ -91,6 +109,11 @@ public class Game extends AbstractEntity {
     }
   
 //    remove team helper method
+
+    /**
+     *
+     * @param t
+     */
     public void removeTeam(Team t){
         if(this.teams.contains(t)){
             this.teams.remove(t);
@@ -101,6 +124,9 @@ public class Game extends AbstractEntity {
         }
     }
     
+    /**
+     *
+     */
     public void removeGameTeams(){
         LOG.info("aaaaaaaaa----" + this.getTeams());
         for(Team t : this.getTeams()){
@@ -109,6 +135,10 @@ public class Game extends AbstractEntity {
         } 
     }
     
+    /**
+     *
+     * @param dateOfGame
+     */
     public Game(LocalDate dateOfGame) {
         this.dateOfGame = dateOfGame;
     }
@@ -130,32 +160,69 @@ public class Game extends AbstractEntity {
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
+
+    /**
+     *
+     * @return
+     */
     public List<Team> getTeams() {
         return teams;
     }
+
+    /**
+     *
+     * @param teams
+     */
     public void setTeams(List<Team> teams) {
         this.teams = teams;
     }
     
+    /**
+     *
+     * @return
+     */
     public LocalDate getDateOfGame() {
         return dateOfGame;
     }
     
+    /**
+     *
+     * @param dateOfGame
+     */
     public void setDateOfGame(LocalDate dateOfGame) {
         LOG.info("game is.." + this);
         LOG.info("date is.." + dateOfGame);
         this.dateOfGame = dateOfGame;
     }
 
+    /**
+     *
+     * @return
+     */
     public Team getWonBy() {
         return wonBy;
     }
+
+    /**
+     *
+     * @param wonBy
+     */
     public void setWonBy(Team wonBy) {
         this.wonBy = wonBy;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getLostBy() {
         return lostBy;
     }
+
+    /**
+     *
+     * @param lostBy
+     */
     public void setLostBy(Team lostBy) {
         this.lostBy = lostBy;
     }

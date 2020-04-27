@@ -28,6 +28,9 @@ public class TeamController {
     
     @EJB TeamService teamService;
 
+    /**
+     *
+     */
     public TeamController() {
     }
     
@@ -38,6 +41,11 @@ public class TeamController {
     }
     
     // action methods
+
+    /**
+     *
+     * @return
+     */
     public String saveTeam(){
         team.setLevel(Level.BEG); //because for a new team - level is  always BEG (BEGINNER)
         LOG.info("Inside saveTeam with the model: " + team.toString());
@@ -48,9 +56,19 @@ public class TeamController {
     }
     
 //    getters,setters
+
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
+
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }

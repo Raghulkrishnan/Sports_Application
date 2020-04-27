@@ -18,10 +18,17 @@ import javax.inject.Named;
 @Stateless
 public class TeamService extends AbstractService<Team> {
 
+    /**
+     *
+     */
     public TeamService() {
         super(Team.class);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Team> findAll() {
         return em.createNamedQuery("Team.findAll", entityClass).getResultList();

@@ -25,10 +25,19 @@ public class Stat extends AbstractEntity{
     @OneToOne
     private Team team;
 
+    /**
+     *
+     */
     public Stat() {
         
     }
 
+    /**
+     *
+     * @param played
+     * @param won
+     * @param loss
+     */
     public Stat(int played, int won, int loss) {
         this.played = played;
         this.won = won;
@@ -37,6 +46,11 @@ public class Stat extends AbstractEntity{
     
     
 //    Add or Remove Team
+
+    /**
+     *
+     * @param t
+     */
     public void addTeam(Team t){
         if(this.team == null){
             this.setTeam(t);
@@ -46,6 +60,10 @@ public class Stat extends AbstractEntity{
         }
     }
   
+    /**
+     *
+     * @param t
+     */
     public void removeTeam(Team t){
         if(this.team != null){
             this.setTeam(null);
@@ -56,27 +74,66 @@ public class Stat extends AbstractEntity{
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public int getPlayed() {
         return played;
     }
+
+    /**
+     *
+     * @param played
+     */
     public void setPlayed(int played) {
         this.played = played;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getWon() {
         return won;
     }
+
+    /**
+     *
+     * @param won
+     */
     public void setWon(int won) {
         this.won = won;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getLoss() {
         return loss;
     }
+
+    /**
+     *
+     * @param loss
+     */
     public void setLoss(int loss) {
         this.loss = loss;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
+
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }

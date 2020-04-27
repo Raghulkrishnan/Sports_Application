@@ -24,8 +24,19 @@ import javax.persistence.Transient;
 @MappedSuperclass
 public class Person extends AbstractEntity {
     
+    /**
+     *
+     */
     protected String firstName;
+
+    /**
+     *
+     */
     protected String lastName;
+
+    /**
+     *
+     */
     protected LocalDate dateOfJoining;
     
     @Transient
@@ -35,9 +46,18 @@ public class Person extends AbstractEntity {
     @JoinColumn(name = "USERNAME")
     private User user;
 
+    /**
+     *
+     */
     public Person() {
     }
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param dateOfJoining
+     */
     public Person(String firstName, String lastName, LocalDate dateOfJoining) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,26 +71,50 @@ public class Person extends AbstractEntity {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     *
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDate getDateOfJoining() {
         return dateOfJoining;
     }
     
+    /**
+     *
+     * @param dateOfJoining
+     */
     public void setDateOfJoining(LocalDate dateOfJoining) {
         this.dateOfJoining = dateOfJoining;
     }
@@ -79,15 +123,35 @@ public class Person extends AbstractEntity {
     public String toString() {
         return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + '}';
     }
+
+    /**
+     *
+     * @return
+     */
     public int getDurationOfStay() {
         return durationOfStay;
     }
+
+    /**
+     *
+     * @param durationOfStay
+     */
     public void setDurationOfStay(int durationOfStay) {
         this.durationOfStay = durationOfStay;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
+
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }

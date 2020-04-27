@@ -26,18 +26,35 @@ public class VenueOwner extends Person {
     @OneToOne(mappedBy = "venueOwner")
     private Venue venue;
 
+    /**
+     *
+     */
     public VenueOwner() {
 
     }
 
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param dateOfJoining
+     */
     public VenueOwner(String firstName, String lastName, LocalDate dateOfJoining) {
         super(firstName, lastName, dateOfJoining);
     }
     
+    /**
+     *
+     * @return
+     */
     public Venue getVenue() {
         return venue;
     }
 
+    /**
+     *
+     * @param venue
+     */
     public void setVenue(Venue venue) {
         this.venue = venue;
     }

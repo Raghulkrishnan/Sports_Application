@@ -39,6 +39,11 @@ public class GameService extends AbstractService<Game> {
         return em.createNamedQuery("Game.findAll", entityClass).getResultList();
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Game findById(Long id) {
          return em.createNamedQuery("Game.findById", Game.class)
                 .setParameter("id", id)
@@ -69,6 +74,10 @@ public class GameService extends AbstractService<Game> {
 //        create(g);
     }
     
+    /**
+     *
+     * @param g
+     */
     public void addResultToGame(Game g){
         Game currentRowFromDatabase = em.find(Game.class, g.getId());
         
@@ -77,6 +86,10 @@ public class GameService extends AbstractService<Game> {
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *
+     * @param g
+     */
     public void editGame(Game g){
 //        same pattern as create
 //        managed related entities being passed as a whole or with ID using get Ref
@@ -109,6 +122,10 @@ public class GameService extends AbstractService<Game> {
         em.merge(currentRowFromDatabase);        
     }
     
+    /**
+     *
+     * @param g
+     */
     public void deleteGame(Game g){
         Game currentRowFromDatabase = em.find(Game.class, g.getId());
         em.remove(currentRowFromDatabase);
