@@ -65,7 +65,7 @@ public class Person extends AbstractEntity {
     }
     
     @PostLoad
-    private void calcAge(){
+    private void calcExperience(){
         if(this.dateOfJoining != null){
             this.durationOfStay = Period.between(dateOfJoining, LocalDate.now()).getYears();
         }

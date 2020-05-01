@@ -11,7 +11,90 @@
     </ui:define>
 
     <ui:define name="content">
-        <h1>Welcome Admin!</h1>
+        <h1>All Coaches</h1>
+        <h:link outcome="/admin/newCoach.xhtml" value="Add new coach!" />
+        <h:dataTable class="table table-hover table-striped"
+                     value="#{adminController.allCoaches}" var="c">
+            <h:column>
+                <h:outputText value="#{c.id}"/>
+                <f:facet name="header"><h:outputText value="ID"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.firstName}"/>
+                <f:facet name="header"><h:outputText value="First Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.lastName}"/>
+                <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.dateOfJoining}"/>
+                <f:facet name="header"><h:outputText value="Date of Joining"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.team.teamName}"/>
+                <f:facet name="header"><h:outputText value="Team Owned"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.user.userName}"/>
+                <f:facet name="header"><h:outputText value="Username"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.createdTimeStamp}"/>
+                <f:facet name="header"><h:outputText value="Team Created On"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" action="#{adminController.addNewTeam(c)}" />
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:link outcome="viewCoach.xhtml?id=#{c.id}" value="View "/>
+                <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit "/>
+                <h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>
+            </h:column>
+        </h:dataTable>
+        
+         <h1>All Owners</h1>
+         <h:link outcome="/admin/newOwner.xhtml" value="Add new owner!" />
+        <h:dataTable class="table table-hover table-striped"
+                     value="#{adminController.allOwners}" var="o">
+            <h:column>
+                <h:outputText value="#{o.id}"/>
+                <f:facet name="header"><h:outputText value="ID"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.firstName}"/>
+                <f:facet name="header"><h:outputText value="First Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.lastName}"/>
+                <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.dateOfJoining}"/>
+                <f:facet name="header"><h:outputText value="Date of Joining"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.user.userName}"/>
+                <f:facet name="header"><h:outputText value="Username"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.createdTimeStamp}"/>
+                <f:facet name="header"><h:outputText value="Created on"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandLink disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" action="#{adminController.addNewVenue(o)}" />
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:link outcome="viewOwner.xhtml?id=#{o.id}" value="View "/>
+                <h:link outcome="editOwner.xhtml?id=#{o.id}" value="Edit "/>
+                <h:link outcome="deleteOwner.xhtml?id=#{o.id}" value="Remove"/>
+            </h:column>
+        </h:dataTable>
+        
     </ui:define>
 
 </ui:composition>

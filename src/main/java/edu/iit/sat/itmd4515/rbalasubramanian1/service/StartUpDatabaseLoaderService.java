@@ -161,7 +161,7 @@ public class StartUpDatabaseLoaderService {
         VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19));
         VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11));
         VenueOwner vo4 = new VenueOwner("James", "P", LocalDate.of(2014, Month.MAY, 22));
-        VenueOwner vo5 = new VenueOwner("CoachSam", "S", LocalDate.of(2015, Month.MARCH, 9));
+        VenueOwner vo5 = new VenueOwner( c2.getFirstName(), c2.getLastName(), c2.getDateOfJoining());
 
         vo1.setUser(venueOwner1);
         vo2.setUser(venueOwner2);
