@@ -34,4 +34,9 @@ public class TeamService extends AbstractService<Team> {
         return em.createNamedQuery("Team.findAll", entityClass).getResultList();
     }
     
+    public void deleteTeam(Team t){
+        Team currentRowFromDatabase = em.find(Team.class, t.getId());
+        em.remove(currentRowFromDatabase);
+    } 
+    
 }

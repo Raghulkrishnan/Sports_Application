@@ -66,15 +66,9 @@ public class SetUpGameController {
      *
      */
     public void initGameById(){
-//        List<Team> teamsInGame = new ArrayList<>();
-        
         LOG.info("edit game..." + this.game.getId());
         game = gameServ.find(this.game.getId());
-        
-//        game.getTeams().forEach((t) -> {
-//            teamsInGame.add(t);
-//        });
-        
+                
         LOG.info("edit game...after find!!!" + this.game.toString());
     }
     

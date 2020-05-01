@@ -6,6 +6,7 @@
 package edu.iit.sat.itmd4515.rbalasubramanian1.web;
 
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.Level;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
@@ -13,6 +14,7 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.Group;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.CoachService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.GroupService;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.TeamService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.UserService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueOwnerService;
 import java.util.ArrayList;
@@ -37,6 +39,8 @@ public class AdminController {
     
     private VenueOwner owner;
     private Coach coach;
+    private Team team;
+
     private User user;
     
     @Inject 
@@ -46,10 +50,9 @@ public class AdminController {
 //
     @EJB CoachService coachServ;
     @EJB VenueOwnerService ownerServ;
-    
-    
     @EJB UserService userServ;
     @EJB GroupService groupServ;
+    @EJB TeamService teamServ;
 
     /**
      *
@@ -71,24 +74,13 @@ public class AdminController {
         } else{
           coach = coachServ.find(coachId);
         }
-        
         user = new User();
+        team = new Team();
     }
     
-    /**
-     *
-     */
     public void initCoachById(){
-//        teamsInGame = new ArrayList<>();
-//        
-//        LOG.info("init game by id..." + this.game.getId());
-//        game = gameServ.find(this.game.getId());
-//        
-//        game.getTeams().forEach((t) -> {
-//            teamsInGame.add(t);
-//        });
-//        
-//        LOG.info("init game by id...after find!!!" + this.game.toString());
+        coach = coachServ.find(this.coach.getId());
+        LOG.info("coach...after find!!!" + this.coach.toString());
     }
     
     /**
@@ -139,23 +131,39 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
-    public String addNewTeam(Coach c){
-        LOG.info("add new team..." + c.toString());
-        if(c.getTeam() != null){
-            return "/admin/welcome.xhtml";
-        }
-        else{
-            return "/admin/newTeam.xhtml";
-        }
-    }
-    
     public String addTeamToCoach(){
-//        LOG.info("!!!!!!!!save game result....." + this.game.toString());
-////        need to implement edit game
-//        gameServ.addResultToGame(game);
+////        need to implement 
+        team.addCoach(coach);
+        LOG.info("============coach is============" + team.getCoach());
+        team.setLevel(Level.BEG);
+        LOG.info("============team is============" + coach.getTeam());
+        teamServ.create(team);
         
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
+    
+    
+    public String editCoach(){
+//        need to implement edit game
+        coachServ.editCoach(coach);
+        
+        return "/admin/welcome.xhtml?faces-redirect=true";
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public String removeCoach(){
+        LOG.info("remove this coach......." + this.coach.toString());
+//        need to implement delete game
+        teamServ.deleteTeam(coach.getTeam());
+        coachServ.deleteCoach(coach);
+        return "/admin/welcome.xhtml?faces-redirect=true";
+    }
+    
+    
+    
     
     public String addOwner(){
 //        LOG.info("!!!!!!!!save game result....." + this.game.toString());
@@ -213,5 +221,11 @@ public class AdminController {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+    public Team getTeam() {
+        return team;
+    }
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }

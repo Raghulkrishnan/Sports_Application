@@ -62,22 +62,6 @@
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="userName" value="Create a username:" />
-                <h:inputText 
-                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
-                    class="form-control" id="userName" value="#{cc.attrs.user.userName}" />
-                <h:message for="userName" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="password" value="Create a password" />
-                <h:inputText 
-                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
-                    class="form-control" id="password" value="#{cc.attrs.user.password}" />
-                <h:message for="password" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="joinDate" value="Joined Date:" />
                 <h:inputText 
                     readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
@@ -90,15 +74,15 @@
             </h:panelGroup>
             
             <ui:fragment rendered="#{not cc.attrs.readonly}">
-                <h:commandButton value="Save" 
-                                 class="btn btn-primary" 
-                                 action="#{cc.attrs.action}"/>
+                <h:commandButton value="Save" class="btn btn-primary" action="#{cc.attrs.action}">
+                    <f:param name="id" value="#{cc.attrs.coach.id}" />
+                </h:commandButton>
             </ui:fragment>
 
             <ui:fragment rendered="#{cc.attrs.operation.equals('delete')}">
-                <h:commandButton value="Delete Game" 
-                                 class="btn btn-primary" 
-                                 action="#{cc.attrs.action}"/>
+                <h:commandButton value="Delete" class="btn btn-primary" action="#{cc.attrs.action}">
+                    <f:param name="id" value="#{cc.attrs.coach.id}" />
+                </h:commandButton>
             </ui:fragment>
         </h:form>
     </cc:implementation>

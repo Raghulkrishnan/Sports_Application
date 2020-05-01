@@ -33,25 +33,21 @@
             </h:column>
             <h:column>
                 <h:outputText value="#{c.team.teamName}"/>
-                <f:facet name="header"><h:outputText value="Team Owned"/></f:facet>
+                <f:facet name="header"><h:outputText value="Team"/></f:facet>
             </h:column>
             <h:column>
                 <h:outputText value="#{c.user.userName}"/>
                 <f:facet name="header"><h:outputText value="Username"/></f:facet>
             </h:column>
             <h:column>
-                <h:outputText value="#{c.createdTimeStamp}"/>
-                <f:facet name="header"><h:outputText value="Team Created On"/></f:facet>
-            </h:column>
-            <h:column>
                 <h:form>
-                    <h:commandLink disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" action="#{adminController.addNewTeam(c)}" />
+                    <h:link disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" outcome="newTeam.xhtml?id=#{c.id}" />
                 </h:form>
             </h:column>
             <h:column>
                 <h:link outcome="viewCoach.xhtml?id=#{c.id}" value="View "/>
                 <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit "/>
-                <h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>
+                <!--<h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>-->
             </h:column>
         </h:dataTable>
         

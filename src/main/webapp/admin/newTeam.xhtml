@@ -8,7 +8,7 @@
                 xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
 
-   <ui:define name="metadata">
+    <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="id" value="#{adminController.coach.id}"/>
             <f:viewAction action="#{adminController.initCoachById()}" />
@@ -16,15 +16,15 @@
     </ui:define>
 
     <ui:define name="title">
-        Edit Coach
+        Add Team
     </ui:define>
     
     <ui:define name="content">
-        <ezcomp:manageCoach
+        <ezcomp:newTeam
             readonly="false"
-            operation="update"
+            operation="create"
             coach="#{adminController.coach}"
-            user="#{adminController.user}"
-            action="#{adminController.editCoach()}"/>
+            team="#{adminController.team}"
+            action="#{adminController.addTeamToCoach()}"/>
     </ui:define>
 </ui:composition>
