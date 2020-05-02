@@ -159,10 +159,10 @@ public class AdminController {
     public String addTeamToCoach(){
 ////        need to implement 
         team.setLevel(Level.BEG);
-        team.addCoach(coach);
         teamServ.create(team);
         
-//        teamServ.addCoachToTeam(team, coach);
+        teamServ.addCoachToTeam(team, coach);
+        
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
@@ -235,7 +235,6 @@ public class AdminController {
     }
     
     public String addVenueToOwner(){
-//        venue.addVenueOwner(owner);
         
         LOG.info("============venue owner is============" + venue.getVenueOwner());
         LOG.info("============venue is============" + owner.getVenue());
@@ -252,8 +251,6 @@ public class AdminController {
         
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
-    
-    
     
 //    accessors and mutators
     public VenueOwner getOwner() {

@@ -41,11 +41,16 @@ public class TeamService extends AbstractService<Team> {
     } 
     
     public void addCoachToTeam(Team t, Coach c){
-        Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
-        Team currentTeam = em.find(Team.class, t.getId());
+        Coach currentRow = em.find(Coach.class, c.getId());
+        Team currentRowFromDatabase = em.find(Team.class, t.getId());
         
-        currentTeam.addCoach(c);
-        em.merge(currentTeam);
+        
+        currentRowFromDatabase.addCoach(c);
+        currentRow.setTeam(t);
+        
+        em.merge(currentRow);
+        em.merge(currentRowFromDatabase);
+        
     }  
     
     public void removeCoachFromTeam(Team t, Coach c){
