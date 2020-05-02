@@ -9,7 +9,7 @@
 
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="owner" required="true" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner" />
+        <cc:attribute name="coach" required="true" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach" />
         <cc:attribute name="readonly" required="false" default="true" type="java.lang.Boolean" />
         <cc:attribute name="action" required="false" method-signature="java.lang.String action()" />
     </cc:interface>
@@ -17,43 +17,55 @@
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         
-        <h1>Edit Venue Information- #{cc.attrs.owner.id}</h1>
+        <h1>Edit Coach Information #{cc.attrs.coach.id}</h1>
         <h:form>
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="id" value="ID: #{cc.attrs.owner.id}" />
-                <h:inputHidden class="form-control" id="id" value="#{cc.attrs.owner.id}" />
+                <h:outputLabel for="id" value="ID: #{cc.attrs.coach.id}" />
+                <h:inputHidden class="form-control" id="id" value="#{cc.attrs.coach.id}" />
                 <h:message for="id" errorClass="text-danger"/>
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="version" value="Version: #{cc.attrs.owner.version}" />
-                <h:inputHidden class="form-control" id="version" value="#{cc.attrs.owner.version}" />
+                <h:outputLabel for="version" value="Version: #{cc.attrs.coach.version}" />
+                <h:inputHidden class="form-control" id="version" value="#{cc.attrs.coach.version}" />
                 <h:message for="version" errorClass="text-danger"/>
             </h:panelGroup>
 
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="venueName" value="Venue Name:" />
-                <h:inputText class="form-control" id="venueName" value="#{cc.attrs.owner.venue.venueName}" />
-                <h:message for="venueName" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="ownerFName" value="First Name:" />
-                <h:inputText class="form-control" id="ownerFName" value="#{cc.attrs.owner.firstName}" />
+                <h:inputText class="form-control" id="ownerFName" value="#{cc.attrs.coach.firstName}" />
                 <h:message for="ownerFName" errorClass="text-danger"/>
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="ownerLName" value="Last Name:" />
-                <h:inputText class="form-control" id="ownerLName" value="#{cc.attrs.owner.lastName}" />
+                <h:inputText class="form-control" id="ownerLName" value="#{cc.attrs.coach.lastName}" />
                 <h:message for="ownerLName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="teamName" value="Team Name:" />
+                <h:inputText class="form-control" id="teamName" value="#{cc.attrs.coach.team.teamName}" />
+                <h:message for="teamName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="capName" value="Captain Name:" />
+                <h:inputText class="form-control" id="capName" value="#{cc.attrs.coach.team.captainName}" />
+                <h:message for="capName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="contact" value="Contact:" />
+                <h:inputText class="form-control" id="contact" value="#{cc.attrs.coach.team.contact}" />
+                <h:message for="contact" errorClass="text-danger"/>
             </h:panelGroup>
         
             <ui:fragment rendered="#{not cc.attrs.readonly}">
                 <h:commandButton value="Save" 
                                  class="btn btn-primary" 
                                  action="#{cc.attrs.action}">
-                    <f:param name="id" value="#{cc.attrs.owner.id}" />
+                    <f:param name="id" value="#{cc.attrs.coach.id}" />
                 </h:commandButton>
             </ui:fragment>
 

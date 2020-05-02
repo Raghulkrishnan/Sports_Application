@@ -93,6 +93,22 @@ public class CoachService {
         em.merge(currentRowFromDatabase);
     }
     
+    public void editTeamInfo(Coach c) {
+        Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
+        Team rowFromDB = em.find(Team.class, c.getTeam().getId());
+        
+        currentRowFromDatabase.setFirstName(c.getFirstName());
+        currentRowFromDatabase.setLastName(c.getLastName());
+        
+        rowFromDB.setTeamName(c.getTeam().getTeamName());
+        rowFromDB.setCaptainName(c.getTeam().getCaptainName());
+        rowFromDB.setContact(c.getTeam().getContact());
+        
+        
+        em.merge(currentRowFromDatabase);
+        em.merge(rowFromDB);
+    }
+    
     public void deleteCoach(Coach c){
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         em.remove(currentRowFromDatabase);

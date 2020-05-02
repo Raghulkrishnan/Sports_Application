@@ -14,38 +14,32 @@
         <h1>TEAM INFO</h1>
         
         <h:dataTable class="table table-hover table-striped"
-            value="#{setUpGameController.ourTeam}" var="team">
+            value="#{setUpGameController.coach}" var="c">
             <h:column>
-                <h:outputText value="#{team.id}"/>
+                <h:outputText value="#{c.id}"/>
                 <f:facet name="header"><h:outputText value="ID"/></f:facet>
             </h:column>
             <h:column>
-                <h:outputText value="#{team.teamName}"/>
+                <h:outputText value="#{c.firstName}"/>
+                <f:facet name="header"><h:outputText value="First Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.lastName}"/>
+                <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.dateOfJoining}"/>
+                <f:facet name="header"><h:outputText value="Date of Joining"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.team.teamName}"/>
                 <f:facet name="header"><h:outputText value="Team Name"/></f:facet>
             </h:column>
             <h:column>
-                <h:outputText value="#{team.captainName}"/>
-                <f:facet name="header"><h:outputText value="Captain Name"/></f:facet>
-            </h:column>
-            <h:column>
-                <h:outputText value="#{team.contact}"/>
-                <f:facet name="header"><h:outputText value="Contact"/></f:facet>
-            </h:column>
-            <h:column>
-                <h:outputText value="#{team.level}"/>
-                <f:facet name="header"><h:outputText value="Level"/></f:facet>
-            </h:column>
-            <h:column>
-                <h:outputText value="#{team.createdTimeStamp}"/>
-                <f:facet name="header"><h:outputText value="Team Created On"/></f:facet>
-            </h:column>
-            <h:column>
-                <h:form>
-                    <h:commandLink value="View Statistics" action="#{setUpGameController.addStatToTeam(team)}" />
-                </h:form>
+                <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit"/>
             </h:column>
         </h:dataTable>
-         <h1>TEAM GAMES</h1>
+        <h1>TEAM GAMES</h1>
         <h:dataTable class="table table-hover table-striped"
                      value="#{setUpGameController.ourTeamGames}" var="teamGames">
             <h:column>
