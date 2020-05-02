@@ -10,21 +10,19 @@
 
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="id" value="#{setUpGameController.game.id}"/>
-            <f:viewAction action="#{setUpGameController.initGameById()}" />
         </f:metadata>
     </ui:define>
 
     <ui:define name="title">
-        Edit Game #{setUpGameController.game.id}
+        Add Owner
     </ui:define>
     
     <ui:define name="content">
-        <ezcomp:coachGame 
+        <ezcomp:newOwner
             readonly="false"
-            operation="update"
-            action="#{setUpGameController.editGame()}"
-            game="#{setUpGameController.game}"
-            opponentTeamSelected="#{setUpGameController.opponentTeamSelected}"/>
+            operation="create"
+            owner="#{adminController.owner}"
+            user="#{adminController.user}"
+            action="#{adminController.addOwner()}"/>
     </ui:define>
 </ui:composition>

@@ -27,6 +27,17 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
     public VenueOwnerService() {
         super(VenueOwner.class);
     }
+    
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public VenueOwner find(Long id){
+        LOG.info("========ID========" + id);
+        return em.find(VenueOwner.class, id);
+    }
 
     /**
      *
@@ -62,5 +73,17 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         em.merge(rowFromDB);
     }
     
+    public void editOwner(VenueOwner vo){
+        VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
+        
+        currentRowFromDatabase.setFirstName(vo.getFirstName());
+        currentRowFromDatabase.setLastName(vo.getLastName());
+        currentRowFromDatabase.setDateOfJoining(vo.getDateOfJoining());
+        em.merge(currentRowFromDatabase);
+    }
     
+    public void deleteOwner(VenueOwner vo){
+        VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
+        em.remove(currentRowFromDatabase);
+    }
 }

@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 @NamedQuery(name = "VenueOwner.findAll", query = "select vo from VenueOwner vo")
+@NamedQuery(name = "VenueOwner.findById", query = "select vo from VenueOwner vo where vo.id = :id")
 @NamedQuery(name = "VenueOwner.findByUserName", query = "select vo from VenueOwner vo where vo.user.userName = :userName")
 public class VenueOwner extends Person {
 

@@ -17,6 +17,7 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.service.GroupService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.TeamService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.UserService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueOwnerService;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -39,17 +40,22 @@ public class AdminController {
     
     private VenueOwner owner;
     private Coach coach;
-    private Team team;
+    private Team team; 
+    private Venue venue;
 
     private User user;
     
     @Inject 
     @ManagedProperty(value = "#{param.id}")
     Long coachId;
+    
+    @Inject 
+    @ManagedProperty(value = "#{param.id}")
+    Long ownerId;
 
-//
     @EJB CoachService coachServ;
     @EJB VenueOwnerService ownerServ;
+    @EJB VenueService venueServ;
     @EJB UserService userServ;
     @EJB GroupService groupServ;
     @EJB TeamService teamServ;
@@ -74,13 +80,27 @@ public class AdminController {
         } else{
           coach = coachServ.find(coachId);
         }
+        
+        if (ownerId == null) {
+            owner = new VenueOwner();
+        } else{
+            LOG.info("========ownerID========" + ownerId);
+            owner = ownerServ.find(ownerId);
+        }
+        
         user = new User();
         team = new Team();
+        venue = new Venue();
     }
     
     public void initCoachById(){
         coach = coachServ.find(this.coach.getId());
         LOG.info("coach...after find!!!" + this.coach.toString());
+    }
+    
+    public void initOwnerById(){
+        owner = ownerServ.find(this.owner.getId());
+        LOG.info("owner...after find!!!" + this.owner.toString());
     }
     
     /**
@@ -90,11 +110,16 @@ public class AdminController {
     public List<Coach> getAllCoaches(){
         List<Coach> allCoaches= new ArrayList<>();
         
-        coachServ.findAll().forEach((g) -> {
-            allCoaches.add(g);
+        teamServ.findAll().forEach((t) ->{
+           LOG.info("================All coaches of teams...--->> " + t.getCoach());
         });
         
-        LOG.info("All coachess...--->> " + allCoaches);
+        
+        coachServ.findAll().forEach((c) -> {
+            allCoaches.add(c);
+            LOG.info("All teams of coaches...--->> " + c.getTeam());
+        });
+        
         return allCoaches;
     }
     
@@ -105,7 +130,7 @@ public class AdminController {
             allOwners.add(o);
         });
         
-        LOG.info("All coachess...--->> " + allOwners);
+        LOG.info("All owners...--->> " + allOwners);
         return allOwners;
     }
 
@@ -133,12 +158,11 @@ public class AdminController {
     
     public String addTeamToCoach(){
 ////        need to implement 
-        team.addCoach(coach);
-        LOG.info("============coach is============" + team.getCoach());
         team.setLevel(Level.BEG);
-        LOG.info("============team is============" + coach.getTeam());
+        team.addCoach(coach);
         teamServ.create(team);
         
+//        teamServ.addCoachToTeam(team, coach);
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
@@ -155,52 +179,77 @@ public class AdminController {
      * @return
      */
     public String removeCoach(){
-        LOG.info("remove this coach......." + this.coach.toString());
-//        need to implement delete game
-        teamServ.deleteTeam(coach.getTeam());
-        coachServ.deleteCoach(coach);
-        return "/admin/welcome.xhtml?faces-redirect=true";
-    }
-    
-    
-    
-    
-    public String addOwner(){
-//        LOG.info("!!!!!!!!save game result....." + this.game.toString());
-////        need to implement edit game
-//        gameServ.addResultToGame(game);
-        
-        return "/admin/welcome.xhtml?faces-redirect=true";
-    }
-    
-    public String addNewVenue(VenueOwner vo){
-        LOG.info("Stats of the team.." + vo.toString());
-        if(vo.getVenue() != null){
-            return "/admin/welcome.xhtml";
+        if(coach.getTeam() != null){
+            LOG.info("remove this coach......." + this.coach.toString());
+//            teamServ.removeCoachFromTeam(coach.getTeam(), coach);
+            teamServ.deleteTeam(coach.getTeam());
+            coachServ.deleteCoach(coach);
         }
         else{
-            return "/admin/newOwner.xhtml";
+            LOG.info("removinggggggggggg coach......." + this.coach.toString());
+            coachServ.deleteCoach(coach);
         }
-    }
-    
-    public String addVenueToOwner(){
-//        LOG.info("!!!!!!!!save game result....." + this.game.toString());
-////        need to implement edit game
-//        gameServ.addResultToGame(game);
         
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
+    
     
     /**
      *
      * @return
      */
-    public String removeGame(){
-//        LOG.info("remove this game......." + this.game.toString());
-//        need to implement delete game
+    public String removeOwner(){
         
-        return "/owner/welcome.xhtml";
+        if(owner.getVenue()!= null){
+            LOG.info("remove this owner......." + this.owner.toString());
+            Venue v = owner.getVenue();
+            
+            venueServ.removeGameFromVenue(owner.getVenue(), v.getGames());
+            
+            venueServ.removeOwnerFromVenue(owner.getVenue(), owner);
+            
+            venueServ.deleteVenue(v);
+            ownerServ.deleteOwner(owner);
+        }
+        else{
+            LOG.info("removinggggggggggg owner......." + this.owner.toString());
+            ownerServ.deleteOwner(owner);
+        }
+        
+        return "/admin/welcome.xhtml?faces-redirect=true";
     }
+    
+    public String addOwner(){
+        user.setEnabled(true);
+        
+        groupServ.findAll().forEach((g) -> {
+            if(g.getGroupName().equals("OWNER_GROUP")){
+                user.addGroup(g);
+            }
+        });
+        userServ.create(user);
+        owner.setUser(user);
+        ownerServ.create(owner);
+        
+        return "/admin/welcome.xhtml?faces-redirect=true";
+    }
+    
+    public String addVenueToOwner(){
+        venue.addVenueOwner(owner);
+        LOG.info("============venue owner is============" + venue.getVenueOwner());
+        LOG.info("============venue is============" + owner.getVenue());
+        venueServ.create(venue);
+        
+        return "/admin/welcome.xhtml?faces-redirect=true";
+    }
+    
+    public String editOwner(){
+//        need to implement edit owner
+        ownerServ.editOwner(owner);
+        
+        return "/admin/welcome.xhtml?faces-redirect=true";
+    }
+    
     
     
 //    accessors and mutators
@@ -227,5 +276,11 @@ public class AdminController {
     }
     public void setTeam(Team team) {
         this.team = team;
+    }
+    public Venue getVenue() {
+        return venue;
+    }
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }

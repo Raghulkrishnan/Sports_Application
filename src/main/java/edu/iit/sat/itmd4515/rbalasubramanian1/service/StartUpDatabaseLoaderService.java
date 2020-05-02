@@ -45,8 +45,8 @@ public class StartUpDatabaseLoaderService {
     VenueService venueServ;
     @EJB
     GameService gameServ;
-    @EJB
-    StatService statServ;
+//    @EJB
+//    StatService statServ;
 
 //    security services
     @EJB
@@ -254,24 +254,24 @@ public class StartUpDatabaseLoaderService {
         LOG.info("Created game detail 5 -->>> " + g5.toString());
 
 //        Stats Integer.valueOf(), Integer.valueOf(),Integer.valueOf()
-        Stat s1 = new Stat(Integer.valueOf(15), Integer.valueOf(10), Integer.valueOf(5));
-        Stat s2 = new Stat(Integer.valueOf(24), Integer.valueOf(13), Integer.valueOf(11));
-        Stat s3 = new Stat(Integer.valueOf(12), Integer.valueOf(10), Integer.valueOf(2));
-        Stat s4 = new Stat(Integer.valueOf(22), Integer.valueOf(17), Integer.valueOf(5));
-
-        s1.addTeam(t1);
-        s2.addTeam(t2);
-        s3.addTeam(t3);
-        s4.addTeam(t4);
-
-        statServ.create(s1);
-        statServ.create(s2);
-        statServ.create(s3);
-        statServ.create(s4);
-
-        LOG.info("Created stat 1 -->>> " + s1.toString());
-        LOG.info("Created stat 2 -->>> " + s2.toString());
-        LOG.info("Created stat 3 -->>> " + s3.toString());
+//        Stat s1 = new Stat(Integer.valueOf(15), Integer.valueOf(10), Integer.valueOf(5));
+//        Stat s2 = new Stat(Integer.valueOf(24), Integer.valueOf(13), Integer.valueOf(11));
+//        Stat s3 = new Stat(Integer.valueOf(12), Integer.valueOf(10), Integer.valueOf(2));
+//        Stat s4 = new Stat(Integer.valueOf(22), Integer.valueOf(17), Integer.valueOf(5));
+//
+//        s1.addTeam(t1);
+//        s2.addTeam(t2);
+//        s3.addTeam(t3);
+//        s4.addTeam(t4);
+//
+//        statServ.create(s1);
+//        statServ.create(s2);
+//        statServ.create(s3);
+//        statServ.create(s4);
+//
+//        LOG.info("Created stat 1 -->>> " + s1.toString());
+//        LOG.info("Created stat 2 -->>> " + s2.toString());
+//        LOG.info("Created stat 3 -->>> " + s3.toString());
 
     }
 }

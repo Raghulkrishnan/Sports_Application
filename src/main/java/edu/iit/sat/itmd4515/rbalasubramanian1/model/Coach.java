@@ -59,6 +59,7 @@ public class Coach extends Person {
      */
     public void setTeam(Team team) {
         this.team = team;
+        this.getTeam();
     }
 
     @Override

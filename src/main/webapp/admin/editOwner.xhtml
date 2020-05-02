@@ -8,23 +8,23 @@
                 xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
 
-    <ui:define name="metadata">
+   <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="id" value="#{setUpGameController.game.id}"/>
-            <f:viewAction action="#{setUpGameController.initGameById()}" />
+            <f:viewParam name="id" value="#{adminController.owner.id}"/>
+            <f:viewAction action="#{adminController.initOwnerById()}" />
         </f:metadata>
     </ui:define>
 
     <ui:define name="title">
-        Edit Game #{setUpGameController.game.id}
+        Edit Owner
     </ui:define>
     
     <ui:define name="content">
-        <ezcomp:coachGame 
+        <ezcomp:manageOwner
             readonly="false"
             operation="update"
-            action="#{setUpGameController.editGame()}"
-            game="#{setUpGameController.game}"
-            opponentTeamSelected="#{setUpGameController.opponentTeamSelected}"/>
+            owner="#{adminController.owner}"
+            user="#{adminController.user}"
+            action="#{adminController.editOwner()}"/>
     </ui:define>
 </ui:composition>

@@ -8,7 +8,7 @@
                 xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
 
-   <ui:define name="metadata">
+    <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="id" value="#{adminController.owner.id}"/>
             <f:viewAction action="#{adminController.initOwnerById()}" />
@@ -16,14 +16,15 @@
     </ui:define>
 
     <ui:define name="title">
-        View Owner
+        Add Venue
     </ui:define>
     
     <ui:define name="content">
-        <ezcomp:manageOwner
-            readonly="true"
-            operation="read"
+        <ezcomp:newVenue
+            readonly="false"
+            operation="create"
             owner="#{adminController.owner}"
-            user="#{adminController.user}"/>
+            venue="#{adminController.venue}"
+            action="#{adminController.addVenueToOwner()}"/>
     </ui:define>
 </ui:composition>

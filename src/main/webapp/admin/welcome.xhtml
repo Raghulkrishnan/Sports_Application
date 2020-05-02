@@ -47,12 +47,12 @@
             <h:column>
                 <h:link outcome="viewCoach.xhtml?id=#{c.id}" value="View "/>
                 <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit "/>
-                <!--<h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>-->
+                <h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>
             </h:column>
         </h:dataTable>
         
-         <h1>All Owners</h1>
-         <h:link outcome="/admin/newOwner.xhtml" value="Add new owner!" />
+        <h1>All Owners</h1>
+        <h:link outcome="/admin/newOwner.xhtml" value="Add new owner!" />
         <h:dataTable class="table table-hover table-striped"
                      value="#{adminController.allOwners}" var="o">
             <h:column>
@@ -76,12 +76,16 @@
                 <f:facet name="header"><h:outputText value="Username"/></f:facet>
             </h:column>
             <h:column>
+                <h:outputText value="#{o.venue.venueName}"/>
+                <f:facet name="header"><h:outputText value="Venue (Name)"/></f:facet>
+            </h:column>
+            <h:column>
                 <h:outputText value="#{o.createdTimeStamp}"/>
                 <f:facet name="header"><h:outputText value="Created on"/></f:facet>
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandLink disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" action="#{adminController.addNewVenue(o)}" />
+                    <h:link disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" outcome="newVenue.xhtml?id=#{o.id}" />
                 </h:form>
             </h:column>
             <h:column>

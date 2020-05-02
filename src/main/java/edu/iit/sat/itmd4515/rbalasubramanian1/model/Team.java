@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -33,6 +34,8 @@ import javax.validation.constraints.Size;
 @NamedQuery(name = "Team.findByTeamName", query = "select t from Team t where t.teamName = :teamName")
 @NamedQuery(name = "Team.findAll", query = "select t from Team t")
 public class Team extends AbstractEntity {
+
+    private static final Logger LOG = Logger.getLogger(Team.class.getName());
 
     @NotBlank(message = "Please enter team name.")
 //    @Size(min = 2, max = 30)
