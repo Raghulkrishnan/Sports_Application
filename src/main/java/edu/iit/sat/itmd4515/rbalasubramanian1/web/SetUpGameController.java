@@ -81,11 +81,11 @@ public class SetUpGameController {
         Team t = coach.getTeam();
         
         gameServ.findAll().forEach((g) -> {
-            
-            if(g.getTeams().equals(t)){
-                ourTeamGames.add(g);
-            }
-            
+            g.getTeams().forEach((t1) ->{   
+                if(t1.getId().equals(t.getId())){
+                    ourTeamGames.add(g);
+                }
+            });
         });
         LOG.info("Our games---->> " + ourTeamGames);
         return ourTeamGames;
