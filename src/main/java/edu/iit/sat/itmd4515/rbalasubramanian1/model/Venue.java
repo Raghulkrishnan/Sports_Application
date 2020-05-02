@@ -54,7 +54,7 @@ public class Venue extends AbstractEntity {
         if(this.venueOwner == null || this.venueOwner != vo){
             this.setVenueOwner(vo);
         }
-        if(vo.getVenue() == null){
+        if(vo.getVenue() == null || vo.getVenue() != this){
             vo.setVenue(this);
         }
     }

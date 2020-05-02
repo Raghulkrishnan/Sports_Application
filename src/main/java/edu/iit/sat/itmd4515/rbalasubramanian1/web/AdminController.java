@@ -141,7 +141,7 @@ public class AdminController {
      * @return
      */
     public String addCoach(){
-//        LOG.info("!!!!!!!!save game result....." + this.game.toString());
+//        LOG.info("!!!!!!!!save coach result....." + this.coach.toString());
         user.setEnabled(true);
         
         groupServ.findAll().forEach((g) -> {
@@ -168,7 +168,7 @@ public class AdminController {
     
     
     public String editCoach(){
-//        need to implement edit game
+//        need to implement edit coach
         coachServ.editCoach(coach);
         
         return "/admin/welcome.xhtml?faces-redirect=true";
@@ -204,7 +204,7 @@ public class AdminController {
             LOG.info("remove this owner......." + this.owner.toString());
             Venue v = owner.getVenue();
             
-            venueServ.removeGameFromVenue(owner.getVenue(), v.getGames());
+            venueServ.removeVenueFromGame(owner.getVenue(), v.getGames());
             
             venueServ.removeOwnerFromVenue(owner.getVenue(), owner);
             
@@ -235,10 +235,13 @@ public class AdminController {
     }
     
     public String addVenueToOwner(){
-        venue.addVenueOwner(owner);
+//        venue.addVenueOwner(owner);
+        
         LOG.info("============venue owner is============" + venue.getVenueOwner());
         LOG.info("============venue is============" + owner.getVenue());
+        
         venueServ.create(venue);
+        venueServ.addOwnerToVenue(venue, owner);
         
         return "/admin/welcome.xhtml?faces-redirect=true";
     }

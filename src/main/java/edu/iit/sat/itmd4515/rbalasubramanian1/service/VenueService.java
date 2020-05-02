@@ -49,7 +49,7 @@ public class VenueService extends AbstractService<Venue> {
         em.merge(currentRowFromDatabase);
     }
     
-    public void removeGameFromVenue(Venue v, List<Game> games){
+    public void removeVenueFromGame(Venue v, List<Game> games){
         Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
         
         for(Game g : games){
@@ -59,5 +59,15 @@ public class VenueService extends AbstractService<Venue> {
             em.remove(g);
         }
         
+    }
+    
+    public void addOwnerToVenue(Venue v, VenueOwner vo){
+        Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
+        VenueOwner currentRow = em.find(VenueOwner.class, vo.getId());
+        
+        currentRowFromDatabase.addVenueOwner(vo);
+        currentRow.setVenue(v);
+        em.merge(currentRow);
+        em.merge(currentRowFromDatabase);
     }
 }

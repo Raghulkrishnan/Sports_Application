@@ -92,10 +92,10 @@ public class Team extends AbstractEntity {
      * @param c
      */
     public void addCoach(Coach c) {
-        if (this.coach == null) {
+        if (this.coach == null  || this.coach != c) {
             this.setCoach(c);
         }
-        if (c.getTeam() == null) {
+        if (c.getTeam() == null || c.getTeam() != this) {
             c.setTeam(this);
         }
     }
