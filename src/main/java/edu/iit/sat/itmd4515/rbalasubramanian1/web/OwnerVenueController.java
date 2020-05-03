@@ -9,7 +9,10 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Game;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.GameService;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.GroupService;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.UserService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueOwnerService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueService;
 import java.util.ArrayList;
@@ -34,13 +37,18 @@ public class OwnerVenueController {
     
     private Venue venue;
     private VenueOwner owner;
-
+    private User user;
+    
     @Inject 
     @ManagedProperty(value = "#{param.id}")
     Long ownerId;
 
     @EJB VenueService venueServ;
     @EJB VenueOwnerService ownerServ;
+    @EJB GroupService groupServ;
+    @EJB UserService userServ;
+    
+    @Inject LoginController loginController;
 
     /**
      *
@@ -61,6 +69,8 @@ public class OwnerVenueController {
         } else{
           owner = ownerServ.find(ownerId);
         }
+        owner = ownerServ.findByUsername(loginController.getUserName());
+        user = new User();
     }
 
 //    action methods
@@ -77,6 +87,16 @@ public class OwnerVenueController {
         return "/owner/welcome.xhtml?faces-redirect=true";
     }
     
+    
+    public String changePwd(){
+        user.setEnabled(true);
+        user.setUserName(owner.getUser().getUserName());
+        
+        ownerServ.editOwnerPwd(user, owner);
+          
+        return "/owner/welcome.xhtml?faces-redirect=true";
+    }
+    
 //    accessors and mutators
     
     public Venue getVenue() {
@@ -90,5 +110,11 @@ public class OwnerVenueController {
     }
     public void setOwner(VenueOwner owner) {
         this.owner = owner;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -10,22 +10,22 @@
     
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="id" value="#{ownerVenueController.owner.id}"/>
-            <f:viewAction action="#{ownerVenueController.init()}" />
+            <f:viewParam name="id" value="#{coachTeamController.coach.id}"/>
+            <f:viewAction action="#{coachTeamController.init()}" />
         </f:metadata>
     </ui:define>
 
     <ui:define name="title">
-        Venue and Owner Info
+        Change Password
     </ui:define>
     
     <ui:define name="content">
-        <h1>Update Venue and Owner Info</h1>
-        <h:link outcome="/owner/changePwd.xhtml?id=#{ownerVenueController.owner.id}" value="Change your password here!" />
-        <ezcomp:venue
-            readonly="false"
-            action="#{ownerVenueController.editVenueInfo()}"
-            owner="#{ownerVenueController.owner}"/>
+        <h1>Change your password here</h1>
+        <ezcomp:changePwd
+            action="#{coachTeamController.changePwd()}"
+            coach="#{coachTeamController.coach}"
+            user="#{coachTeamController.user}"
+            operation="coach"/>
     </ui:define>
 
 </ui:composition>

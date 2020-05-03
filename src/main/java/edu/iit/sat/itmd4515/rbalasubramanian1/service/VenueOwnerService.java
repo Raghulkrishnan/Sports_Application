@@ -8,6 +8,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.service;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -79,6 +80,14 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         currentRowFromDatabase.setFirstName(vo.getFirstName());
         currentRowFromDatabase.setLastName(vo.getLastName());
         currentRowFromDatabase.setDateOfJoining(vo.getDateOfJoining());
+        em.merge(currentRowFromDatabase);
+    }
+    
+    public void editOwnerPwd(User u, VenueOwner vo){
+        VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
+        
+        
+        currentRowFromDatabase.getUser().setPassword(u.getPassword());
         em.merge(currentRowFromDatabase);
     }
     

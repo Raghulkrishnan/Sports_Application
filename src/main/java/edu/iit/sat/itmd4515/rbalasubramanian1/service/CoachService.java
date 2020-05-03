@@ -7,6 +7,7 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.service;
 
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -107,6 +108,13 @@ public class CoachService {
         
         em.merge(currentRowFromDatabase);
         em.merge(rowFromDB);
+    }
+    
+    public void editCoachPwd(User u, Coach c){
+        Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
+        
+        currentRowFromDatabase.getUser().setPassword(u.getPassword());
+        em.merge(currentRowFromDatabase);
     }
     
     public void deleteCoach(Coach c){

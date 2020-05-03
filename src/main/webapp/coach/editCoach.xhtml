@@ -20,7 +20,8 @@
     </ui:define>
     
     <ui:define name="content">
-        
+        <h1>Edit Coach Information</h1>
+        <h:link outcome="/coach/changePwd.xhtml?id=#{coachTeamController.coach.id}" value="Change your password here!" />
         <ezcomp:team
             readonly="false"
             action="#{coachTeamController.editTeamInfo()}"

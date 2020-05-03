@@ -9,8 +9,9 @@
 
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="owner" required="true" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner" />
-        <cc:attribute name="readonly" required="false" default="true" type="java.lang.Boolean" />
+        <cc:attribute name="readonly" required="true" default="true" type="java.lang.Boolean" />
+        <cc:attribute name="owner" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner" />
+        <cc:attribute name="user" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User" />
         <cc:attribute name="action" required="false" method-signature="java.lang.String action()" />
     </cc:interface>
 
@@ -28,33 +29,20 @@
                 <h:inputHidden class="form-control" id="version" value="#{cc.attrs.owner.version}" />
                 <h:message for="version" errorClass="text-danger"/>
             </h:panelGroup>
-
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="venueName" value="Venue Name:" />
-                <h:inputText class="form-control" id="venueName" value="#{cc.attrs.owner.venue.venueName}" />
-                <h:message for="venueName" errorClass="text-danger"/>
-            </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="ownerFName" value="First Name:" />
-                <h:inputText class="form-control" id="ownerFName" value="#{cc.attrs.owner.firstName}" />
-                <h:message for="ownerFName" errorClass="text-danger"/>
+                <h:outputLabel for="password" value="New password" />
+                <h:inputText 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" id="password" value="#{cc.attrs.user.password}" />
+                <h:message for="password" errorClass="text-danger"/>
             </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="ownerLName" value="Last Name:" />
-                <h:inputText class="form-control" id="ownerLName" value="#{cc.attrs.owner.lastName}" />
-                <h:message for="ownerLName" errorClass="text-danger"/>
-            </h:panelGroup>
-        
+           
             <ui:fragment rendered="#{not cc.attrs.readonly}">
-                <h:commandButton value="Save" 
-                                 class="btn btn-primary" 
-                                 action="#{cc.attrs.action}">
+                <h:commandButton value="Save" class="btn btn-primary" action="#{cc.attrs.action}">
                     <f:param name="id" value="#{cc.attrs.owner.id}" />
                 </h:commandButton>
             </ui:fragment>
-
             
         </h:form>
     </cc:implementation>

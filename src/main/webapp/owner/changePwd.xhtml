@@ -16,16 +16,16 @@
     </ui:define>
 
     <ui:define name="title">
-        Venue and Owner Info
+        Change Password
     </ui:define>
     
     <ui:define name="content">
-        <h1>Update Venue and Owner Info</h1>
-        <h:link outcome="/owner/changePwd.xhtml?id=#{ownerVenueController.owner.id}" value="Change your password here!" />
-        <ezcomp:venue
-            readonly="false"
-            action="#{ownerVenueController.editVenueInfo()}"
-            owner="#{ownerVenueController.owner}"/>
+        <h1>Change your password here</h1>
+        <ezcomp:changePwd
+            action="#{ownerVenueController.changePwd()}"
+            owner="#{ownerVenueController.owner}"
+            user="#{ownerVenueController.user}"
+            operation="owner"/>
     </ui:define>
 
 </ui:composition>

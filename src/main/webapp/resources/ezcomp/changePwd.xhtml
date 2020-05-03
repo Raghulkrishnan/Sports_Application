@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="owner" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner" />
+        <cc:attribute name="coach" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach" />
+        <cc:attribute name="user" required="false" type="edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User" />
+        <cc:attribute name="action" required="false" method-signature="java.lang.String action()" />
+        <cc:attribute name="operation" required="true" type="java.lang.String" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form>
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="password" value="New password" />
+                <h:inputText
+                    class="form-control" id="password" value="#{cc.attrs.user.password}" />
+                <h:message for="password" errorClass="text-danger"/>
+            </h:panelGroup>
+           
+            <ui:fragment rendered="#{cc.attrs.operation.equals('owner')}">
+                <h:commandButton value="Save Owner Password" class="btn btn-primary" action="#{cc.attrs.action}">
+                    <f:param name="id" value="#{cc.attrs.owner.id}" />
+                </h:commandButton>
+            </ui:fragment>
+            
+            <ui:fragment rendered="#{cc.attrs.operation.equals('coach')}">
+                <h:commandButton value="Save Coach Password" 
+                                 class="btn btn-primary" 
+                                 action="#{cc.attrs.action}">
+                    <f:param name="id" value="#{cc.attrs.coach.id}" />
+                </h:commandButton>
+            </ui:fragment>
+        </h:form>
+    </cc:implementation>
+</html>

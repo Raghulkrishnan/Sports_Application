@@ -10,9 +10,11 @@ import edu.iit.sat.itmd4515.rbalasubramanian1.model.Game;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
+import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.CoachService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.GameService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.TeamService;
+import edu.iit.sat.itmd4515.rbalasubramanian1.service.UserService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueOwnerService;
 import edu.iit.sat.itmd4515.rbalasubramanian1.service.VenueService;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class CoachTeamController {
     
     private Coach coach;
     private Team team;
+    private User user;
 
     @Inject 
     @ManagedProperty(value = "#{param.id}")
@@ -44,7 +47,10 @@ public class CoachTeamController {
 
     @EJB TeamService teamServ;
     @EJB CoachService coachServ;
+    @EJB UserService userServ;
 
+    @Inject LoginController loginController;
+    
     /**
      *
      */
@@ -64,6 +70,8 @@ public class CoachTeamController {
         } else{
           coach = coachServ.find(coachId);
         }
+//        coach = coachServ.findByUsername(loginController.getUserName());
+        user = new User();
     }
 
 //    action methods
@@ -80,6 +88,15 @@ public class CoachTeamController {
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
+    public String changePwd(){
+        user.setEnabled(true);
+        user.setUserName(coach.getUser().getUserName());
+        
+        coachServ.editCoachPwd(user, coach);
+          
+        return "/coach/welcome.xhtml?faces-redirect=true";
+    }
+    
 //    accessors and mutators
     public Coach getCoach() {
         return coach;
@@ -92,5 +109,11 @@ public class CoachTeamController {
     }
     public void setTeam(Team team) {
         this.team = team;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 }
