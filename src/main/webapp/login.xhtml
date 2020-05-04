@@ -14,37 +14,40 @@
     </h:head>
     
     <h:body class="text-center">
-
-        <h:form class="form-signin">
-            <img class="mb-4" href="./resources/images/cricketLogo.jpg" alt="CricketLogo" width="72" height="72"/>
-            <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
-
-            <h:outputLabel for="username" class="sr-only">Username / Email ID</h:outputLabel>
-            <h:inputText 
-                binding="#{userName}"
-                class="form-control" 
-                styleClass="#{userName.valid ? 'form-control' : 'form-control is-invalid'}"
-                id="username" 
-                value="#{loginController.user.userName}"
-                p:placeholder="Username / Email ID"
-                p:autofocus="autofocus" />
-            <h:message for="username" errorClass="text-danger" />
-            <h:outputLabel for="password" class="sr-only">Password</h:outputLabel>
-            <h:inputSecret 
-                binding="#{password}"
-                styleClass="#{password.valid ? 'form-control' : 'form-control is-invalid'}"
-                id="password"
-                value="#{loginController.user.password}"
-                p:placeholder="Password" />
-            <h:message for="password" errorClass="text-danger" />
-            <h:commandButton 
-                action="#{loginController.doLogin()}"
-                class="btn btn-lg btn-primary btn-block" 
-                value="Login" />
-            
-            <h:outputLink target="#" value="apidocs/index.html">API DOCS</h:outputLink>
-        </h:form>
         
+        <div class="card" id="loginCard" style="width: 18rem;">
+            <!--<img class="card-img-top" width="72" height="72" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="Card image cap" />-->
+            <div class="card-body">
+                <h:form class="form-signin">
+                    <img class="mb-4" src="./resources/images/cricketLogo.jpg;" alt="CricketLogo" width="72" height="72"/>
+                    <h5 class="mb-3 font-weight-normal">Please sign in using your credentials</h5>
+
+                    <h:outputLabel for="username" class="sr-only">Username / Email ID</h:outputLabel>
+                    <h:inputText 
+                        binding="#{userName}"
+                        class="form-control" 
+                        styleClass="#{userName.valid ? 'form-control' : 'form-control is-invalid'}"
+                        id="username" 
+                        value="#{loginController.user.userName}"
+                        p:placeholder="Username / Email ID"
+                        p:autofocus="autofocus" />
+                    <h:message for="username" errorClass="text-danger" />
+                    <h:outputLabel for="password" class="sr-only">Password</h:outputLabel>
+                    <h:inputSecret 
+                        binding="#{password}"
+                        styleClass="#{password.valid ? 'form-control' : 'form-control is-invalid'}"
+                        id="password"
+                        value="#{loginController.user.password}"
+                        p:placeholder="Password" />
+                    <h:message for="password" errorClass="text-danger" />
+                    <h:commandButton 
+                        action="#{loginController.doLogin()}"
+                        class="btn btn-lg btn-primary btn-block" 
+                        value="Login" />
+                    <h:outputLink target="#" value="apidocs/index.html">API DOCS</h:outputLink>
+                </h:form>
+            </div>
+        </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
