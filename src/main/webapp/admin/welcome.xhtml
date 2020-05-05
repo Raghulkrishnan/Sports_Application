@@ -12,7 +12,7 @@
 
     <ui:define name="content">
         <h:outputStylesheet library="css" name="admin.css" />
-        <h1>All Coaches
+        <h1 style="color:#2F3D4D">All Coaches
             <h:button value="ADD NEW COACH" 
                 class="btn btn-primary" 
                 outcome="/admin/newCoach.xhtml">    
@@ -47,7 +47,7 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:link class="links" disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" outcome="newTeam.xhtml?id=#{c.id}" />
+                    <h:link class="links" disabled="#{c.team != null ? 'true' : 'false'}" style="#{c.team != null ? 'color:black' : 'color:white'}" id="addTeamBtn" value="Add Team" outcome="newTeam.xhtml?id=#{c.id}" />
                 </h:form>
             </h:column>
             <h:column>
@@ -57,7 +57,7 @@
             </h:column>
         </h:dataTable>
         
-        <h1>All Owners
+        <h1 style="color:#2F3D4D">All Owners
             <h:button value="ADD NEW OWNER" 
                 class="btn btn-primary" 
                 outcome="/admin/newOwner.xhtml">    
@@ -92,7 +92,7 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:link class="links" disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" outcome="newVenue.xhtml?id=#{o.id}" />
+                    <h:link class="links" disabled="#{o.venue != null ? 'true' : 'false'}" style="#{o.venue != null ? 'color:black' : 'color:white'}" value="Add Venue" outcome="newVenue.xhtml?id=#{o.id}" />
                 </h:form>
             </h:column>
             <h:column>
