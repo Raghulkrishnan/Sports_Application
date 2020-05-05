@@ -20,6 +20,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import sendEmail.SendEmail;
 
 /**
  *This is a backing bean to handle Game functionality to teams.
@@ -106,10 +107,31 @@ public class SetUpGameController {
         
         gameServ.create(game);
   
+//        send email notifying the teams about the game
+        SendEmail.toAddress = opponentTeamSelected.getCoach().getUser().getUserName();
+        SendEmail.messageToSend = "Hello from Sport Connect!"
+                + "Your game has been scheduled. Scheduled by : " + coach.getUser().getUserName() + " ( " + coach.getFirstName()
+                + " " + coach.getLastName() + " )"
+                + "Game Info:---"
+                + "Between: " + ourTeam.getTeamName() + " and " + opponentTeamSelected.getTeamName()
+                + " on " + game.getDateOfGame()
+                + " Thank You!!!";
+        
+        SendEmail.sendMailToCoach();
+        
+        
+        SendEmail.toAddress = coach.getUser().getUserName();
+        SendEmail.messageToSend = "Hello from Sport Connect!"
+                + "Your game has been scheduled. Scheduled by : " + coach.getUser().getUserName() + " ( " + coach.getFirstName()
+                + " " + coach.getLastName() + " )"
+                + "Game Info:---"
+                + "Between: " + ourTeam.getTeamName() + " and " + opponentTeamSelected.getTeamName()
+                + " on " + game.getDateOfGame()
+                + " Thank You!!!";
+        
+        SendEmail.sendMailToCoach();
+        
 //        get the data to this page while navigating!!
-//    can be done by - 1. refresh the instance of coach from the service OR
-//        coach = coachServ.findByUsername(loginController.getUserName());
-//  2 - force JSF initiate a new HTTP req/res cycle
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
