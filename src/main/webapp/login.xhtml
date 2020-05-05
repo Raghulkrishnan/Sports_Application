@@ -35,9 +35,8 @@
                             value="#{loginController.user.userName}"
                             p:placeholder="Username"
                             p:autofocus="autofocus" />
-                        <h:message for="username" errorClass="text-danger" />
-
                     </div>
+                    <h:message for="username" errorClass="text-danger" />
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-key"></i></span>
@@ -48,9 +47,8 @@
                             id="password"
                             value="#{loginController.user.password}"
                             p:placeholder="Password" />
-                        <h:message for="password" errorClass="text-danger" />
                     </div>
-                    
+                    <h:message for="password" errorClass="text-danger" />
                     <div class="form-group">
                         <h:commandButton 
                             action="#{loginController.doLogin()}"

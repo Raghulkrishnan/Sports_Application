@@ -27,13 +27,13 @@
             </h:panelGroup>
            
             <ui:fragment rendered="#{cc.attrs.operation.equals('owner')}">
-                <h:commandButton value="Save Owner Password" class="btn btn-primary" action="#{cc.attrs.action}">
+                <h:commandButton value="Change Password" class="btn btn-primary" action="#{cc.attrs.action}">
                     <f:param name="id" value="#{cc.attrs.owner.id}" />
                 </h:commandButton>
             </ui:fragment>
             
             <ui:fragment rendered="#{cc.attrs.operation.equals('coach')}">
-                <h:commandButton value="Save Coach Password" 
+                <h:commandButton value="Change Password" 
                                  class="btn btn-primary" 
                                  action="#{cc.attrs.action}">
                     <f:param name="id" value="#{cc.attrs.coach.id}" />

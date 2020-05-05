@@ -9,13 +9,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"/>
+        <h:outputStylesheet library="css" name="login.css" />
         <title>Login Error Page</title>
     </h:head>
     <h:body>
-        <h1>Login error occurred.  Please try again!</h1>
-        <h:link outcome="/login.xhtml" value="Login Page"/>
-        <p><h:outputLink value="http://www.google.com" target="#">Google</h:outputLink></p>
-        
+        <div class="alert alert-danger" role="alert">
+            Login Error. Check your username or password. <h:link outcome="/login.xhtml" value=" Go back"/>
+        </div>
+         <!--<h:outputLink value="http://www.google.com" target="#">Google</h:outputLink>-->
         <!-- jQuery first, Popper js, Bootstrap js -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
