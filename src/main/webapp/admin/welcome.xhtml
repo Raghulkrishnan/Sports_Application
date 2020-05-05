@@ -11,9 +11,15 @@
     </ui:define>
 
     <ui:define name="content">
-        <h1>All Coaches</h1>
-        <h:link outcome="/admin/newCoach.xhtml" value="Add new coach!" />
-        <h:dataTable class="table table-hover table-striped"
+        <h:outputStylesheet library="css" name="admin.css" />
+        <h1>All Coaches
+            <h:button value="ADD NEW COACH" 
+                class="btn btn-primary" 
+                outcome="/admin/newCoach.xhtml">    
+            </h:button>
+        </h1>
+        <!--<h:link outcome="/admin/newCoach.xhtml" value="Add new coach!" />-->
+        <h:dataTable class="table table-striped table-dark"
                      value="#{adminController.allCoaches}" var="c">
             <h:column>
                 <h:outputText value="#{c.id}"/>
@@ -41,19 +47,24 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:link disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" outcome="newTeam.xhtml?id=#{c.id}" />
+                    <h:link class="links" disabled="#{c.team != null ? 'true' : 'false'}" id="addTeamBtn" value="Add Team" outcome="newTeam.xhtml?id=#{c.id}" />
                 </h:form>
             </h:column>
             <h:column>
-                <h:link outcome="viewCoach.xhtml?id=#{c.id}" value="View "/>
-                <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit "/>
-                <h:link outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>
+                <h:link class="links" outcome="viewCoach.xhtml?id=#{c.id}" value="View "/>
+                <h:link class="links" outcome="editCoach.xhtml?id=#{c.id}" value="Edit "/>
+                <h:link class="links" outcome="deleteCoach.xhtml?id=#{c.id}" value="Remove"/>
             </h:column>
         </h:dataTable>
         
-        <h1>All Owners</h1>
-        <h:link outcome="/admin/newOwner.xhtml" value="Add new owner!" />
-        <h:dataTable class="table table-hover table-striped"
+        <h1>All Owners
+            <h:button value="ADD NEW OWNER" 
+                class="btn btn-primary" 
+                outcome="/admin/newOwner.xhtml">    
+            </h:button>
+        </h1>
+        <!--<h:link outcome="/admin/newOwner.xhtml" value="Add new owner!" />-->
+        <h:dataTable class="table table-striped table-dark"
                      value="#{adminController.allOwners}" var="o">
             <h:column>
                 <h:outputText value="#{o.id}"/>
@@ -81,13 +92,13 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:link disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" outcome="newVenue.xhtml?id=#{o.id}" />
+                    <h:link class="links" disabled="#{o.venue != null ? 'true' : 'false'}" value="Add Venue" outcome="newVenue.xhtml?id=#{o.id}" />
                 </h:form>
             </h:column>
             <h:column>
-                <h:link outcome="viewOwner.xhtml?id=#{o.id}" value="View "/>
-                <h:link outcome="editOwner.xhtml?id=#{o.id}" value="Edit "/>
-                <h:link outcome="deleteOwner.xhtml?id=#{o.id}" value="Remove"/>
+                <h:link class="links" outcome="viewOwner.xhtml?id=#{o.id}" value="View "/>
+                <h:link class="links" outcome="editOwner.xhtml?id=#{o.id}" value="Edit "/>
+                <h:link class="links" outcome="deleteOwner.xhtml?id=#{o.id}" value="Remove"/>
             </h:column>
         </h:dataTable>
         

@@ -11,11 +11,13 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="jumbotron">
+        <h:outputStylesheet library="css" name="home.css" />
+        <div id="homeBody" class="jumbotron">
             <h1 class="display-4">Hello #{loginController.userName},</h1>
             <p class="lead">
-                Welcome to the cricket app. Here you can set up a match between your team and another team in a venue that you wish
-                to play in and at a time that you want!
+                Welcome to SPORT CONNECT! 
+                Here you can set up a match between your team and another team in a venue that you wish
+                to play in and in a day that you want!
             </p>
             <hr class="my-4" />
             <p>

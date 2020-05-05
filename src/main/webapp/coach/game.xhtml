@@ -11,80 +11,84 @@
        Set up a game!
     </ui:define>
     <ui:define name="content">
-        
-        <h:form>
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="id" value="ID: #{setUpGameController.game.id}" />
-                <h:inputHidden class="form-control" id="id" value="#{setUpGameController.game.id}" />
-                <h:message for="id" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="version" value="Version: #{setUpGameController.game.version}" />
-                <h:inputHidden class="form-control" id="version" value="#{setUpGameController.game.version}" />
-                <h:message for="version" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="opponent" value="Select Opponent: " />
-                <!--<h:selectManyListbox>-->
-                <h:selectOneMenu 
-                    class="form-control" 
-                    id="opponent" 
-                    converter="teamConverter"
-                    value ="#{setUpGameController.opponentTeamSelected}">
-                    <f:selectItems value="#{teamService.findAll()}"
-                                   var="teams"
-                                   itemLabel="#{teams.teamName}"
-                                   itemValue="#{teams}"/>
-                </h:selectOneMenu>    
-                <h:message for="opponent" errorClass="text-danger"/>
-                
-<!--                <h:selectManyListbox class="form-control" id="opponent" value ="#{setUpGameController.opponentTeamSelected}">
-                    <f:selectItems value="#{teamService.findAll()}"
-                                   var="teams"
-                                   itemLabel="#{teams.teamName}"
-                                   itemValue="#{teams}"/>
-                </h:selectManyListbox>                    
-                <h:message for="opponent" errorClass="text-danger"/>-->
-            </h:panelGroup>
-            
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="venue" value="Select Venue: " />
-                
-                <h:selectOneMenu 
-                    class="form-control" 
-                    id="venue" 
-                    converter="venueConverter"
-                    value ="#{setUpGameController.venueSelected}">
-                    <f:selectItems value="#{venueService.findAll()}"
-                                   var="venues"
-                                   itemLabel="#{venues.venueName}"
-                                   itemValue="#{venues}"/>
-                </h:selectOneMenu>    
-                <h:message for="venue" errorClass="text-danger"/>
-                
-                
-                
-<!--                <h:selectManyListbox class="form-control" id="venue" value="#{setUpGameController.venueSelected}">
-                    <f:selectItems value="#{venueService.findAll()}"
-                                   var="venues"
-                                   itemLabel="#{venues.venueName}"
-                                   itemValue="#{venues}"/>
-                </h:selectManyListbox>                    
-                <h:message for="venue" errorClass="text-danger"/>-->
-            </h:panelGroup>
+        <h:outputStylesheet library="css" name="home.css" />
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h:form>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="id" value="ID: #{setUpGameController.game.id}" />
+                        <h:inputHidden class="form-control" id="id" value="#{setUpGameController.game.id}" />
+                        <h:message for="id" errorClass="text-danger"/>
+                    </h:panelGroup>
 
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="gameDate" value="Game Date:" />
-                <h:inputText class="form-control" id="gameDate" value="#{setUpGameController.game.dateOfGame}" p:type="date">
-                    <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
-                </h:inputText>
-                <h:message for="gameDate" errorClass="text-danger"/>
-            </h:panelGroup>
-            
-            <h:commandButton value="Book a game!" class="btn btn-primary" action="#{setUpGameController.saveGame()}"/>
-        </h:form>
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="version" value="Version: #{setUpGameController.game.version}" />
+                        <h:inputHidden class="form-control" id="version" value="#{setUpGameController.game.version}" />
+                        <h:message for="version" errorClass="text-danger"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="opponent" value="Select Opponent: " />
+                        <!--<h:selectManyListbox>-->
+                        <h:selectOneMenu 
+                            class="form-control" 
+                            id="opponent" 
+                            converter="teamConverter"
+                            value ="#{setUpGameController.opponentTeamSelected}">
+                            <f:selectItems value="#{teamService.findAll()}"
+                                           var="teams"
+                                           itemLabel="#{teams.teamName}"
+                                           itemValue="#{teams}"/>
+                        </h:selectOneMenu>    
+                        <h:message for="opponent" errorClass="text-danger"/>
+
+        <!--                <h:selectManyListbox class="form-control" id="opponent" value ="#{setUpGameController.opponentTeamSelected}">
+                            <f:selectItems value="#{teamService.findAll()}"
+                                           var="teams"
+                                           itemLabel="#{teams.teamName}"
+                                           itemValue="#{teams}"/>
+                        </h:selectManyListbox>                    
+                        <h:message for="opponent" errorClass="text-danger"/>-->
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="venue" value="Select Venue: " />
+
+                        <h:selectOneMenu 
+                            class="form-control" 
+                            id="venue" 
+                            converter="venueConverter"
+                            value ="#{setUpGameController.venueSelected}">
+                            <f:selectItems value="#{venueService.findAll()}"
+                                           var="venues"
+                                           itemLabel="#{venues.venueName}"
+                                           itemValue="#{venues}"/>
+                        </h:selectOneMenu>    
+                        <h:message for="venue" errorClass="text-danger"/>
+
+
+
+        <!--                <h:selectManyListbox class="form-control" id="venue" value="#{setUpGameController.venueSelected}">
+                            <f:selectItems value="#{venueService.findAll()}"
+                                           var="venues"
+                                           itemLabel="#{venues.venueName}"
+                                           itemValue="#{venues}"/>
+                        </h:selectManyListbox>                    
+                        <h:message for="venue" errorClass="text-danger"/>-->
+                    </h:panelGroup>
+
+                    <h:panelGroup layout="block" class="form-group">
+                        <h:outputLabel for="gameDate" value="Game Date:" />
+                        <h:inputText class="form-control" id="gameDate" value="#{setUpGameController.game.dateOfGame}" p:type="date">
+                            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+                        </h:inputText>
+                        <h:message for="gameDate" errorClass="text-danger"/>
+                    </h:panelGroup>
+
+                    <h:commandButton value="Book a game!" class="btn btn-primary" action="#{setUpGameController.saveGame()}"/>
+                </h:form>
+            </div>
+        </div>
         
     </ui:define>
 </ui:composition>

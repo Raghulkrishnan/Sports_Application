@@ -7,12 +7,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="title">
-        Welcome Owner!
+        Owner
     </ui:define>
 
     <ui:define name="content">
+        <h:outputStylesheet library="css" name="home.css" />
         <h1>Venue Information</h1>
-        <h:dataTable class="table table-hover table-striped"
+        <h:dataTable class="table table-striped table-dark"
                      value="#{ownerController.owner}" var="vo">
             <h:column>
                 <h:outputText value="#{vo.id}"/>
@@ -31,12 +32,12 @@
                 <f:facet name="header"><h:outputText value="Venue Name"/></f:facet>
             </h:column>
             <h:column>
-                <h:link outcome="editVenue.xhtml?id=#{vo.id}" value="Edit"/>
+                <h:link class="links" outcome="editVenue.xhtml?id=#{vo.id}" value="Edit"/>
             </h:column>
         </h:dataTable>
         
         <h1>Matches At The Venue</h1>
-        <h:dataTable class="table table-hover table-striped"
+        <h:dataTable class="table table-striped table-dark"
                      value="#{ownerController.ourVenueGames}" var="v_game">
             <h:column>
                 <h:outputText value="#{v_game.id}"/>
@@ -59,7 +60,7 @@
                 <f:facet name="header"><h:outputText value="Lost By"/></f:facet>
             </h:column>
             <h:column>
-                    <h:link outcome="editGame.xhtml?id=#{v_game.id}" value="Add Game Result"/>
+                    <h:link class="links" outcome="editGame.xhtml?id=#{v_game.id}" value="Add Game Result"/>
 <!--                <h:form>
                     <h:commandLink value="Select" action="#{ownerController.selectGame(v_game)}" />
                 </h:form>-->

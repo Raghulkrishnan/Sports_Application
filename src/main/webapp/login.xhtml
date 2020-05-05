@@ -9,41 +9,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"/>
+        <script src="https://use.fontawesome.com/a6955a2d24.js"></script>
         <h:outputStylesheet library="css" name="login.css" />
         <title>Login Page</title>
     </h:head>
     
     <h:body class="text-center">
         
-        <div class="card" id="loginCard" style="width: 18rem;">
+        <div class="card" style="width: 30rem;">
             <div class="card-body">
                 <h:form class="form-signin">
                     <img class="mb-4" src="https://s3-us-east-2.amazonaws.com/designevo/projects/uid-1594527/f9c6f2b75912d84ba5005a2daf891091/preview.png?t=1588630114756" alt="CricketLogo" width="202" height="202"/>
+                    
                     <h5 class="mb-3 font-weight-normal">Please sign in using your credentials</h5>
+                    
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <h:inputText 
+                            binding="#{userName}"
+                            class="form-control" 
+                            styleClass="#{userName.valid ? 'form-control' : 'form-control is-invalid'}"
+                            id="username" 
+                            value="#{loginController.user.userName}"
+                            p:placeholder="Username"
+                            p:autofocus="autofocus" />
+                        <h:message for="username" errorClass="text-danger" />
 
-                    <h:outputLabel for="username" class="sr-only">Username / Email ID</h:outputLabel>
-                    <h:inputText 
-                        binding="#{userName}"
-                        class="form-control" 
-                        styleClass="#{userName.valid ? 'form-control' : 'form-control is-invalid'}"
-                        id="username" 
-                        value="#{loginController.user.userName}"
-                        p:placeholder="Username / Email ID"
-                        p:autofocus="autofocus" />
-                    <h:message for="username" errorClass="text-danger" />
-                    <h:outputLabel for="password" class="sr-only">Password</h:outputLabel>
-                    <h:inputSecret 
-                        binding="#{password}"
-                        styleClass="#{password.valid ? 'form-control' : 'form-control is-invalid'}"
-                        id="password"
-                        value="#{loginController.user.password}"
-                        p:placeholder="Password" />
-                    <h:message for="password" errorClass="text-danger" />
-                    <h:commandButton 
-                        action="#{loginController.doLogin()}"
-                        class="btn btn-lg btn-primary btn-block" 
-                        value="Login" />
-                    <h:outputLink target="#" value="apidocs/index.html">API DOCS</h:outputLink>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        </div>
+                        <h:inputSecret 
+                            binding="#{password}"
+                            styleClass="#{password.valid ? 'form-control' : 'form-control is-invalid'}"
+                            id="password"
+                            value="#{loginController.user.password}"
+                            p:placeholder="Password" />
+                        <h:message for="password" errorClass="text-danger" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:commandButton 
+                            action="#{loginController.doLogin()}"
+                            class="btn btn-lg btn-primary btn-block" 
+                            value="Login" />
+                        <h:outputLink target="#" value="apidocs/index.html">API DOCS</h:outputLink>
+                    </div>
+                    
                 </h:form>
             </div>
         </div>

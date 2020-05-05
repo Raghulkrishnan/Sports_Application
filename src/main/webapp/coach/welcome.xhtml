@@ -10,10 +10,11 @@
        Coach
     </ui:define>
 
-    <ui:define name="content">
+    <ui:define class="mainBody" name="content">
+        <h:outputStylesheet library="css" name="home.css" />
         <h1>TEAM INFO</h1>
         
-        <h:dataTable class="table table-hover table-striped"
+        <h:dataTable class="table table-striped table-dark"
             value="#{setUpGameController.coach}" var="c">
             <h:column>
                 <h:outputText value="#{c.id}"/>
@@ -36,11 +37,17 @@
                 <f:facet name="header"><h:outputText value="Team Name"/></f:facet>
             </h:column>
             <h:column>
-                <h:link outcome="editCoach.xhtml?id=#{c.id}" value="Edit"/>
+                <h:link class="links" outcome="editCoach.xhtml?id=#{c.id}" value="Edit"/>
             </h:column>
         </h:dataTable>
-        <h1>TEAM GAMES</h1>
-        <h:dataTable class="table table-hover table-striped"
+        <h1>TEAM GAMES
+            <h:button value="SET UP GAME" 
+                class="btn btn-primary" 
+                outcome="/coach/game.xhtml">    
+            </h:button>
+        </h1>
+        <!--<h:link class="outsidelinks" outcome="/coach/game.xhtml" value="Set up a game for your team!" />-->
+        <h:dataTable class="table table-striped table-dark"
                      value="#{setUpGameController.ourTeamGames}" var="teamGames">
             <h:column>
                 <h:outputText value="#{teamGames.id}"/>
@@ -59,13 +66,11 @@
                 <f:facet name="header"><h:outputText value="Venue"/></f:facet>
             </h:column>
             <h:column>
-                <h:link outcome="viewGame.xhtml?id=#{teamGames.id}" value="View "/>
-                <h:link outcome="editGame.xhtml?id=#{teamGames.id}" value="Edit "/>
-                <h:link outcome="deleteGame.xhtml?id=#{teamGames.id}" value="Remove"/>
+                <h:link class="links" outcome="viewGame.xhtml?id=#{teamGames.id}" value="View "/>
+                <h:link class="links" outcome="editGame.xhtml?id=#{teamGames.id}" value="Edit "/>
+                <h:link class="links" outcome="deleteGame.xhtml?id=#{teamGames.id}" value="Remove"/>
             </h:column>
         </h:dataTable>
-         
-        <h:link outcome="/coach/game.xhtml" value="Set up a game for your team!" />
         
     </ui:define>
 

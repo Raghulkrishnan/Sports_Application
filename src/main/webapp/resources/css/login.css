@@ -4,18 +4,21 @@ body {
 }
 
 body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #3EB6B5;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*background-color: #3EB6B5;*/
+    background: url('https://www.fijione.tv/wp-content/uploads/2019/07/soccer.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .form-signin {
@@ -46,4 +49,11 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.input-group-prepend span{
+    width: 40px;
+    height: 45px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
 }

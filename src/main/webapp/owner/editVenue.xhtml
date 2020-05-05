@@ -20,12 +20,17 @@
     </ui:define>
     
     <ui:define name="content">
-        <h1>Update Venue and Owner Info</h1>
-        <h:link outcome="/owner/changePwd.xhtml?id=#{ownerVenueController.owner.id}" value="Change your password here!" />
-        <ezcomp:venue
-            readonly="false"
-            action="#{ownerVenueController.editVenueInfo()}"
-            owner="#{ownerVenueController.owner}"/>
+        <h:outputStylesheet library="css" name="admin.css" />
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h1>Update Venue and Owner Info</h1>
+                <h:link outcome="/owner/changePwd.xhtml?id=#{ownerVenueController.owner.id}" value="Change your password here!" />
+                <ezcomp:venue
+                    readonly="false"
+                    action="#{ownerVenueController.editVenueInfo()}"
+                    owner="#{ownerVenueController.owner}"/>
+            </div>
+        </div>
     </ui:define>
 
 </ui:composition>
