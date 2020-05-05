@@ -40,7 +40,7 @@ public class TestRelationship extends AbstractTest {
 //        teams.add(t2);
         
 //        many games
-        VenueOwner vo1 = new VenueOwner("Mani", "K", LocalDate.of(2015, Month.JANUARY, 11));    
+        VenueOwner vo1 = new VenueOwner("Mani", "K", LocalDate.of(2015, Month.JANUARY, 11), 22);    
         Venue v1 = new Venue("Super Sports Park");
         
         v1.addVenueOwner(vo1);
@@ -80,7 +80,7 @@ public class TestRelationship extends AbstractTest {
     @Test
      public void manyGames_To_OneVenue_UniDirectional_Test(){  
 //      one venue   
-        VenueOwner vo = new VenueOwner("Raghul", "Bala", LocalDate.of(2016, Month.JANUARY, 1));
+        VenueOwner vo = new VenueOwner("Raghul", "Bala", LocalDate.of(2016, Month.JANUARY, 1), 23);
         Venue v = new Venue("MCG");
         
         v.addVenueOwner(vo);
@@ -122,7 +122,7 @@ public class TestRelationship extends AbstractTest {
      @Test
      public void oneCoach_To_OneTeam_BiDirectional_Test(){  
         
-        Coach c = new Coach("Vishal", "A", LocalDate.of(2015, Month.JANUARY, 2));
+        Coach c = new Coach("Vishal", "A", LocalDate.of(2015, Month.JANUARY, 2), 25);
         
         Team t = new Team("Kings CC",
                 "Matt",

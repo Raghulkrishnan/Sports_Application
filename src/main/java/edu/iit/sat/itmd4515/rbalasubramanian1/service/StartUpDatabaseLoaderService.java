@@ -115,13 +115,13 @@ public class StartUpDatabaseLoaderService {
         userServ.create(venueOwner4);
 
 //      coaches
-        Coach c1 = new Coach("Ian", "Chapell", LocalDate.of(2015, Month.APRIL, 14));
+        Coach c1 = new Coach("Ian", "Chapell", LocalDate.of(2015, Month.APRIL, 14), 23);
         c1.setUser(coach1);
-        Coach c2 = new Coach("Tom", "Blundell", LocalDate.of(2016, Month.APRIL, 19));
+        Coach c2 = new Coach("Tom", "Blundell", LocalDate.of(2016, Month.APRIL, 19), 33);
         c2.setUser(coach2);
-        Coach c3 = new Coach("Will", "Smith", LocalDate.of(2015, Month.MAY, 20));
+        Coach c3 = new Coach("Will", "Smith", LocalDate.of(2015, Month.MAY, 20), 35);
         c3.setUser(coach3);
-        Coach c4 = new Coach("Tim", "Bresnan", LocalDate.of(2016, Month.JANUARY, 20));
+        Coach c4 = new Coach("Tim", "Bresnan", LocalDate.of(2016, Month.JANUARY, 20), 24);
         c4.setUser(coach4);
 
         coachServ.create(c1);
@@ -157,11 +157,11 @@ public class StartUpDatabaseLoaderService {
         LOG.info("Created team detail 4 -->>> " + t4.toString());
 
 //        Venue Owners
-        VenueOwner vo1 = new VenueOwner("Raghul", "Krish", LocalDate.of(2016, Month.APRIL, 9));
-        VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19));
-        VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11));
-        VenueOwner vo4 = new VenueOwner("James", "P", LocalDate.of(2014, Month.MAY, 22));
-        VenueOwner vo5 = new VenueOwner( c2.getFirstName(), c2.getLastName(), c2.getDateOfJoining());
+        VenueOwner vo1 = new VenueOwner("Raghul", "Krish", LocalDate.of(2016, Month.APRIL, 9), 20);
+        VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19), 19);
+        VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11), 39);
+        VenueOwner vo4 = new VenueOwner("James", "P", LocalDate.of(2014, Month.MAY, 22), 27);
+        VenueOwner vo5 = new VenueOwner( c2.getFirstName(), c2.getLastName(), c2.getDateOfJoining(), 22);
 
         vo1.setUser(venueOwner1);
         vo2.setUser(venueOwner2);

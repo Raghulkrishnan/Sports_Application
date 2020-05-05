@@ -91,6 +91,8 @@ public class CoachService {
         currentRowFromDatabase.setFirstName(c.getFirstName());
         currentRowFromDatabase.setLastName(c.getLastName());
         currentRowFromDatabase.setDateOfJoining(c.getDateOfJoining());
+        currentRowFromDatabase.setAge(c.getAge());
+        
         em.merge(currentRowFromDatabase);
     }
     
@@ -100,6 +102,7 @@ public class CoachService {
         
         currentRowFromDatabase.setFirstName(c.getFirstName());
         currentRowFromDatabase.setLastName(c.getLastName());
+        currentRowFromDatabase.setAge(c.getAge());
         
         rowFromDB.setTeamName(c.getTeam().getTeamName());
         rowFromDB.setCaptainName(c.getTeam().getCaptainName());

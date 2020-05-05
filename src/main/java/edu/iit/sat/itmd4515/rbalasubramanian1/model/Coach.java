@@ -40,9 +40,10 @@ public class Coach extends Person {
      * @param firstName
      * @param lastName
      * @param dateOfJoining
+     * @param age
      */
-    public Coach(String firstName, String lastName, LocalDate dateOfJoining) {
-        super(firstName, lastName, dateOfJoining);
+    public Coach(String firstName, String lastName, LocalDate dateOfJoining, Integer age) {
+        super(firstName, lastName, dateOfJoining, age);
     }
     
     /**
@@ -64,7 +65,7 @@ public class Coach extends Person {
 
     @Override
     public String toString() {
-        return "Coach{" + "id=" + id + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + '}';
+        return "Coach{" + "id=" + id + "firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", dateOfJoining=" + dateOfJoining + '}';
     }
 
 }

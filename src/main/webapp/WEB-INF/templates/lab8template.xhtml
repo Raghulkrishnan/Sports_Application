@@ -26,7 +26,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="#{fn:startsWith(view.viewId, '/welcome') ? 'nav-item active' : 'nav-item' }">
@@ -50,18 +49,22 @@
                             <h:link class="nav-link" outcome="/admin/welcome.xhtml" value="Admin" />
                         </li>
                     </ui:fragment>
-                </ul>
-                <ul class="navbar-nav mr-sm-2">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <h:form>
-                                <a class="dropdown-item" href="#">#{loginController.userName}</a>
-                                <h:commandLink class="dropdown-item" action="#{loginController.doLogout()}" value="Logout" />
-                            </h:form>
-                        </div>
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/welcome.xhtml" value="Logged in as: #{loginController.userName}" />
                     </li>
+                    <ul class="navbar-nav mr-sm-2">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <h:form>
+                                    <a class="dropdown-item" href="#">#{loginController.userName}</a>
+                                    <h:commandLink class="dropdown-item" action="#{loginController.doLogout()}" value="Logout" />
+                                </h:form>
+                            </div>
+                        </li>
+                    </ul>
                 </ul>
+                
 <!--                <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -70,21 +73,13 @@
         </nav>
 
         <main role="main">
-            <!-- Main jumbotron for a primary marketing message or call to action -->
-<!--            <div class="jumbotron">
-                <div class="container">
-                    <h1 class="display-5" style="text-align: center;">Connect and Play!</h1>
-                </div>
-            </div>-->
-
             <div class="container">
-                <!-- Example row of columns -->
                 <div class="row">
                     <div class="col-md-12">
                         <ui:insert name="content">Default Body</ui:insert>
                     </div>
                 </div>
-            </div> <!-- /container -->
+            </div> 
         </main>
 
         <!-- Optional JavaScript -->

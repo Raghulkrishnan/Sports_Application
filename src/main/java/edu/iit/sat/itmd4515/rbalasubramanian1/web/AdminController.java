@@ -151,6 +151,7 @@ public class AdminController {
         });
         userServ.create(user);
         coach.setUser(user);
+        LOG.info("======================>>>>>>>>>>>>>>>>>>>>save coach result....." + this.coach.toString());
         coachServ.create(coach);
           
         return "/admin/welcome.xhtml?faces-redirect=true";

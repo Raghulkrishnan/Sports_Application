@@ -39,6 +39,12 @@ public class Person extends AbstractEntity {
      */
     protected LocalDate dateOfJoining;
     
+    /**
+    *
+    */
+    @Age(value=18)
+    protected Integer age;
+    
     @Transient
     private int durationOfStay;
 
@@ -58,10 +64,11 @@ public class Person extends AbstractEntity {
      * @param lastName
      * @param dateOfJoining
      */
-    public Person(String firstName, String lastName, LocalDate dateOfJoining) {
+    public Person(String firstName, String lastName, LocalDate dateOfJoining, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfJoining = dateOfJoining;
+        this.age = age;
     }
     
     @PostLoad
@@ -119,11 +126,6 @@ public class Person extends AbstractEntity {
         this.dateOfJoining = dateOfJoining;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + '}';
-    }
-
     /**
      *
      * @return
@@ -154,6 +156,17 @@ public class Person extends AbstractEntity {
      */
     public void setUser(User user) {
         this.user = user;
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + ", age=" + age + '}';
     }
   
 }

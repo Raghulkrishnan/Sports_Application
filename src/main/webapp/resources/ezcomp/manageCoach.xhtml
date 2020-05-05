@@ -62,6 +62,15 @@
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="age" value="Age: " />
+                <h:inputText 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" id="age" value="#{cc.attrs.coach.age}" 
+                    onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
+                <h:message for="age" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="joinDate" value="Joined Date:" />
                 <h:inputText 
                     readonly="#{cc.attrs.readonly ? 'true' : 'false'}"

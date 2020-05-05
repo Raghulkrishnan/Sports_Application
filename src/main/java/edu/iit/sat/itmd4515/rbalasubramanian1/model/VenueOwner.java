@@ -39,9 +39,10 @@ public class VenueOwner extends Person {
      * @param firstName
      * @param lastName
      * @param dateOfJoining
+     * @param age
      */
-    public VenueOwner(String firstName, String lastName, LocalDate dateOfJoining) {
-        super(firstName, lastName, dateOfJoining);
+    public VenueOwner(String firstName, String lastName, LocalDate dateOfJoining, Integer age) {
+        super(firstName, lastName, dateOfJoining, age);
     }
     
     /**
@@ -62,6 +63,6 @@ public class VenueOwner extends Person {
 
     @Override
     public String toString() {
-        return "VenueOwner{" + "id=" + id + "firstName=" + firstName + ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + '}';
+        return "VenueOwner{" + "id=" + id + "firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", dateOfJoining=" + dateOfJoining + '}';
     }
 }

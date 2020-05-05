@@ -34,6 +34,10 @@
                 <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
             </h:column>
             <h:column>
+                <h:outputText value="#{c.age}"/>
+                <f:facet name="header"><h:outputText value="Age"/></f:facet>
+            </h:column>
+            <h:column>
                 <h:outputText value="#{c.dateOfJoining}"/>
                 <f:facet name="header"><h:outputText value="Date of Joining"/></f:facet>
             </h:column>
@@ -77,6 +81,10 @@
             <h:column>
                 <h:outputText value="#{o.lastName}"/>
                 <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{o.age}"/>
+                <f:facet name="header"><h:outputText value="Age"/></f:facet>
             </h:column>
             <h:column>
                 <h:outputText value="#{o.dateOfJoining}"/>

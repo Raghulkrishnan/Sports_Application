@@ -66,6 +66,7 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         LOG.info("venuowner service is..." + vo.getVenue());
         currentRowFromDatabase.setFirstName(vo.getFirstName());
         currentRowFromDatabase.setLastName(vo.getLastName());
+        currentRowFromDatabase.setAge(vo.getAge());
         
         rowFromDB.setVenueName(vo.getVenue().getVenueName());
         
@@ -80,6 +81,8 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         currentRowFromDatabase.setFirstName(vo.getFirstName());
         currentRowFromDatabase.setLastName(vo.getLastName());
         currentRowFromDatabase.setDateOfJoining(vo.getDateOfJoining());
+        currentRowFromDatabase.setAge(vo.getAge());
+        
         em.merge(currentRowFromDatabase);
     }
     
