@@ -21,20 +21,32 @@
                 <f:facet name="header"><h:outputText value="ID"/></f:facet>
             </h:column>
             <h:column>
-                <h:outputText value="#{c.firstName}"/>
-                <f:facet name="header"><h:outputText value="First Name"/></f:facet>
+                <h:outputText value="#{c.firstName} #{c.lastName}"/>
+                <f:facet name="header"><h:outputText value="Coach Name"/></f:facet>
             </h:column>
             <h:column>
-                <h:outputText value="#{c.lastName}"/>
-                <f:facet name="header"><h:outputText value="Last Name"/></f:facet>
+                <h:outputText value="#{c.age}"/>
+                <f:facet name="header"><h:outputText value="Age"/></f:facet>
             </h:column>
             <h:column>
                 <h:outputText value="#{c.dateOfJoining}"/>
-                <f:facet name="header"><h:outputText value="Date of Joining"/></f:facet>
+                <f:facet name="header"><h:outputText value="Join Date"/></f:facet>
             </h:column>
             <h:column>
                 <h:outputText value="#{c.team.teamName}"/>
-                <f:facet name="header"><h:outputText value="Team Name"/></f:facet>
+                <f:facet name="header"><h:outputText value="Team"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.team.captainName}"/>
+                <f:facet name="header"><h:outputText value="Captain"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.team.contact}"/>
+                <f:facet name="header"><h:outputText value="Contact"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{c.user.userName}"/>
+                <f:facet name="header"><h:outputText value="Email"/></f:facet>
             </h:column>
             <h:column>
                 <h:link class="links" outcome="editCoach.xhtml?id=#{c.id}" value="Edit"/>
@@ -66,6 +78,7 @@
                 <f:facet name="header"><h:outputText value="Venue"/></f:facet>
             </h:column>
             <h:column>
+                <f:facet name="header"><h:outputText value="Actions"/></f:facet>
                 <h:link class="links" outcome="viewGame.xhtml?id=#{teamGames.id}" value="View "/>
                 <h:link class="links" outcome="editGame.xhtml?id=#{teamGames.id}" value="Edit "/>
                 <h:link class="links" outcome="deleteGame.xhtml?id=#{teamGames.id}" value="Remove"/>

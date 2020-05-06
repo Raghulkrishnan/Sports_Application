@@ -28,12 +28,6 @@
                 <h:inputHidden class="form-control" id="version" value="#{cc.attrs.owner.version}" />
                 <h:message for="version" errorClass="text-danger"/>
             </h:panelGroup>
-
-            <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="venueName" value="Venue Name:" />
-                <h:inputText class="form-control" id="venueName" value="#{cc.attrs.owner.venue.venueName}" />
-                <h:message for="venueName" errorClass="text-danger"/>
-            </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="ownerFName" value="First Name:" />
@@ -45,6 +39,21 @@
                 <h:outputLabel for="ownerLName" value="Last Name:" />
                 <h:inputText class="form-control" id="ownerLName" value="#{cc.attrs.owner.lastName}" />
                 <h:message for="ownerLName" errorClass="text-danger"/>
+            </h:panelGroup>
+            
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="age" value="Age: " />
+                <h:inputText 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" id="age" value="#{cc.attrs.owner.age}" 
+                    onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;"/>
+                <h:message for="age" errorClass="text-danger"/>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" class="form-group">
+                <h:outputLabel for="venueName" value="Venue Name:" />
+                <h:inputText class="form-control" id="venueName" value="#{cc.attrs.owner.venue.venueName}" />
+                <h:message for="venueName" errorClass="text-danger"/>
             </h:panelGroup>
         
             <ui:fragment rendered="#{not cc.attrs.readonly}">

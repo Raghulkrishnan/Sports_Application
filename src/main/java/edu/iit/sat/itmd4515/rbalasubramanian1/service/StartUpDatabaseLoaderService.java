@@ -79,30 +79,30 @@ public class StartUpDatabaseLoaderService {
 //      we are setting the groups. 
 //      Have set coach 1 alone as admin & coach. 
 //      Rest of the coaches belong to coach group only
-        User coach1 = new User("coach1", "coach1", true);
+        User coach1 = new User("coach1@gmail.com", "coach1", true);
         coach1.addGroup(adminGroup);
         coach1.addGroup(coachGroup);
 
-        User coach2 = new User("coach2", "coach2", true);
+        User coach2 = new User("coach2@yahoo.com", "coach2", true);
         coach2.addGroup(coachGroup);
         coach2.addGroup(venueOwnerGroup);
 
-        User coach3 = new User("coach3", "coach3", true);
+        User coach3 = new User("coach3@gmail.com", "coach3", true);
         coach3.addGroup(coachGroup);
 
-        User coach4 = new User("coach4", "coach4", true);
+        User coach4 = new User("coach4@gmail.com", "coach4", true);
         coach4.addGroup(coachGroup);
 
-        User venueOwner1 = new User("owner1", "owner1", true);
+        User venueOwner1 = new User("owner1@gmail.com", "owner1", true);
         venueOwner1.addGroup(venueOwnerGroup);
 
-        User venueOwner2 = new User("owner2", "owner2", true);
+        User venueOwner2 = new User("owner2@yahoo.com", "owner2", true);
         venueOwner2.addGroup(venueOwnerGroup);
 
-        User venueOwner3 = new User("owner3", "owner3", true);
+        User venueOwner3 = new User("owner3@gmail.com", "owner3", true);
         venueOwner3.addGroup(venueOwnerGroup);
 
-        User venueOwner4 = new User("owner4", "owner4", true);
+        User venueOwner4 = new User("owner4@gmail.coms", "owner4", true);
         venueOwner4.addGroup(venueOwnerGroup);
 
         userServ.create(coach1);

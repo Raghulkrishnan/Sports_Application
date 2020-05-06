@@ -71,10 +71,18 @@
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
-                <h:outputLabel for="userName" value="Create a username:" />
+                <h:outputLabel for="userName" value="Enter Email ID:" />
                 <h:inputText 
                     readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
-                    class="form-control" id="userName" value="#{cc.attrs.user.userName}" />
+                    class="form-control" 
+                    id="userName" 
+                    value="#{cc.attrs.user.userName}" required="true" label="Email"
+                    validatorMessage="Email ID is not valid">
+                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                </h:inputText>
+<!--                <h:inputText 
+                    readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
+                    class="form-control" id="userName" value="#{cc.attrs.user.userName}" />-->
                 <h:message for="userName" errorClass="text-danger"/>
             </h:panelGroup>
             

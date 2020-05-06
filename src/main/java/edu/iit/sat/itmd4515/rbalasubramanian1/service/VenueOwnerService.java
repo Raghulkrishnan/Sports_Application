@@ -98,4 +98,5 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
         em.remove(currentRowFromDatabase);
     }
+    
 }

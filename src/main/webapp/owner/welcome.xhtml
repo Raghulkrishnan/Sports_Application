@@ -24,12 +24,20 @@
                 <f:facet name="header"><h:outputText value="Owner Name"/></f:facet>
             </h:column>
             <h:column>
+                <h:outputText value="#{vo.age}"/>
+                <f:facet name="header"><h:outputText value="Age"/></f:facet>
+            </h:column>
+            <h:column>
                 <h:outputText value="#{vo.dateOfJoining}"/>
                 <f:facet name="header"><h:outputText value="Join Date"/></f:facet>
             </h:column>
             <h:column>
                 <h:outputText value="#{vo.venue.venueName}"/>
                 <f:facet name="header"><h:outputText value="Venue Name"/></f:facet>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{vo.user.userName}"/>
+                <f:facet name="header"><h:outputText value="Email"/></f:facet>
             </h:column>
             <h:column>
                 <h:link class="links" outcome="editVenue.xhtml?id=#{vo.id}" value="Edit"/>
@@ -60,10 +68,8 @@
                 <f:facet name="header"><h:outputText value="Lost By"/></f:facet>
             </h:column>
             <h:column>
-                    <h:link class="links" outcome="editGame.xhtml?id=#{v_game.id}" value="Add Game Result"/>
-<!--                <h:form>
-                    <h:commandLink value="Select" action="#{ownerController.selectGame(v_game)}" />
-                </h:form>-->
+                <f:facet name="header"><h:outputText value="Action"/></f:facet>
+                <h:link class="links" outcome="editGame.xhtml?id=#{v_game.id}" value="Add Game Result"/>
             </h:column>
             
         </h:dataTable>
