@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ *Coach service has methods to perform CRUD operations in the coach table of the database.
  * @author raghul
  */
 @Stateless
@@ -25,13 +25,13 @@ public class CoachService {
     EntityManager em;
     
     /**
-     *
+     *default constructor
      */
     public CoachService() {
     }
     
     /**
-     *
+     *create method that will create a new coach record in the database.
      * @param c
      */
     public void create(Coach c){
@@ -39,7 +39,7 @@ public class CoachService {
     }
     
     /**
-     *
+     *update method that will update a coach record in the database.
      * @param c
      */
     public void update(Coach c){
@@ -47,7 +47,7 @@ public class CoachService {
     }
     
     /**
-     *
+     *remove method is used to remove a row from the coach table in the db
      * @param c
      */
     public void remove(Coach c){
@@ -55,7 +55,7 @@ public class CoachService {
     }
     
     /**
-     *
+     *find method finds and returns the coach object based on its id.
      * @param id
      * @return
      */
@@ -64,7 +64,7 @@ public class CoachService {
     }
     
     /**
-     *
+     *findAll method is used to return all the coach records in the table
      * @return
      */
     public List<Coach> findAll(){
@@ -75,7 +75,7 @@ public class CoachService {
     }
     
     /**
-     *
+     *findByUsername method returns the coach object based on the username
      * @param username
      * @return
      */
@@ -85,6 +85,10 @@ public class CoachService {
                 .getSingleResult();
     }
     
+    /**
+     *editCoach method is used to edit the coach record in the table
+     * @param c
+     */
     public void editCoach(Coach c){
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         
@@ -96,6 +100,10 @@ public class CoachService {
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *edit team info is used to edit team details of the coach's team
+     * @param c
+     */
     public void editTeamInfo(Coach c) {
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         Team rowFromDB = em.find(Team.class, c.getTeam().getId());
@@ -113,6 +121,11 @@ public class CoachService {
         em.merge(rowFromDB);
     }
     
+    /**
+     *this method is used to change the password of this coach user
+     * @param u
+     * @param c
+     */
     public void editCoachPwd(User u, Coach c){
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         
@@ -120,6 +133,10 @@ public class CoachService {
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *deleteCoach method removes the record from the table.
+     * @param c
+     */
     public void deleteCoach(Coach c){
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         em.remove(currentRowFromDatabase);

@@ -87,10 +87,13 @@ public class OwnerVenueController {
         return "/owner/welcome.xhtml?faces-redirect=true";
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public String changePwd(){
         user.setEnabled(true);
-        user.setUserName(owner.getUser().getUserName());
+//        user.setUserName(owner.getUser().getUserName());
         
         ownerServ.editOwnerPwd(user, owner);
           
@@ -98,22 +101,52 @@ public class OwnerVenueController {
     }
     
 //    accessors and mutators
+
+    /**
+     *
+     * @return
+     */
     
     public Venue getVenue() {
         return venue;
     }
+
+    /**
+     *
+     * @param venue
+     */
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
+
+    /**
+     *
+     * @return
+     */
     public VenueOwner getOwner() {
         return owner;
     }
+
+    /**
+     *
+     * @param owner
+     */
     public void setOwner(VenueOwner owner) {
         this.owner = owner;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
+
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }

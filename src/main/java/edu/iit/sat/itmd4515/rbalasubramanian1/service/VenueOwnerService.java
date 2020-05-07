@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 /**
- *
+ *VenueOwnerService class is used to perform CRUD operations on the database
  * @author raghul
  */
 @Stateless
@@ -23,14 +23,14 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
     private static final Logger LOG = Logger.getLogger(VenueOwnerService.class.getName());
 
     /**
-     *
+     *default constructor
      */
     public VenueOwnerService() {
         super(VenueOwner.class);
     }
     
     /**
-     *
+     *used to find the venueowner record based on id
      * @param id
      * @return
      */
@@ -41,7 +41,7 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
     }
 
     /**
-     *
+     *returns all venueowners
      * @return
      */
     @Override
@@ -50,7 +50,7 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
     }
     
     /**
-     *
+     *returns record based on username
      * @param username
      * @return
      */
@@ -60,6 +60,10 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
                 .getSingleResult();
     }
     
+    /**
+     *used to edit venueowner info and the foreign attribute venue
+     * @param vo
+     */
     public void editVenueInfo(VenueOwner vo) {
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
         Venue rowFromDB = em.find(Venue.class, vo.getVenue().getId());
@@ -75,6 +79,10 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         em.merge(rowFromDB);
     }
     
+    /**
+     *used to edit the venue owner details
+     * @param vo
+     */
     public void editOwner(VenueOwner vo){
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
         
@@ -86,14 +94,22 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *used to change the owner user password
+     * @param u
+     * @param vo
+     */
     public void editOwnerPwd(User u, VenueOwner vo){
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
-        
         
         currentRowFromDatabase.getUser().setPassword(u.getPassword());
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *used to remove the record from the database
+     * @param vo
+     */
     public void deleteOwner(VenueOwner vo){
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
         em.remove(currentRowFromDatabase);

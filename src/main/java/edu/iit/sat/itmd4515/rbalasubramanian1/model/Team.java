@@ -27,7 +27,8 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
 /**
- *
+ *Team class extends abstract entity to get the ID and version number
+ * Has team properties
  * @author raghul
  */
 @Entity
@@ -66,7 +67,7 @@ public class Team extends AbstractEntity {
     private Stat stat;
 
     /**
-     *
+     *default constructor
      */
     public Team() {
     }
@@ -88,7 +89,8 @@ public class Team extends AbstractEntity {
 //    Add or Remove Coach
 
     /**
-     *
+     *addCoach helper method 
+     * handles bidirectional relationship (handles both sides - team and coach)
      * @param c
      */
     public void addCoach(Coach c) {
@@ -101,7 +103,8 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *removeCoach helper method handles both sides of the relationship
+     * between coach and team
      * @param c
      */
     public void removeCoach(Coach c) {
@@ -115,7 +118,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     * team name getter function
      * @return
      */
     public String getTeamName() {
@@ -123,7 +126,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     * captain name getter
      * @return
      */
     public String getCaptainName() {
@@ -131,7 +134,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *contact get method
      * @return
      */
     public String getContact() {
@@ -139,7 +142,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *getLevel method
      * @return
      */
     public Level getLevel() {
@@ -147,7 +150,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *setter of teamName
      * @param teamName
      */
     public void setTeamName(String teamName) {
@@ -155,7 +158,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *used to set captain name
      * @param captainName
      */
     public void setCaptainName(String captainName) {
@@ -163,7 +166,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *used to set contact
      * @param contact
      */
     public void setContact(String contact) {
@@ -171,7 +174,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *set level
      * @param level
      */
     public void setLevel(Level level) {
@@ -179,7 +182,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *getter method for coach
      * @return
      */
     public Coach getCoach() {
@@ -187,6 +190,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
+     * used to set coach
      * @param coach
      */
     public void setCoach(Coach coach) {
@@ -194,7 +198,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *get stat method
      * @return
      */
     public Stat getStat() {
@@ -202,7 +206,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *set stat method
      * @param stat
      */
     public void setStat(Stat stat) {
@@ -210,7 +214,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *returns list of games
      * @return
      */
     public List<Game> getGames() {
@@ -218,7 +222,7 @@ public class Team extends AbstractEntity {
     }
 
     /**
-     *
+     *sets list of games
      * @param games
      */
     public void setGames(List<Game> games) {

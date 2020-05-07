@@ -21,7 +21,7 @@
         <h:form>
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="password" value="New password" />
-                <h:inputText
+                <h:inputSecret
                     class="form-control" id="password" value="#{cc.attrs.user.password}" />
                 <h:message for="password" errorClass="text-danger"/>
             </h:panelGroup>

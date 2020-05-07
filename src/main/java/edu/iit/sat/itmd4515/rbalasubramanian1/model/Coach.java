@@ -12,7 +12,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
- *
+ * The Coach class is used to define the coach entity.
+ * It extends the Person class which has basic attributes such as first name, last name, age and date of joining.
+ * As a coach is related to a Team and has a one to one bidirectional relationship, team setter and getter is also present.
  * @author raghul
  */
 @Entity
@@ -29,14 +31,14 @@ public class Coach extends Person {
     private Team team;
 
     /**
-     *
+     * Default constructor of Coach class.
      */
     public Coach() {
 
     }
 
     /**
-     *
+     * Constructor with 4 arguments needed for the entity
      * @param firstName
      * @param lastName
      * @param dateOfJoining
@@ -47,7 +49,7 @@ public class Coach extends Person {
     }
     
     /**
-     *
+     * The getTeam method is used to get the team object
      * @return
      */
     public Team getTeam() {
@@ -55,7 +57,7 @@ public class Coach extends Person {
     }
 
     /**
-     *
+     * The setTeam method is used to set the team object values.
      * @param team
      */
     public void setTeam(Team team) {

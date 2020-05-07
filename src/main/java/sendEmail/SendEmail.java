@@ -19,16 +19,28 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- *
+ *SendEmail class is used to send a email to the user's mail ID whenever he
+ * sets up a game.
+ * Used to send email to both the team coach's email ID about the confirmation of the game.
  * @author raghul
  */
 @Named
 @RequestScoped
 public class SendEmail {
 
+    /**
+     *toAddress to store the recipient's email ID
+     */
     public static String toAddress;
+
+    /**
+     *stores the content of the email
+     */
     public static String messageToSend;
     
+    /**
+     *this method is used to send the email to the recipient with the contents
+     */
     public static void sendMailToCoach() {
         
         String host = "smtp.gmail.com";
@@ -49,13 +61,13 @@ public class SendEmail {
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
 
-            // Set From: header field of the header.
+            // adding the sender info
             message.setFrom(new InternetAddress("mailtestfp@gmail.com"));
 
-            // Set To: header field of the header.
+            // adding the recipient
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
 
-            // Set Subject: header field
+            // adding subject of the mail
             message.setSubject("Hello from Sport Connect!");
 
             // message to be sent
@@ -87,9 +99,19 @@ public class SendEmail {
     public void setToAddress(String toAddress) {
         this.toAddress = toAddress;
     }
+
+    /**
+     *get value of messagaeToSend
+     * @return
+     */
     public String getMessageToSend() {
         return messageToSend;
     }
+
+    /**
+     *set value of messageToSend
+     * @param messageToSend
+     */
     public void setMessageToSend(String messageToSend) {
         this.messageToSend = messageToSend;
     }

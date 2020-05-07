@@ -5,7 +5,6 @@
  */
 package edu.iit.sat.itmd4515.rbalasubramanian1.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.persistence.EntityListeners;
@@ -13,12 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
 /**
- *
+ * Super class for the entities to provide them the generated primary key ID and a version number
+ * based on the number of updates made on that record.
  * @author raghul
  */
 @MappedSuperclass

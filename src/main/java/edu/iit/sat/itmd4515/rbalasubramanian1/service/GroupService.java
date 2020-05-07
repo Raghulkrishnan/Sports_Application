@@ -11,7 +11,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 
 /**
- *
+ * Group service class
  * @author raghul
  */
 @Named
@@ -26,7 +26,7 @@ public class GroupService extends AbstractService<Group> {
     }
 
     /**
-     *
+     *findAll returns all groups available in the application for the user.
      * @return
      */
     @Override

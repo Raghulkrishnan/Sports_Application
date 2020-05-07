@@ -11,7 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ *The abstract service class has methods to perform the CRUD operations in the database
+ * i.e. to persist, merge or remove values from the db.
  * @author raghul
  */
 abstract class AbstractService<T> {
@@ -41,8 +42,5 @@ abstract class AbstractService<T> {
     }
     
     public abstract List<T> findAll();
-//        TypedQuery tq = em.createNamedQuery("Coach.findAll", Coach.class);
-//        return tq.getResultList();
-//        return em.createNamedQuery(namedQueryName, entityClass).getResultList();
 
 }

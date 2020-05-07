@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 
 /**
- *
+ * GameService is used to perform crud operations on the game table in the db
  * @author raghul
  */
 @Stateless
@@ -24,7 +24,7 @@ public class GameService extends AbstractService<Game> {
     private static final Logger LOG = Logger.getLogger(GameService.class.getName());
 
     /**
-     *
+     *default constructor
      */
     public GameService() {
         super(Game.class);
@@ -40,7 +40,7 @@ public class GameService extends AbstractService<Game> {
     }
     
     /**
-     *
+     *returns game object based on ID
      * @param id
      * @return
      */
@@ -75,7 +75,7 @@ public class GameService extends AbstractService<Game> {
     }
     
     /**
-     *
+     * edits the game record by adding values to the wonBy and lostBy columns of the table
      * @param g
      */
     public void addResultToGame(Game g){
@@ -87,7 +87,7 @@ public class GameService extends AbstractService<Game> {
     }
     
     /**
-     *
+     *used to edit game record in the table
      * @param g
      */
     public void editGame(Game g){
@@ -123,7 +123,7 @@ public class GameService extends AbstractService<Game> {
     }
     
     /**
-     *
+     *deletes the game record from the Game table
      * @param g
      */
     public void deleteGame(Game g){

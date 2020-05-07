@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- *
+ *VenueOwner class extends Person class to get firstname, lastname, age and date of joining
  * @author raghul
  */
 @Entity
@@ -28,7 +28,7 @@ public class VenueOwner extends Person {
     private Venue venue;
 
     /**
-     *
+     *default constructor
      */
     public VenueOwner() {
 
@@ -46,7 +46,7 @@ public class VenueOwner extends Person {
     }
     
     /**
-     *
+     *get venue method
      * @return
      */
     public Venue getVenue() {
@@ -54,7 +54,7 @@ public class VenueOwner extends Person {
     }
 
     /**
-     *
+     *used to set venue
      * @param venue
      */
     public void setVenue(Venue venue) {

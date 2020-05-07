@@ -10,7 +10,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 /**
- *
+ *prePersist and preUpdate methods are defined here.
+ * They both are used to set the created and updated time stamp before a record is persisted and updated respectively in the database.
  * @author raghul
  */
 public class AbstractEntityAuditListener {

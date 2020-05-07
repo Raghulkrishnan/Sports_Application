@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 
 /**
- *
+ *team service class to perform crud operations on the team table
  * @author raghul
  */
 @Named
@@ -20,14 +20,14 @@ import javax.inject.Named;
 public class TeamService extends AbstractService<Team> {
 
     /**
-     *
+     *default constructor
      */
     public TeamService() {
         super(Team.class);
     }
 
     /**
-     *
+     *returns the entire list of teams present in the table
      * @return
      */
     @Override
@@ -35,11 +35,20 @@ public class TeamService extends AbstractService<Team> {
         return em.createNamedQuery("Team.findAll", entityClass).getResultList();
     }
     
+    /**
+     *used to remove a team record from the database
+     * @param t
+     */
     public void deleteTeam(Team t){
         Team currentRowFromDatabase = em.find(Team.class, t.getId());
         em.remove(currentRowFromDatabase);
     } 
     
+    /**
+     *used to add a coachIF foreign key to the team record.
+     * @param t
+     * @param c
+     */
     public void addCoachToTeam(Team t, Coach c){
         Coach currentRow = em.find(Coach.class, c.getId());
         Team currentRowFromDatabase = em.find(Team.class, t.getId());
@@ -53,6 +62,11 @@ public class TeamService extends AbstractService<Team> {
         
     }  
     
+    /**
+     *removes the foreign key coachId from the team record
+     * @param t
+     * @param c
+     */
     public void removeCoachFromTeam(Team t, Coach c){
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
         Team currentTeam = em.find(Team.class, t.getId());

@@ -88,31 +88,66 @@ public class CoachTeamController {
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String changePwd(){
         user.setEnabled(true);
-        user.setUserName(coach.getUser().getUserName());
+//        user.setUserName(coach.getUser().getUserName());
         
         coachServ.editCoachPwd(user, coach);
           
         return "/coach/welcome.xhtml?faces-redirect=true";
     }
     
+    
 //    accessors and mutators
+
+    /**
+     *
+     * @return
+     */
     public Coach getCoach() {
         return coach;
     }
+
+    /**
+     *
+     * @param coach
+     */
     public void setCoach(Coach coach) {
         this.coach = coach;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
+
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
+
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }

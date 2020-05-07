@@ -12,21 +12,21 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 /**
- *
+ *stat service class
  * @author raghul
  */
 @Stateless
 public class StatService extends AbstractService<Stat> {
 
     /**
-     *
+     *default constructor
      */
     public StatService() {
         super(Stat.class);
     }
 
     /**
-     *
+     *used to get all stats
      * @return
      */
     @Override

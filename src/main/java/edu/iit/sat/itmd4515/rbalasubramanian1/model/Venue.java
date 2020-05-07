@@ -12,9 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 
 /**
- *
+ *Venue Class extends AbstractEntity class to get ID and version number
  * @author raghul
  */
 @Entity
@@ -28,16 +29,17 @@ public class Venue extends AbstractEntity {
     @OneToOne
     private VenueOwner venueOwner;
     
+    @NotBlank(message = "Enter venue name")
     private String venueName;
 
     /**
-     *
+     *Default constructor
      */
     public Venue() {
     }
 
     /**
-     *
+     *constructor
      * @param venueName
      */
     public Venue(String venueName) {
@@ -47,7 +49,8 @@ public class Venue extends AbstractEntity {
 //    add venue owner helper method
 
     /**
-     *
+     *helper method - addVenueOwner
+     * handles both sides of the relationship
      * @param vo
      */
     public void addVenueOwner(VenueOwner vo){
@@ -62,7 +65,8 @@ public class Venue extends AbstractEntity {
 //    remove venue owner helper method
 
     /**
-     *
+     *helper method - removeVenueOwner
+     * handles both sides of the relationship
      * @param vo
      */
     public void removeVenueOwner(VenueOwner vo){
@@ -109,7 +113,7 @@ public class Venue extends AbstractEntity {
     }
 
     /**
-     *
+     *get venue name
      * @return
      */
     public String getVenueName() {
@@ -117,7 +121,7 @@ public class Venue extends AbstractEntity {
     }
 
     /**
-     *
+     *set venue name
      * @param venueName
      */
     public void setVenueName(String venueName) {

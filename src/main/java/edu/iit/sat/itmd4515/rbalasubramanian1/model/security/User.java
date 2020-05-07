@@ -18,7 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 /**
- *
+ *User class is used to create a secure user.
  * @author raghul
  */
 @Entity
@@ -42,7 +42,7 @@ public class User {
     private List<Group> groups = new ArrayList<>();
 
     /**
-     *
+     *helper method - used to add group to the user.
      * @param g
      */
     public void addGroup(Group g) {
@@ -55,16 +55,16 @@ public class User {
     }
 
     /**
-     *
+     *default constructor
      */
     public User() {
     }
 
     /**
-     *
-     * @param userName
-     * @param password
-     * @param enabled
+     *constructor with arguments
+     * @param string
+     * @param string1
+     * @param bln
      */
     public User(String userName, String password, Boolean enabled) {
         this.userName = userName;
@@ -91,7 +91,7 @@ public class User {
     }
 
     /**
-     *
+     *get password of the user
      * @return
      */
     public String getPassword() {
@@ -99,7 +99,7 @@ public class User {
     }
 
     /**
-     *
+     *set password for user
      * @param password
      */
     public void setPassword(String password) {
@@ -107,7 +107,7 @@ public class User {
     }
 
     /**
-     *
+     * boolean value to check if the user is ready for login.
      * @return
      */
     public Boolean isEnabled() {
@@ -115,7 +115,7 @@ public class User {
     }
 
     /**
-     *
+     * set boolean value isEnabled
      * @param enabled
      */
     public void setEnabled(Boolean enabled) {
@@ -123,7 +123,7 @@ public class User {
     }
 
     /**
-     *
+     *returns list of groups
      * @return
      */
     public List<Group> getGroups() {
@@ -131,7 +131,7 @@ public class User {
     }
 
     /**
-     *
+     * sets groups
      * @param groups
      */
     public void setGroups(List<Group> groups) {

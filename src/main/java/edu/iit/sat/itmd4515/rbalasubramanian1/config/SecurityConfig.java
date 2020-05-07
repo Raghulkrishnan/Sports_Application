@@ -13,13 +13,13 @@ import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
 
 /**
- *
+ *login authentication definition
  * @author raghul
  */
 @Named
 @ApplicationScoped
-@CustomFormAuthenticationMechanismDefinition(loginToContinue = 
-        @LoginToContinue(loginPage = "/login.xhtml",
+@CustomFormAuthenticationMechanismDefinition(loginToContinue
+        = @LoginToContinue(loginPage = "/login.xhtml",
                 errorPage = "/error.xhtml")
 )
 @DatabaseIdentityStoreDefinition(
@@ -27,7 +27,7 @@ import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
         callerQuery = "select PASSWORD from sec_user where USERNAME = ?",
         groupsQuery = "select GROUPNAME from sec_user_groups where USERNAME = ?"
 )
-@DeclareRoles({"COACH_ROLE","OWNER_ROLE","ADMIN_ROLE"})
+@DeclareRoles({"COACH_ROLE", "OWNER_ROLE", "ADMIN_ROLE"})
 public class SecurityConfig {
-    
+
 }

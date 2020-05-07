@@ -93,11 +93,17 @@ public class AdminController {
         venue = new Venue();
     }
     
+    /**
+     *
+     */
     public void initCoachById(){
         coach = coachServ.find(this.coach.getId());
         LOG.info("coach...after find!!!" + this.coach.toString());
     }
     
+    /**
+     *
+     */
     public void initOwnerById(){
         owner = ownerServ.find(this.owner.getId());
         LOG.info("owner...after find!!!" + this.owner.toString());
@@ -123,6 +129,10 @@ public class AdminController {
         return allCoaches;
     }
     
+    /**
+     *
+     * @return
+     */
     public List<VenueOwner> getAllOwners(){
         List<VenueOwner> allOwners= new ArrayList<>();
         
@@ -157,6 +167,10 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String addTeamToCoach(){
 ////        need to implement 
         team.setLevel(Level.BEG);
@@ -167,7 +181,10 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public String editCoach(){
 //        need to implement edit coach
         coachServ.editCoach(coach);
@@ -220,6 +237,10 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String addOwner(){
         user.setEnabled(true);
         
@@ -235,6 +256,10 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String addVenueToOwner(){
         
         LOG.info("============venue owner is============" + venue.getVenueOwner());
@@ -246,6 +271,10 @@ public class AdminController {
         return "/admin/welcome.xhtml?faces-redirect=true";
     }
     
+    /**
+     *
+     * @return
+     */
     public String editOwner(){
 //        need to implement edit owner
         ownerServ.editOwner(owner);
@@ -254,33 +283,83 @@ public class AdminController {
     }
     
 //    accessors and mutators
+
+    /**
+     *
+     * @return
+     */
     public VenueOwner getOwner() {
         return owner;
     }
+
+    /**
+     *
+     * @param owner
+     */
     public void setOwner(VenueOwner owner) {
         this.owner = owner;
     }
+
+    /**
+     *
+     * @return
+     */
     public Coach getCoach() {
         return coach;
     }
+
+    /**
+     *
+     * @param coach
+     */
     public void setCoach(Coach coach) {
         this.coach = coach;
     }
+
+    /**
+     *
+     * @return
+     */
     public User getUser() {
         return user;
     }
+
+    /**
+     *
+     * @param user
+     */
     public void setUser(User user) {
         this.user = user;
     }
+
+    /**
+     *
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
+
+    /**
+     *
+     * @param team
+     */
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    /**
+     *
+     * @return
+     */
     public Venue getVenue() {
         return venue;
     }
+
+    /**
+     *
+     * @param venue
+     */
     public void setVenue(Venue venue) {
         this.venue = venue;
     }

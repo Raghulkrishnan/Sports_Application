@@ -14,7 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
- *
+ *Group class is used to set users to a group with setters and getters
  * @author raghul
  */
 @Entity
@@ -30,13 +30,13 @@ public class Group {
     private List<User> users = new ArrayList<>();
 
     /**
-     *
+     *default constructor
      */
     public Group() {
     }
 
     /**
-     *
+     *constructor with arguments
      * @param groupName
      * @param groupDesc
      */
@@ -64,7 +64,7 @@ public class Group {
     }
 
     /**
-     *
+     * get the value of group description
      * @return
      */
     public String getGroupDesc() {
@@ -72,7 +72,7 @@ public class Group {
     }
 
     /**
-     *
+     * set the value of group description
      * @param groupDesc
      */
     public void setGroupDesc(String groupDesc) {
@@ -80,7 +80,7 @@ public class Group {
     }
 
     /**
-     *
+     *returns list of users in the group
      * @return
      */
     public List<User> getUsers() {
@@ -88,7 +88,7 @@ public class Group {
     }
 
     /**
-     *
+     * adds list of users to the group
      * @param users
      */
     public void setUsers(List<User> users) {

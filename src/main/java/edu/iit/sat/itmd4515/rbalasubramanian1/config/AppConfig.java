@@ -18,13 +18,13 @@ import javax.inject.Named;
 public class AppConfig {
 
     /**
-     *
+     *App config default no arguments constructor
      */
     public AppConfig() {
     }
     
     /**
-     *
+     *get levels method that returns the levels of the teams
      * @return
      */
     public Level[] getLevels() {

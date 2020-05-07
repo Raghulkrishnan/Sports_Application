@@ -88,7 +88,7 @@
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="password" value="Create a password" />
-                <h:inputText 
+                <h:inputSecret 
                     readonly="#{cc.attrs.readonly ? 'true' : 'false'}"
                     class="form-control" id="password" value="#{cc.attrs.user.password}" />
                 <h:message for="password" errorClass="text-danger"/>

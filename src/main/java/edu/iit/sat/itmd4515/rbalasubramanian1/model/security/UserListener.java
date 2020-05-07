@@ -11,7 +11,7 @@ import javax.persistence.PreUpdate;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 
 /**
- *
+ *encrypting the password while it gets stored in the database
  * @author raghul
  */
 public class UserListener {

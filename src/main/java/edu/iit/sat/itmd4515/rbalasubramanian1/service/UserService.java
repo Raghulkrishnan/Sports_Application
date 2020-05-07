@@ -10,21 +10,21 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 /**
- *
+ *UserService class can be used to perform operations on the user table
  * @author raghul
  */
 @Stateless
 public class UserService extends AbstractService<User> {
 
     /**
-     *
+     *default constructor
      */
     public UserService() {
         super(User.class);
     }
 
     /**
-     *
+     *returns the list of users available
      * @return
      */
     @Override
@@ -33,7 +33,7 @@ public class UserService extends AbstractService<User> {
     }
     
     /**
-     *
+     *returns the user object that matches the username
      * @param username
      * @return
      */

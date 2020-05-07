@@ -25,6 +25,7 @@
             <div class="card-body">
                 <h1>Update Venue and Owner Info</h1>
                 <h:link outcome="/owner/changePwd.xhtml?id=#{ownerVenueController.owner.id}" value="Change your password here!" />
+                
                 <ezcomp:venue
                     readonly="false"
                     action="#{ownerVenueController.editVenueInfo()}"

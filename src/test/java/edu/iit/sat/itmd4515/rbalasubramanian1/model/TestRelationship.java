@@ -45,7 +45,7 @@ public class TestRelationship extends AbstractTest {
         
         v1.addVenueOwner(vo1);
         
-        Game g1 = new Game(LocalDate.of(2020, Month.JANUARY, 21));
+        Game g1 = new Game(LocalDate.of(2021, Month.JANUARY, 21));
         
         g1.addVenue(v1);
         
@@ -68,13 +68,6 @@ public class TestRelationship extends AbstractTest {
         assertTrue(t2.getId() > 0);
         assertTrue(g1.getId() > 0);
         
-//        et.begin();
-//        em.remove(g1);
-//        em.remove(v1);
-//        em.remove(vo1);
-//        em.remove(t1);
-//        em.remove(t2);
-//        et.commit();
     }
     
     @Test
@@ -86,8 +79,8 @@ public class TestRelationship extends AbstractTest {
         v.addVenueOwner(vo);
         
 //      many games  
-        Game g1 = new Game(LocalDate.of(2016, Month.MARCH, 2));
-        Game g2 = new Game(LocalDate.of(2016, Month.MARCH, 22));
+        Game g1 = new Game(LocalDate.of(2021, Month.MARCH, 2));
+        Game g2 = new Game(LocalDate.of(2021, Month.MARCH, 22));
         
 //      Unidirectional Relationship!!
         g1.addVenue(v);
@@ -100,23 +93,6 @@ public class TestRelationship extends AbstractTest {
         em.persist(g2);
         et.commit();
         
-//        output section
-//        Game foundGame = em.find(Game.class, g1.getId());
-//        Venue foundVenue = em.find(Venue.class, v.getId());
-        
-//        assertTrue(foundGame.getId() > 0);
-//        assertTrue(foundVenue.getGames().size() == 1);
-
-//        et.begin();
-//        g1.removeVenue(v);
-//        g2.removeVenue(v);
-//        et.commit();
-
-//        et.begin();
-//        em.remove(g1);
-//        em.remove(g2);
-//        em.remove(vo);
-//        et.commit();
     }
      
      @Test

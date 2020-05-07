@@ -13,7 +13,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 
 /**
- *
+ *Used to perform CRUD operations on the venue table in the db
  * @author raghul
  */
 @Named
@@ -21,14 +21,14 @@ import javax.inject.Named;
 public class VenueService extends AbstractService<Venue> {
 
     /**
-     *
+     *default constructor
      */
     public VenueService() {
         super(Venue.class);
     }
 
     /**
-     *
+     *returns all venues
      * @return
      */
     @Override
@@ -36,11 +36,20 @@ public class VenueService extends AbstractService<Venue> {
         return em.createNamedQuery("Venue.findAll", entityClass).getResultList();
     }
     
+    /**
+     *used to remove a venue object from the table
+     * @param v
+     */
     public void deleteVenue(Venue v){
         Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
         em.remove(currentRowFromDatabase);
     } 
     
+    /**
+     *used to remove owner from the venue
+     * @param v
+     * @param vo
+     */
     public void removeOwnerFromVenue(Venue v, VenueOwner vo){
         Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
         VenueOwner currentRow = em.find(VenueOwner.class, vo.getId());
@@ -49,6 +58,11 @@ public class VenueService extends AbstractService<Venue> {
         em.merge(currentRowFromDatabase);
     }
     
+    /**
+     *used to remove venue from the game
+     * @param v
+     * @param games
+     */
     public void removeVenueFromGame(Venue v, List<Game> games){
         Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
         
@@ -61,6 +75,11 @@ public class VenueService extends AbstractService<Venue> {
         
     }
     
+    /**
+     *used to add owner to the venue
+     * @param v
+     * @param vo
+     */
     public void addOwnerToVenue(Venue v, VenueOwner vo){
         Venue currentRowFromDatabase = em.find(Venue.class, v.getId());
         VenueOwner currentRow = em.find(VenueOwner.class, vo.getId());

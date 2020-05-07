@@ -15,9 +15,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.PastOrPresent;
 
 /**
- *
+ * The Game class is used to create the game entity in the database and extends the 
+ * AbstractEntity class to set an ID and version against each game record.
  * @author raghul
  */
 @Entity
@@ -31,6 +34,7 @@ public class Game extends AbstractEntity {
     @ManyToOne
     private Venue venue;
     
+    @FutureOrPresent
     private LocalDate dateOfGame;
 
 //    directional ManyToMany
@@ -46,7 +50,7 @@ public class Game extends AbstractEntity {
     private Team lostBy;
 
     /**
-     *
+     * Game() is the default Game class constructor
      */
     public Game() {
 
@@ -55,12 +59,11 @@ public class Game extends AbstractEntity {
 //    add venue helper method
 
     /**
-     *
+     * The addVenue method is used to add a venue for the game as it has a Many to One relationship with the Venue entity.
+     * 
      * @param v
      */
     public void addVenue(Venue v){
-//        LOG.info("addVenue game is.." + this);
-//        LOG.info("addvenue coming is.." + v);
 //        if(this.venue == null){
             this.setVenue(v);
 //        }
@@ -74,7 +77,7 @@ public class Game extends AbstractEntity {
 //    remove venue helper method
 
     /**
-     *
+     * The removeVenue method is used to remove the venue object from the game-venue relationship.
      * @param v
      */
     public void removeVenue(Venue v){
@@ -91,7 +94,8 @@ public class Game extends AbstractEntity {
 //    add team helper method
 
     /**
-     *
+     * The addTeam method accepts a team object and is used to add a team to the game as game and team entities
+     * have a many to many relationship.
      * @param t
      */
     public void addTeam(Team t){
@@ -111,7 +115,7 @@ public class Game extends AbstractEntity {
 //    remove team helper method
 
     /**
-     *
+     * The removeTeam method accepts a team object and removes that team from the game-team relationship
      * @param t
      */
     public void removeTeam(Team t){
@@ -136,15 +140,15 @@ public class Game extends AbstractEntity {
     }
     
     /**
-     *
-     * @param dateOfGame
+     * The Game constructor with date parameter.
+     * @param ld
      */
     public Game(LocalDate dateOfGame) {
         this.dateOfGame = dateOfGame;
     }
     
     /**
-     * Get the value of venue
+     * The getVenue method is used to get the value of venue
      *
      * @return the value of venue
      */
@@ -153,7 +157,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     * Set the value of venue
+     * The setVenue method is used to set the value of venue
      *
      * @param venue new value of venue
      */
@@ -162,7 +166,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     * getTeams method returns the list of teams of a game.
      * @return
      */
     public List<Team> getTeams() {
@@ -170,7 +174,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     * setTeams method is used to set a list of teams in a game.
      * @param teams
      */
     public void setTeams(List<Team> teams) {
@@ -178,7 +182,7 @@ public class Game extends AbstractEntity {
     }
     
     /**
-     *
+     * getDateOfGame is used to get the dateOfGame value of the game entity.
      * @return
      */
     public LocalDate getDateOfGame() {
@@ -186,7 +190,7 @@ public class Game extends AbstractEntity {
     }
     
     /**
-     *
+     * setDateOfGame is used to set the dateOfGame value of the game entity.
      * @param dateOfGame
      */
     public void setDateOfGame(LocalDate dateOfGame) {
@@ -196,7 +200,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     * It is used to get the wonBy value of a game - the value is a team object.
      * @return
      */
     public Team getWonBy() {
@@ -204,7 +208,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     *It is used to set the wonBy value of a game - the value is a team object.
      * @param wonBy
      */
     public void setWonBy(Team wonBy) {
@@ -212,7 +216,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     *It is used to get the lost value of a game - the value is a team object.
      * @return
      */
     public Team getLostBy() {
@@ -220,7 +224,7 @@ public class Game extends AbstractEntity {
     }
 
     /**
-     *
+     *It is used to set the lostBy value of a game - the value is a team object.
      * @param lostBy
      */
     public void setLostBy(Team lostBy) {

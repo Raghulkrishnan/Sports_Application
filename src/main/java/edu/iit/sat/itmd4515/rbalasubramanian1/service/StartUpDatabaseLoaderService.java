@@ -26,7 +26,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ *This class is used to store initial values in all the tables in the database 
  * @author raghul
  */
 @Startup
@@ -55,7 +55,7 @@ public class StartUpDatabaseLoaderService {
     GroupService groupServ;
 
     /**
-     *
+     *default constructor
      */
     public StartUpDatabaseLoaderService() {
     }
@@ -208,11 +208,11 @@ public class StartUpDatabaseLoaderService {
         LOG.info("Created venue detail 5 -->>> " + v5.toString());
 
 //      Games
-        Game g1 = new Game(LocalDate.of(2019, Month.MARCH, 22));
-        Game g2 = new Game(LocalDate.of(2019, Month.MARCH, 23));
-        Game g3 = new Game(LocalDate.of(2019, Month.MARCH, 24));
-        Game g4 = new Game(LocalDate.of(2019, Month.MARCH, 24));
-        Game g5 = new Game(LocalDate.of(2019, Month.APRIL, 24));
+        Game g1 = new Game(LocalDate.of(2020, Month.MAY, 22));
+        Game g2 = new Game(LocalDate.of(2020, Month.MAY, 23));
+        Game g3 = new Game(LocalDate.of(2020, Month.JULY, 24));
+        Game g4 = new Game(LocalDate.of(2020, Month.JUNE, 24));
+        Game g5 = new Game(LocalDate.of(2020, Month.MAY, 24));
 
 //      unidirectional many to one
         g1.addVenue(v4);
