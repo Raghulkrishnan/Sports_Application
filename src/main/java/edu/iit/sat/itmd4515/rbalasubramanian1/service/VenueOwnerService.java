@@ -66,17 +66,20 @@ public class VenueOwnerService extends AbstractService<VenueOwner> {
      */
     public void editVenueInfo(VenueOwner vo) {
         VenueOwner currentRowFromDatabase = em.find(VenueOwner.class, vo.getId());
-        Venue rowFromDB = em.find(Venue.class, vo.getVenue().getId());
-        LOG.info("venuowner service is..." + vo.getVenue());
+        
         currentRowFromDatabase.setFirstName(vo.getFirstName());
         currentRowFromDatabase.setLastName(vo.getLastName());
         currentRowFromDatabase.setAge(vo.getAge());
         
-        rowFromDB.setVenueName(vo.getVenue().getVenueName());
-        
-        
+        if(vo.getVenue() != null){
+            Venue rowFromDB = em.find(Venue.class, vo.getVenue().getId());
+            LOG.info("venuowner service is..." + vo.getVenue());
+            rowFromDB.setVenueName(vo.getVenue().getVenueName());
+            em.merge(rowFromDB);
+        }
+            
         em.merge(currentRowFromDatabase);
-        em.merge(rowFromDB);
+        
     }
     
     /**

@@ -52,19 +52,27 @@
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="teamName" value="Team Name:" />
-                <h:inputText class="form-control" id="teamName" value="#{cc.attrs.coach.team.teamName}" />
+                <h:inputText 
+                    class="form-control" 
+                    id="teamName" 
+                    value="#{cc.attrs.coach.team.teamName}" 
+                    readonly="#{cc.attrs.coach.team != null ? 'false' : 'true'}"/>
                 <h:message for="teamName" errorClass="text-danger"/>
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="capName" value="Captain Name:" />
-                <h:inputText class="form-control" id="capName" value="#{cc.attrs.coach.team.captainName}" />
+                <h:inputText 
+                    class="form-control" 
+                    id="capName" 
+                    value="#{cc.attrs.coach.team.captainName}" 
+                    readonly="#{cc.attrs.coach.team != null ? 'false' : 'true'}"/>
                 <h:message for="capName" errorClass="text-danger"/>
             </h:panelGroup>
             
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="contact" value="Contact:" />
-                <h:inputText class="form-control" id="contact" value="#{cc.attrs.coach.team.contact}" />
+                <h:inputText readonly="#{cc.attrs.coach.team != null ? 'false' : 'true'}" class="form-control" id="contact" value="#{cc.attrs.coach.team.contact}" />
                 <h:message for="contact" errorClass="text-danger"/>
             </h:panelGroup>
         

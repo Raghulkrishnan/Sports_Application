@@ -106,19 +106,20 @@ public class CoachService {
      */
     public void editTeamInfo(Coach c) {
         Coach currentRowFromDatabase = em.find(Coach.class, c.getId());
-        Team rowFromDB = em.find(Team.class, c.getTeam().getId());
         
         currentRowFromDatabase.setFirstName(c.getFirstName());
         currentRowFromDatabase.setLastName(c.getLastName());
         currentRowFromDatabase.setAge(c.getAge());
         
-        rowFromDB.setTeamName(c.getTeam().getTeamName());
-        rowFromDB.setCaptainName(c.getTeam().getCaptainName());
-        rowFromDB.setContact(c.getTeam().getContact());
-        
+        if(c.getTeam() != null){
+            Team rowFromDB = em.find(Team.class, c.getTeam().getId());
+            rowFromDB.setTeamName(c.getTeam().getTeamName());
+            rowFromDB.setCaptainName(c.getTeam().getCaptainName());
+            rowFromDB.setContact(c.getTeam().getContact());
+            em.merge(rowFromDB);
+        }
         
         em.merge(currentRowFromDatabase);
-        em.merge(rowFromDB);
     }
     
     /**

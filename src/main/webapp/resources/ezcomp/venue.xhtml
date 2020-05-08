@@ -52,7 +52,11 @@
 
             <h:panelGroup layout="block" class="form-group">
                 <h:outputLabel for="venueName" value="Venue Name:" />
-                <h:inputText class="form-control" id="venueName" value="#{cc.attrs.owner.venue.venueName}" />
+                <h:inputText 
+                    class="form-control" 
+                    id="venueName" 
+                    value="#{cc.attrs.owner.venue.venueName}" 
+                    readonly="#{cc.attrs.owner.venue != null ? 'false' : 'true'}"/>
                 <h:message for="venueName" errorClass="text-danger"/>
             </h:panelGroup>
         

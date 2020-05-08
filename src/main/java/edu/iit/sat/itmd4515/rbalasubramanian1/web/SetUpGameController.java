@@ -86,7 +86,7 @@ public class SetUpGameController {
         
         gameServ.findAll().forEach((g) -> {
             g.getTeams().forEach((t1) ->{   
-                if(t1.getId().equals(t.getId())){
+                if(t1.equals(t)){
                     ourTeamGames.add(g);
                 }
             });
