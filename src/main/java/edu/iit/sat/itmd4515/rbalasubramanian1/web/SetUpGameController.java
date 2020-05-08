@@ -47,11 +47,14 @@ public class SetUpGameController {
     @Inject LoginController loginController;
 
     /**
-     *
+     * default constructor
      */
     public SetUpGameController() {
     }
     
+    /**
+     * used to get coach and team object
+     */
     @PostConstruct
     private void postConstruct(){
         game = new Game();
@@ -64,7 +67,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * used to get game obj by id
      */
     public void initGameById(){
         LOG.info("edit game..." + this.game.getId());
@@ -74,7 +77,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * gets list of games for the coach page
      * @return
      */
     public List<Game> getOurTeamGames(){
@@ -95,7 +98,7 @@ public class SetUpGameController {
 //    action methods
 
     /**
-     *
+     * used to add game to coach team
      * @return
      */
     public String saveGame(){
@@ -136,7 +139,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * to edit game information
      * @return
      */
     public String editGame(){
@@ -148,7 +151,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * to delete game 
      * @return
      */
     public String deleteGame(){
@@ -159,7 +162,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * to add stat to team
      * @param t
      * @return
      */
@@ -170,7 +173,7 @@ public class SetUpGameController {
     }
     
     /**
-     *
+     * game getter
      * @return
      */
     public Game getGame() {
@@ -178,7 +181,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     *game obj setter
      * @param game
      */
     public void setGame(Game game) {
@@ -186,7 +189,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * coach getter
      * @return
      */
     public Coach getCoach() {
@@ -194,7 +197,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * coach setter
      * @param coach
      */
     public void setCoach(Coach coach) {
@@ -202,7 +205,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * team getter
      * @return
      */
     public Team getOurTeam() {
@@ -210,7 +213,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * team setter
      * @param ourTeam
      */
     public void setOurTeam(Team ourTeam) {
@@ -218,7 +221,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * opponent team getter
      * @return
      */
     public Team getOpponentTeamSelected() {
@@ -226,7 +229,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * opponent team setter
      * @param opponentTeamSelected
      */
     public void setOpponentTeamSelected(Team opponentTeamSelected) {
@@ -234,7 +237,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * venue getter
      * @return
      */
     public Venue getVenueSelected() {
@@ -242,7 +245,7 @@ public class SetUpGameController {
     }
 
     /**
-     *
+     * venue setter for the game
      * @param venueSelected
      */
     public void setVenueSelected(Venue venueSelected) {

@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
- *
+ *app config class
  * @author raghul
  */
 @Named

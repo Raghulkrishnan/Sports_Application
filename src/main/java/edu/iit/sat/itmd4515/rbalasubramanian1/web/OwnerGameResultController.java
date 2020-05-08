@@ -19,7 +19,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ * handles the game result from the owner side
  * @author raghul
  */
 @Named
@@ -38,7 +38,7 @@ public class OwnerGameResultController {
     @EJB GameService gameServ;
 
     /**
-     *
+     *default constructor
      */
     public OwnerGameResultController() {
     }
@@ -46,7 +46,7 @@ public class OwnerGameResultController {
 //    initialization methods below
 
     /**
-     *
+     * post construct method getting the game object
      */
     @PostConstruct
     public void init(){
@@ -60,7 +60,7 @@ public class OwnerGameResultController {
     }
     
     /**
-     *
+     * get the teams in the game based on game id
      */
     public void initGameById(){
         teamsInGame = new ArrayList<>();
@@ -78,7 +78,7 @@ public class OwnerGameResultController {
 //    action methods
 
     /**
-     *
+     * to save result of the game
      * @return
      */
     public String saveGameResult(){
@@ -90,7 +90,7 @@ public class OwnerGameResultController {
     }
     
     /**
-     *
+     * to remove the game
      * @return
      */
     public String removeGame(){
@@ -104,7 +104,7 @@ public class OwnerGameResultController {
 //    accessors and mutators
 
     /**
-     *
+     * to get the game
      * @return
      */
     public Game getGame() {
@@ -112,7 +112,7 @@ public class OwnerGameResultController {
     }
 
     /**
-     *
+     * to set the game
      * @param game
      */
     public void setGame(Game game) {
@@ -120,7 +120,7 @@ public class OwnerGameResultController {
     }
 
     /**
-     *
+     * gets the teams list of the game
      * @return
      */
     public List<Team> getTeamsInGame() {
@@ -128,7 +128,7 @@ public class OwnerGameResultController {
     }
 
     /**
-     *
+     * set teams to game
      * @param teamsInGame
      */
     public void setTeamsInGame(List<Team> teamsInGame) {

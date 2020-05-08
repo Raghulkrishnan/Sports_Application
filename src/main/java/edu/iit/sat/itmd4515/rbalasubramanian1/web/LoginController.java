@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotBlank;
 
 /**
- *
+ * login controller class handles the login functionality of the application
  * @author raghul
  */
 @Named
@@ -44,11 +44,14 @@ public class LoginController {
     private User user;
 
     /**
-     *
+     *default constructor
      */
     public LoginController() {
     }
 
+    /**
+     *post construct method that gets the user object.
+     */
     @PostConstruct
     private void postContruct() {
         LOG.info("Inside the LoginController.postConstruct method: ");
@@ -82,7 +85,7 @@ public class LoginController {
     }
 
     /**
-     *
+     * returns admin as role
      * @return
      */
     public boolean isAdmin() {
@@ -90,7 +93,7 @@ public class LoginController {
     }
 
     /**
-     *
+     * returns the role as coach role
      * @return
      */
     public boolean isCoach() {
@@ -98,7 +101,7 @@ public class LoginController {
     }
 
     /**
-     *
+     * returns owner role
      * @return
      */
     public boolean isOwner() {
@@ -108,7 +111,8 @@ public class LoginController {
     // action methods
 
     /**
-     *
+     * login function authenticating the username and password.
+     * and navigates to pages based on the status
      * @return
      */
     public String doLogin() {
@@ -142,7 +146,7 @@ public class LoginController {
     }
 
     /**
-     *
+     * logout method gets a servlet request and logs out the user
      * @return
      */
     public String doLogout() {
@@ -160,7 +164,7 @@ public class LoginController {
     }
     
     /**
-     *
+     * user getter
      * @return
      */
     public User getUser() {
@@ -168,7 +172,7 @@ public class LoginController {
     }
 
     /**
-     *
+     * user setter method
      * @param user
      */
     public void setUser(User user) {

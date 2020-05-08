@@ -21,7 +21,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ * handles the venue games
  * @author raghul
  */
 @Named
@@ -54,7 +54,7 @@ public class OwnerController {
     }
     
     /**
-     *
+     * gets the list of games in the venue to be displayed on the page
      * @return
      */
     public List<Game> getOurVenueGames(){
@@ -74,7 +74,7 @@ public class OwnerController {
 //    action method
 
     /**
-     *
+     * to select a particular game
      * @param g
      * @return
      */
@@ -85,7 +85,7 @@ public class OwnerController {
     }
     
     /**
-     *
+     * owner getter
      * @return
      */
     public VenueOwner getOwner() {
@@ -93,7 +93,7 @@ public class OwnerController {
     }
 
     /**
-     *
+     * owner setter
      * @param owner
      */
     public void setOwner(VenueOwner owner) {
@@ -101,7 +101,7 @@ public class OwnerController {
     }
 
     /**
-     *
+     * game getter
      * @return
      */
     public Game getGame() {
@@ -109,7 +109,7 @@ public class OwnerController {
     }
 
     /**
-     *
+     * game setter
      * @param game
      */
     public void setGame(Game game) {

@@ -15,7 +15,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
- *
+ * used to handle creation of team obj
  * @author raghul
  */
 @Named
@@ -29,7 +29,7 @@ public class TeamController {
     @EJB TeamService teamService;
 
     /**
-     *
+     * default constructor
      */
     public TeamController() {
     }
@@ -43,7 +43,7 @@ public class TeamController {
     // action methods
 
     /**
-     *
+     * used to save team to the coach
      * @return
      */
     public String saveTeam(){
@@ -58,7 +58,7 @@ public class TeamController {
 //    getters,setters
 
     /**
-     *
+     * team obj getter
      * @return
      */
     public Team getTeam() {
@@ -66,7 +66,7 @@ public class TeamController {
     }
 
     /**
-     *
+     * team obj setter
      * @param team
      */
     public void setTeam(Team team) {

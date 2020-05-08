@@ -28,7 +28,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ * used to handle coach and team info in the coach page
  * @author raghul
  */
 @Named
@@ -52,7 +52,7 @@ public class CoachTeamController {
     @Inject LoginController loginController;
     
     /**
-     *
+     * default constructor
      */
     public CoachTeamController() {
     }
@@ -60,7 +60,7 @@ public class CoachTeamController {
 //    initialization methods below
 
     /**
-     *
+     * post construct method, initializes with getting the coach object
      */
     @PostConstruct
     public void init(){
@@ -77,7 +77,7 @@ public class CoachTeamController {
 //    action methods
 
     /**
-     *
+     * used to edit team details
      * @return
      */
     public String editTeamInfo(){
@@ -89,7 +89,7 @@ public class CoachTeamController {
     }
     
     /**
-     *
+     * used to change the coach password
      * @return
      */
     public String changePwd(){
@@ -105,7 +105,7 @@ public class CoachTeamController {
 //    accessors and mutators
 
     /**
-     *
+     * used to get coach - coach getter
      * @return
      */
     public Coach getCoach() {
@@ -113,7 +113,7 @@ public class CoachTeamController {
     }
 
     /**
-     *
+     * coach setter
      * @param coach
      */
     public void setCoach(Coach coach) {
@@ -121,7 +121,7 @@ public class CoachTeamController {
     }
 
     /**
-     *
+     *team getter. returns team object
      * @return
      */
     public Team getTeam() {
@@ -129,7 +129,7 @@ public class CoachTeamController {
     }
 
     /**
-     *
+     * team setter.
      * @param team
      */
     public void setTeam(Team team) {
@@ -137,7 +137,7 @@ public class CoachTeamController {
     }
 
     /**
-     *
+     * user getter
      * @return
      */
     public User getUser() {
@@ -145,7 +145,7 @@ public class CoachTeamController {
     }
 
     /**
-     *
+     * user setter
      * @param user
      */
     public void setUser(User user) {

@@ -14,7 +14,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 /**
- *
+ *venue converter class for single drop-down list
  * @author raghul
  */
 @FacesConverter(value="venueConverter", managed=true)

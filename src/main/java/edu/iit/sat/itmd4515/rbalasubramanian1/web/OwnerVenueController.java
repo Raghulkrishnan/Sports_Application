@@ -26,7 +26,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ * used to handle venue info requests
  * @author raghul
  */
 @Named
@@ -51,7 +51,7 @@ public class OwnerVenueController {
     @Inject LoginController loginController;
 
     /**
-     *
+     *default constructor
      */
     public OwnerVenueController() {
     }
@@ -59,7 +59,7 @@ public class OwnerVenueController {
 //    initialization methods below
 
     /**
-     *
+     * used to get owner and user obj
      */
     @PostConstruct
     public void init(){
@@ -76,7 +76,7 @@ public class OwnerVenueController {
 //    action methods
 
     /**
-     *
+     * used to edit venue of owner
      * @return
      */
     public String editVenueInfo(){
@@ -88,7 +88,7 @@ public class OwnerVenueController {
     }
     
     /**
-     *
+     * used to change owner password
      * @return
      */
     public String changePwd(){
@@ -103,7 +103,7 @@ public class OwnerVenueController {
 //    accessors and mutators
 
     /**
-     *
+     * used to get venue
      * @return
      */
     
@@ -112,7 +112,7 @@ public class OwnerVenueController {
     }
 
     /**
-     *
+     * used to set venue
      * @param venue
      */
     public void setVenue(Venue venue) {
@@ -120,7 +120,7 @@ public class OwnerVenueController {
     }
 
     /**
-     *
+     * owner getter
      * @return
      */
     public VenueOwner getOwner() {
@@ -128,7 +128,7 @@ public class OwnerVenueController {
     }
 
     /**
-     *
+     * owner setter
      * @param owner
      */
     public void setOwner(VenueOwner owner) {
@@ -136,7 +136,7 @@ public class OwnerVenueController {
     }
 
     /**
-     *
+     * user getter
      * @return
      */
     public User getUser() {
@@ -144,7 +144,7 @@ public class OwnerVenueController {
     }
 
     /**
-     *
+     * user setter
      * @param user
      */
     public void setUser(User user) {

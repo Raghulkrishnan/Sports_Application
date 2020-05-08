@@ -29,7 +29,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ *admin controller handles admin related operations
  * @author raghul
  */
 @Named
@@ -61,7 +61,7 @@ public class AdminController {
     @EJB TeamService teamServ;
 
     /**
-     *
+     *default constructor
      */
     public AdminController() {
     }
@@ -69,7 +69,7 @@ public class AdminController {
 //    initialization methods below
 
     /**
-     *
+     *post construct method that initializes the page
      */
     @PostConstruct
     public void init(){
@@ -94,7 +94,7 @@ public class AdminController {
     }
     
     /**
-     *
+     *gets the coach object based on id
      */
     public void initCoachById(){
         coach = coachServ.find(this.coach.getId());
@@ -102,7 +102,7 @@ public class AdminController {
     }
     
     /**
-     *
+     *gets the owner object based on id
      */
     public void initOwnerById(){
         owner = ownerServ.find(this.owner.getId());
@@ -110,7 +110,7 @@ public class AdminController {
     }
     
     /**
-     *
+     *gets all coaches for the page
      * @return
      */
     public List<Coach> getAllCoaches(){
@@ -130,7 +130,7 @@ public class AdminController {
     }
     
     /**
-     *
+     *gets all venue owners for the page
      * @return
      */
     public List<VenueOwner> getAllOwners(){
@@ -147,7 +147,7 @@ public class AdminController {
 //    action methods
 
     /**
-     *
+     * this function is called to add a new coach in the application
      * @return
      */
     public String addCoach(){
@@ -168,7 +168,7 @@ public class AdminController {
     }
     
     /**
-     *
+     * used to add a team to the coach
      * @return
      */
     public String addTeamToCoach(){
@@ -182,7 +182,7 @@ public class AdminController {
     }
     
     /**
-     *
+     * used to change coach object data
      * @return
      */
     public String editCoach(){
@@ -193,7 +193,7 @@ public class AdminController {
     }
     
     /**
-     *
+     * removes coach data
      * @return
      */
     public String removeCoach(){
@@ -215,7 +215,7 @@ public class AdminController {
     
     
     /**
-     *
+     * removes owner data
      * @return
      */
     public String removeOwner(){
@@ -242,7 +242,7 @@ public class AdminController {
     }
     
     /**
-     *
+     * adds owner data in the application
      * @return
      */
     public String addOwner(){
@@ -261,7 +261,7 @@ public class AdminController {
     }
     
     /**
-     *
+     *adds venue to owner
      * @return
      */
     public String addVenueToOwner(){
@@ -276,7 +276,7 @@ public class AdminController {
     }
     
     /**
-     *
+     * used to edit owner data
      * @return
      */
     public String editOwner(){
@@ -289,7 +289,7 @@ public class AdminController {
 //    accessors and mutators
 
     /**
-     *
+     * owner getter
      * @return
      */
     public VenueOwner getOwner() {
@@ -297,7 +297,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * owner setter method
      * @param owner
      */
     public void setOwner(VenueOwner owner) {
@@ -305,7 +305,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * coach getter method
      * @return
      */
     public Coach getCoach() {
@@ -321,7 +321,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * user getter method
      * @return
      */
     public User getUser() {
@@ -329,7 +329,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * user setter method
      * @param user
      */
     public void setUser(User user) {
@@ -337,7 +337,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * team getter
      * @return
      */
     public Team getTeam() {
@@ -345,7 +345,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * team setter
      * @param team
      */
     public void setTeam(Team team) {
@@ -353,7 +353,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * venue getter
      * @return
      */
     public Venue getVenue() {
@@ -361,7 +361,7 @@ public class AdminController {
     }
 
     /**
-     *
+     * venue setter
      * @param venue
      */
     public void setVenue(Venue venue) {

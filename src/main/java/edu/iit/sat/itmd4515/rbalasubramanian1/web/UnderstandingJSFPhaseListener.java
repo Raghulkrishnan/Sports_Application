@@ -11,7 +11,7 @@ import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 
 /**
- *
+ *jsf faces stages logging
  * @author raghul
  */
 public class UnderstandingJSFPhaseListener implements PhaseListener{
