@@ -37,7 +37,16 @@ public @interface Age {
      */
     String message() default "Must be atleast {value} years old";
 
+    /**
+     *
+     * @return
+     */
     Class<?>[] groups() default {};
+
+    /**
+     *
+     * @return
+     */
     Class<? extends Payload>[] payload() default {};
 
     /**

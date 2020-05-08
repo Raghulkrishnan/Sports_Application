@@ -202,10 +202,12 @@ public class AdminController {
 //            teamServ.removeCoachFromTeam(coach.getTeam(), coach);
             teamServ.deleteTeam(coach.getTeam());
             coachServ.deleteCoach(coach);
+            userServ.remove(this.coach.getUser());
         }
         else{
             LOG.info("removinggggggggggg coach......." + this.coach.toString());
             coachServ.deleteCoach(coach);
+            userServ.remove(this.coach.getUser());
         }
         
         return "/admin/welcome.xhtml?faces-redirect=true";
@@ -228,10 +230,12 @@ public class AdminController {
             
             venueServ.deleteVenue(v);
             ownerServ.deleteOwner(owner);
+            userServ.remove(this.owner.getUser());
         }
         else{
             LOG.info("removinggggggggggg owner......." + this.owner.toString());
             ownerServ.deleteOwner(owner);
+            userServ.remove(this.owner.getUser());
         }
         
         return "/admin/welcome.xhtml?faces-redirect=true";

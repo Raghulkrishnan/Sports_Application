@@ -8,23 +8,18 @@ package edu.iit.sat.itmd4515.rbalasubramanian1.service;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Coach;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Game;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Level;
-import edu.iit.sat.itmd4515.rbalasubramanian1.model.Stat;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Team;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.Venue;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.VenueOwner;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.Group;
 import edu.iit.sat.itmd4515.rbalasubramanian1.model.security.User;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 /**
  *This class is used to store initial values in all the tables in the database 
  * @author raghul
@@ -83,9 +78,9 @@ public class StartUpDatabaseLoaderService {
         coach1.addGroup(adminGroup);
         coach1.addGroup(coachGroup);
 
-        User coach2 = new User("coach2@yahoo.com", "coach2", true);
+        User coach2 = new User("coach2@gmail.com", "coach2", true);
         coach2.addGroup(coachGroup);
-        coach2.addGroup(venueOwnerGroup);
+//        coach2.addGroup(venueOwnerGroup);
 
         User coach3 = new User("coach3@gmail.com", "coach3", true);
         coach3.addGroup(coachGroup);
@@ -96,13 +91,13 @@ public class StartUpDatabaseLoaderService {
         User venueOwner1 = new User("owner1@gmail.com", "owner1", true);
         venueOwner1.addGroup(venueOwnerGroup);
 
-        User venueOwner2 = new User("owner2@yahoo.com", "owner2", true);
+        User venueOwner2 = new User("owner2@gmail.com", "owner2", true);
         venueOwner2.addGroup(venueOwnerGroup);
 
         User venueOwner3 = new User("owner3@gmail.com", "owner3", true);
         venueOwner3.addGroup(venueOwnerGroup);
 
-        User venueOwner4 = new User("owner4@gmail.coms", "owner4", true);
+        User venueOwner4 = new User("owner4@gmail.com", "owner4", true);
         venueOwner4.addGroup(venueOwnerGroup);
 
         userServ.create(coach1);
@@ -161,25 +156,25 @@ public class StartUpDatabaseLoaderService {
         VenueOwner vo2 = new VenueOwner("Scott", "S", LocalDate.of(2016, Month.JANUARY, 19), 19);
         VenueOwner vo3 = new VenueOwner("Thomas", "E", LocalDate.of(2016, Month.DECEMBER, 11), 39);
         VenueOwner vo4 = new VenueOwner("James", "P", LocalDate.of(2014, Month.MAY, 22), 27);
-        VenueOwner vo5 = new VenueOwner( c2.getFirstName(), c2.getLastName(), c2.getDateOfJoining(), 22);
+//        VenueOwner vo5 = new VenueOwner( c2.getFirstName(), c2.getLastName(), c2.getDateOfJoining(), 22);
 
         vo1.setUser(venueOwner1);
         vo2.setUser(venueOwner2);
         vo3.setUser(venueOwner3);
         vo4.setUser(venueOwner4);
-        vo5.setUser(coach2); 
+//        vo5.setUser(coach2); 
 
         voServ.create(vo1);
         voServ.create(vo2);
         voServ.create(vo3);
         voServ.create(vo4);
-        voServ.create(vo5);
+//        voServ.create(vo5);
 
         LOG.info("Created venue owner detail 1 -->>> " + vo1.toString());
         LOG.info("Created venue owner detail 2 -->>> " + vo2.toString());
         LOG.info("Created venue owner detail 3 -->>> " + vo3.toString());
         LOG.info("Created venue owner detail 4 -->>> " + vo4.toString());
-        LOG.info("Created venue owner detail 5 -->>> " + vo5.toString());
+//        LOG.info("Created venue owner detail 5 -->>> " + vo5.toString());
 
 //        Venues
         Venue v1 = new Venue("EDEN");
@@ -193,7 +188,7 @@ public class StartUpDatabaseLoaderService {
         v2.addVenueOwner(vo2);
         v3.addVenueOwner(vo3);
         v4.addVenueOwner(vo4);
-        v5.addVenueOwner(vo5);
+//        v5.addVenueOwner(vo5);
 
         venueServ.create(v1);
         venueServ.create(v2);
@@ -208,11 +203,11 @@ public class StartUpDatabaseLoaderService {
         LOG.info("Created venue detail 5 -->>> " + v5.toString());
 
 //      Games
-        Game g1 = new Game(LocalDate.of(2020, Month.MAY, 22));
-        Game g2 = new Game(LocalDate.of(2020, Month.MAY, 23));
+        Game g1 = new Game(LocalDate.of(2020, Month.JUNE, 22));
+        Game g2 = new Game(LocalDate.of(2020, Month.JUNE, 23));
         Game g3 = new Game(LocalDate.of(2020, Month.JULY, 24));
         Game g4 = new Game(LocalDate.of(2020, Month.JUNE, 24));
-        Game g5 = new Game(LocalDate.of(2020, Month.MAY, 24));
+        Game g5 = new Game(LocalDate.of(2020, Month.AUGUST, 24));
 
 //      unidirectional many to one
         g1.addVenue(v4);
@@ -253,25 +248,6 @@ public class StartUpDatabaseLoaderService {
         LOG.info("Created game detail 4 -->>> " + g4.toString());
         LOG.info("Created game detail 5 -->>> " + g5.toString());
 
-//        Stats Integer.valueOf(), Integer.valueOf(),Integer.valueOf()
-//        Stat s1 = new Stat(Integer.valueOf(15), Integer.valueOf(10), Integer.valueOf(5));
-//        Stat s2 = new Stat(Integer.valueOf(24), Integer.valueOf(13), Integer.valueOf(11));
-//        Stat s3 = new Stat(Integer.valueOf(12), Integer.valueOf(10), Integer.valueOf(2));
-//        Stat s4 = new Stat(Integer.valueOf(22), Integer.valueOf(17), Integer.valueOf(5));
-//
-//        s1.addTeam(t1);
-//        s2.addTeam(t2);
-//        s3.addTeam(t3);
-//        s4.addTeam(t4);
-//
-//        statServ.create(s1);
-//        statServ.create(s2);
-//        statServ.create(s3);
-//        statServ.create(s4);
-//
-//        LOG.info("Created stat 1 -->>> " + s1.toString());
-//        LOG.info("Created stat 2 -->>> " + s2.toString());
-//        LOG.info("Created stat 3 -->>> " + s3.toString());
 
     }
 }

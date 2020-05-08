@@ -20,27 +20,39 @@ abstract class AbstractService<T> {
     protected EntityManager em;
     
     protected Class<T> entityClass;
-    
+    /**
+     *default constructor
+     */
     public AbstractService(Class entityClass) {
         this.entityClass = entityClass;
     }
-    
+    /**
+     *creates new entity
+     */
     public void create(T entity){
         em.persist(entity);
     }
-    
+    /**
+     *updates the entity
+     */
     public void update(T entity){
         em.merge(entity);
     }
-    
+    /**
+     *removes the entity from the db
+     */
     public void remove(T entity){
         em.remove(em.merge(entity));
     }
-    
+    /**
+     *find method uses the id to retrieve the entity row that matches the id
+     */
     public T find(Long id){
         return em.find(entityClass, id);
     }
-    
+    /**
+     *findAll method to get a entity table records
+     */
     public abstract List<T> findAll();
 
 }
