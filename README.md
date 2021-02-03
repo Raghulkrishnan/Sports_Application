@@ -1,5 +1,12 @@
 # SPORTS_DOMAIN_WEB_APP
 
+# JDK 11 or above
+# Apache NetBeans IDE
+# Payara Server compatible with Jakarta EE 8
+# MySQL WorkBench
+# Java Composite Components
+# EJB Validation
+
 USER CREDENTIALS FOR THE APPLICATION:
 
 (USERNAME	   |       PASSWORD	   |   USER ROLE)
@@ -65,10 +72,10 @@ REQUIREMENTS
 
 The technology requirements are as follows:
 
- JDK 11 or above
- Apache NetBeans IDE
- Payara Server compatible with Jakarta EE 8
- MySQL WorkBench
+# JDK 11 or above
+# Apache NetBeans IDE
+# Payara Server compatible with Jakarta EE 8
+# MySQL WorkBench
 Download the above mentioned.
 
 (Installation and Database setup referred from professors class lecture)
